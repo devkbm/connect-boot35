@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.like.cooperation.board.adapter.out.db.mybatis.BoardMapper">
+
+    <select id="test" parameterType="map" resultType="map">
+    <![CDATA[
+		SELECT 1 as num 
+	]]>     	  
+	</select>	   
+	
+	<!--
+	<select id="getArticleList" parameterType="map" resultType="com.like.cooperation.board.domain.post.port.in.dto.PostListDTO"><![CDATA[
+		SELECT A.BOARD_ID			boardId
+		     , A.POST_ID			postId
+		     , D.USER_NAME 			writerName
+		     , D.FK_FILE			writerImage	         	         	        
+	         , A.TITLE				title	         
+	         , NVL(A.HIT_CNT,0)		hitCount	         			 	        
+	         , CASE WHEN A.USER_ID = #{userId} THEN true
+	                ELSE false
+	           END					editable
+	         , (CASE WHEN B.CNT > 0 THEN true ELSE false END) isAttachedFile
+	         , B.CNT				fileCount
+	         , CASE WHEN C.HIT_CNT > 0 THEN true
+	                ELSE false
+	           END 					isRead 											           
+		  FROM GRWPOST A
+		  	LEFT OUTER JOIN (
+		     	SELECT X.POST_ID 
+		     	     , COUNT(*) CNT
+                  FROM GRWPOSTFILE X                 
+                 GROUP 
+                    BY X.POST_ID
+		    ) B
+		    ON (A.POST_ID = B.POST_ID)
+		    LEFT OUTER JOIN GRWPOSTCHECK  C
+		    ON (A.POST_ID = C.POST_ID
+		    AND C.USER_ID = #{userId})
+		  	LEFT OUTER JOIN COMUSER D
+		  	ON (A.USER_ID = D.USER_ID) 
+		 WHERE 1=1		
+           AND A.BOARD_ID = #{data.boardId}
+    	]]>          	
+    	<if test="data.title != null"><![CDATA[
+    	   AND A.TITLE LIKE #{data.title}
+    	]]></if>
+    	<if test="data.contents != null"><![CDATA[
+    	   AND A.CONTENTS LIKE #{data.contents}
+    	]]></if><![CDATA[           
+		 ORDER
+		    BY A.POST_ID DESC		
+        limit #{pagesize} + 1 offset #{pagenumber} * #{pagesize}		    
+    ]]>
+	</select>
+	-->
+		
+	<select id="getArticleList33" parameterType="map" resultType="map"><![CDATA[
+		select b.SYS_DT		as sysDt
+		     , b.SYS_USER	as sysUser
+		     , u.name 		as sysUsernm
+		     , b.UPD_DT  	as updDt
+		     , b.UPD_USER	as updUser
+		     , b.PK_ARTICLE	as pkArticle
+		     , b.PPK_ARTICLE as ppkArticle
+		     , b.TITLE 		as title
+		     , b.CONTENTS	as contents
+		     , b.PWD 		as pwd
+		     , b.HIT_CNT	as hitCnt
+		     , b.FROM_DT	as fromDt
+		     , b.TO_DT		as toDt
+		     , b.seq		as seq
+		     , 'Y'			as checkYn		     		     
+		     , (select group_concat(z.PK_FILE,'|',z.FILE_NM,'|',z.size order by z.PK_FILE SEPARATOR ',')     
+		          from grarticle_files x
+		         inner join cmfileinfo z
+		               on (x.PK_FILE = z.PK_FILE)
+		         where x.PK_ARTICLE = b.PK_ARTICLE )	as fileInfo		-- uuid | path | name | size
+		     , b.FK_BOARD	as fkBoard
+   		  from grboard a
+   			inner join grarticle b
+   	        	on (a.PK_BOARD = b.FK_BOARD)   	           			
+   	        left outer join user u
+   	         	on (b.SYS_USER = u.USERNAME)    		            
+       where a.PK_BOARD = #{fkBoard}      
+    ]]>          	
+    	<if test="title != null"><![CDATA[
+    	and b.title like #{title}
+    	]]></if>
+    	<if test="contents != null"><![CDATA[
+    	and b.contents like #{contents}
+    	]]></if>
+   order by b.PK_ARTICLE desc 	
+	</select>	
+	
+	
+	
+	<!-- SLICE 쿼리에 추가 
+	<if test="pageable.sort.sorted">
+            <trim prefix="order by">
+                <foreach item="order" index="i" collection="pageable.sort" separator=", ">
+                    ${order.property} ${order.direction}
+                </foreach>
+            </trim>
+        </if>
+        limit ${pageable.size} offset ${pageable.page}*${pageable.size}
+	 -->
+</mapper>
