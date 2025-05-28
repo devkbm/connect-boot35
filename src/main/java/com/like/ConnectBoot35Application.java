@@ -21,3 +21,4 @@ public class ConnectBoot35Application {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 	}
 }
+
