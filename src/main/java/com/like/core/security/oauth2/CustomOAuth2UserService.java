@@ -15,7 +15,10 @@ import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
 
+import lombok.extern.slf4j.Slf4j;
+
 // http://localhost:8090/oauth2/authorization/google
+@Slf4j
 @Transactional
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
@@ -42,47 +45,36 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 												  .getUserNameAttributeName();
 		
 		OAuth2Attributes attributes = OAuth2Attributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-		
-		
-		// {sub=112050878942662954589, name=김병민, given_name=병민, family_name=김, picture=https://lh3.googleusercontent.com/a/ACg8ocIMTjbjyQTYA9qtpQisXrW2rh5DaP4Vh3lQiHL8o14qwrj_oA=s96-c, email=devkbm0417@gmail.com, email_verified=true}
-		/*
-		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		log.info(oAuth2User.getAttributes().get(userNameAttributeName).toString());
-		log.info(oAuth2User.getAttributes().toString());		
-		
+				
 		log.info(registrationId);
-		log.info(userNameAttributeName);		
-		log.info(attributes.getNameAttributeKey());
+		log.info(userNameAttributeName);				
 		log.info(attributes.getAttributes().toString());
-		log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-			
-		*/				
-		 
+											
 		// 1. 유저 키로 소셜 로그인 정보가 있는지 검사
-		SocialLoginID socialLoginId = new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString());
+		String code = oAuth2User.getAttributes().get(userNameAttributeName).toString();
+		SocialLoginID socialLoginId = new SocialLoginID(registrationId, code);
 		SocialLogin socialLoginInfo = this.findSocialLoginInfo(socialLoginId).orElse(null);		
-		
-		String companyCode = OAuth2LoginRequestThreadLocal.get();
+				
 		SystemUser systemUser = null;
-		// 2. 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여
-		//    소셜 로그인 정보 저장
-		if (socialLoginInfo == null) {
-	
-			systemUser = this.findSystemUserByEmail(oAuth2User.getAttributes().get("email").toString())
- 			 		         .orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 			
-			socialLoginInfo = SocialLogin.newSocialLogin(
+		// 2. 소셜 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여 소셜 로그인 정보 생성 (최초 로그인)
+		if (socialLoginInfo == null) {
+			
+			systemUser = this.findSystemUserByEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+	
+			this.saveSocialLoginInfo(
 					socialLoginId,
 					systemUser.getId().getUserId(),									
 					oAuth2User.getAttribute("name"),
 					oAuth2User.getAttribute("email")
-					);
-			
-			saveSocialLoginInfo(socialLoginInfo);
-		} else {					
-			systemUser = findSystemUser(socialLoginInfo.getUserId()).orElseThrow(() -> new RuntimeException("사용자가 없습니다."));			
-		}			
-				
+					);					
+		} else {
+		// 3. 소셜 로그인 정보에 매핑된 사용자정보 조회
+			systemUser = findSystemUser(socialLoginInfo.getUserId()).orElseThrow(() -> new RuntimeException("사용자가 없습니다."));
+		}
+					
+		String companyCode = OAuth2LoginRequestThreadLocal.get();
+		
 		OAuth2User oAuth2 = new SystemOauth2User(
 				   systemUser.getId().getUserId(),
 				   systemUser.getName(),
@@ -92,6 +84,17 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	               );  
 		
 		return oAuth2;       
+	}
+	
+	private void saveSocialLoginInfo(
+			SocialLoginID id,
+			String userId,						 
+			String name,
+			String email
+			) {		
+		SocialLogin socialLoginInfo = SocialLogin.newSocialLogin(id, userId, name, email);
+				
+		saveSocialLoginInfo(socialLoginInfo);		
 	}
 	
 	private Optional<SystemUser> findSystemUserByEmail(String email) {		
