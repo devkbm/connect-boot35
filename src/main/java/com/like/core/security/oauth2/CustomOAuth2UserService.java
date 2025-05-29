@@ -59,8 +59,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		*/				
 		 
 		// 1. 유저 키로 소셜 로그인 정보가 있는지 검사
-		SocialLogin socialLoginInfo = this.findSocialLoginInfo(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString()))
-										  .orElse(null);		
+		SocialLoginID socialLoginId = new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString());
+		SocialLogin socialLoginInfo = this.findSocialLoginInfo(socialLoginId).orElse(null);		
 		
 		String companyCode = OAuth2LoginRequestThreadLocal.get();
 		SystemUser systemUser = null;
@@ -71,16 +71,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 			systemUser = this.findSystemUserByEmail(oAuth2User.getAttributes().get("email").toString())
  			 		         .orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 			
-			socialLoginInfo = SocialLogin.newSocialLogin(new SocialLoginID(registrationId, oAuth2User.getAttributes().get(userNameAttributeName).toString())
-														,systemUser.getId().getUserId()									
-														,oAuth2User.getAttribute("name")
-														,oAuth2User.getAttribute("email")														
-														);
+			socialLoginInfo = SocialLogin.newSocialLogin(
+					socialLoginId,
+					systemUser.getId().getUserId(),									
+					oAuth2User.getAttribute("name"),
+					oAuth2User.getAttribute("email")
+					);
 			
 			saveSocialLoginInfo(socialLoginInfo);
 		} else {					
-			systemUser = findSystemUser(socialLoginInfo.getUserId())
-							.orElseThrow(() -> new RuntimeException("사용자가 없습니다."));			
+			systemUser = findSystemUser(socialLoginInfo.getUserId()).orElseThrow(() -> new RuntimeException("사용자가 없습니다."));			
 		}			
 				
 		OAuth2User oAuth2 = new SystemOauth2User(
