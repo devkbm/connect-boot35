@@ -11,9 +11,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.user.adapter.out.db.data.SystemUserRepository;
+import com.like.system.user.adapter.out.db.data.SystemUserSocialRepository;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
+import com.like.system.user.domain.oauth2.QSystemUserSocial;
+import com.like.system.user.domain.oauth2.SystemUserSocial;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,11 +27,16 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
 	
 	private final SystemUserRepository userRepository;
+	private final SystemUserSocialRepository userSocialRepository;
 	private final SocialLoginRepository socialLoginRepository;
 		   
-	CustomOAuth2UserService(SystemUserRepository userRepository
-						   ,SocialLoginRepository socialLoginRepository) {
+	CustomOAuth2UserService(
+			SystemUserRepository userRepository,
+			SystemUserSocialRepository userSocialRepository,
+			SocialLoginRepository socialLoginRepository
+			) {
 		this.userRepository = userRepository;		
+		this.userSocialRepository = userSocialRepository;
 		this.socialLoginRepository = socialLoginRepository;
 	}
 	
@@ -60,7 +68,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		// 2. 소셜 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여 소셜 로그인 정보 생성 (최초 로그인)
 		if (socialLoginInfo == null) {
 			
-			systemUser = this.findSystemUserByEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+			//systemUser = this.findSystemUserByEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+			systemUser = this.findSystemUserBySocialEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 	
 			this.saveSocialLoginInfo(
 					socialLoginId,
@@ -99,6 +108,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	
 	private Optional<SystemUser> findSystemUserByEmail(String email) {		
 		return this.userRepository.findBy(QSystemUser.systemUser.email.eq(email), q-> q.first());
+	}
+	
+	private Optional<SystemUser> findSystemUserBySocialEmail(String email) {
+		Optional<SystemUserSocial> social = this.userSocialRepository.findBy(QSystemUserSocial.systemUserSocial.email.eq(email), q-> q.first());
+		
+		String userId = social.map(e -> e.getId().getUserId().getUserId()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+		
+		return this.userRepository.findById(new SystemUserId(userId));
 	}
 	
 	private Optional<SystemUser> findSystemUser(String userId) {
