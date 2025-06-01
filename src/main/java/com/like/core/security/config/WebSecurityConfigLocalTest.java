@@ -37,10 +37,12 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 	private final CustomAuthorizationRequestResolver customAuthorizationRequestResolver;
 	private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;		
 	
-	WebSecurityConfigLocalTest(FindByIndexNameSessionRepository<S> sessionRepository
-							  ,CustomOAuth2UserService customOAuth2UserService
-							  ,CustomAuthorizationRequestResolver customAuthorizationRequestResolver
-							  ,OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler) {
+	WebSecurityConfigLocalTest(
+			FindByIndexNameSessionRepository<S> sessionRepository,
+			CustomOAuth2UserService customOAuth2UserService,
+			CustomAuthorizationRequestResolver customAuthorizationRequestResolver,
+			OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler
+			) {
 		this.sessionRepository = sessionRepository;
 		this.customOAuth2UserService = customOAuth2UserService;
 		this.customAuthorizationRequestResolver = customAuthorizationRequestResolver;
@@ -84,9 +86,9 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 	CorsConfigurationSource corsConfigurationSource() {
        CorsConfiguration configuration = new CorsConfiguration();       
 
-       configuration.setAllowedOriginPatterns(Arrays.asList("https://localhost:4200","https://4200-firebase-connect-angular19-antdgit-1746601239828.cluster-zumahodzirciuujpqvsniawo3o.cloudworkstations.dev:[*]"));
-       //configuration.addAllowedOrigin("http://localhost:4200");
-       //configuration.addAllowedOrigin("http://175.114.176.195:4200");
+       configuration.setAllowedOriginPatterns(Arrays.asList("*"));
+       //configuration.setAllowedOriginPatterns(Arrays.asList("https://localhost:4200","https://4200-firebase-connect-angular19-antdgit-1746601239828.cluster-zumahodzirciuujpqvsniawo3o.cloudworkstations.dev:[*]"));
+       //configuration.addAllowedOrigin("http://localhost:4200");       
        //configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","http://175.114.176.195:4200"));       
                            
        //configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));       

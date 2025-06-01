@@ -6,6 +6,8 @@ public class SystemUserProfileSelectDTOMapper {
 
 	public static SystemUserProfileSelectDTO toDTO(SystemUser entity, SystemUserProfileSelectSessionDTO session) {
 		
+		if (entity == null) return null;
+		
 		//Optional<Dept> dept = Optional.ofNullable(entity.getDept());			
 						
 		return SystemUserProfileSelectDTO

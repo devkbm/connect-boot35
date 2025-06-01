@@ -59,16 +59,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		log.info(attributes.getAttributes().toString());
 											
 		// 1. 유저 키로 소셜 로그인 정보가 있는지 검사
-		String code = oAuth2User.getAttributes().get(userNameAttributeName).toString();
+		String code = attributes.getId();
 		SocialLoginID socialLoginId = new SocialLoginID(registrationId, code);
 		SocialLogin socialLoginInfo = this.findSocialLoginInfo(socialLoginId).orElse(null);		
 				
 		SystemUser systemUser = null;
 			
 		// 2. 소셜 로그인 정보가 없을 경우 사용자 정보에서 이메일이 동일한 사용자 검색하여 소셜 로그인 정보 생성 (최초 로그인)
-		if (socialLoginInfo == null) {
-			
-			//systemUser = this.findSystemUserByEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+		if (socialLoginInfo == null) {			
 			systemUser = this.findSystemUserBySocialEmail(attributes.getEmail()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 	
 			this.saveSocialLoginInfo(
@@ -105,11 +103,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 				
 		saveSocialLoginInfo(socialLoginInfo);		
 	}
-	
-	private Optional<SystemUser> findSystemUserByEmail(String email) {		
-		return this.userRepository.findBy(QSystemUser.systemUser.email.eq(email), q-> q.first());
-	}
-	
+		
 	private Optional<SystemUser> findSystemUserBySocialEmail(String email) {
 		Optional<SystemUserSocial> social = this.userSocialRepository.findBy(QSystemUserSocial.systemUserSocial.email.eq(email), q-> q.first());
 		
@@ -118,8 +112,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 		return this.userRepository.findById(new SystemUserId(userId));
 	}
 	
-	private Optional<SystemUser> findSystemUser(String userId) {
-		
+	private Optional<SystemUser> findSystemUser(String userId) {		
 		return this.userRepository.findById(new SystemUserId(userId));
 	}
 	
