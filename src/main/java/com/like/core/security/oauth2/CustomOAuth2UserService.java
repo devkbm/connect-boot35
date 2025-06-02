@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.user.adapter.out.db.data.SystemUserRepository;
 import com.like.system.user.adapter.out.db.data.SystemUserSocialRepository;
-import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
 import com.like.system.user.domain.oauth2.QSystemUserSocial;
@@ -107,7 +106,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	private Optional<SystemUser> findSystemUserBySocialEmail(String email) {
 		Optional<SystemUserSocial> social = this.userSocialRepository.findBy(QSystemUserSocial.systemUserSocial.email.eq(email), q-> q.first());
 		
-		String userId = social.map(e -> e.getId().getUserId().getUserId()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
+		String userId = social.map(e -> e.getId().userId()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 		
 		return this.userRepository.findById(new SystemUserId(userId));
 	}

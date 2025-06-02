@@ -30,4 +30,12 @@ public class SystemUserSocialId implements Serializable {
 		this.userId = new SystemUserId(userId);
 		this.seq = seq;
 	}
+	
+	public String userId() {
+		return this.userId.getUserId();
+	}
+	
+	public Long seq() {
+		return this.seq;
+	}
 }
