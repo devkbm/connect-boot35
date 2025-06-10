@@ -25,16 +25,18 @@ public class SystemUserPassword implements Serializable {
 	@Column(name="pwd")
 	String password;		
 	
+	/*
 	boolean isEqual(String password) {
 		return this.password.equals(password);
 	}
+	*/
 	
 	void set(PasswordEncoder encoder, String rawPassword) {
 		this.password = encoder.encode(rawPassword);
 	}
 	
-	void change(PasswordEncoder encoder, String beforePassword, String afterPassword) {
-		if (isEqual(beforePassword)) {
+	void change(PasswordEncoder encoder, String beforePassword, String afterPassword) {				
+		if (encoder.matches(beforePassword, this.password)) {
 			this.set(encoder, afterPassword);
 		}
 	}

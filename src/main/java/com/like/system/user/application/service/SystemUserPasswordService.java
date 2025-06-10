@@ -18,8 +18,10 @@ public class SystemUserPasswordService implements SystemUserPasswordChangeUseCas
 	SystemUserCommandDbPort dbPort;
 	PasswordEncoder passwordEncoder;
 	
-	SystemUserPasswordService(SystemUserCommandDbPort dbPort
-							 ,PasswordEncoder passwordEncoder) {
+	SystemUserPasswordService(
+			SystemUserCommandDbPort dbPort,
+			PasswordEncoder passwordEncoder
+			) {
 		this.dbPort = dbPort;		
 		this.passwordEncoder = passwordEncoder;
 	}
@@ -29,6 +31,8 @@ public class SystemUserPasswordService implements SystemUserPasswordChangeUseCas
 		SystemUser user = dbPort.select(userId);
 		
 		user.setPassword(passwordEncoder, SystemUserPassword.getInitPassword());		
+		
+		dbPort.save(user);
 	}
 	
 	@Override
@@ -36,5 +40,7 @@ public class SystemUserPasswordService implements SystemUserPasswordChangeUseCas
 		SystemUser user = dbPort.select(dto.userId());			
 				
 		user.changePassword(passwordEncoder, dto.beforePassword(), dto.afterPassword());		 	
+		
+		dbPort.save(user);
 	}
 }
