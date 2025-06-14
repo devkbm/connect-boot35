@@ -18,6 +18,7 @@ public class MenuGroupSaveDTOMapper {
 							.menuGroupName(entity.getName())
 							.menuGroupUrl(entity.getMenuGroupUrl())
 							.description(entity.getDescription())
+							.sequence(entity.getSequence())
 							.build();
 	}
 	
@@ -27,7 +28,8 @@ public class MenuGroupSaveDTOMapper {
 								    .code(dto.menuGroupCode())
 								    .name(dto.menuGroupName())
 								    .menuGroupUrl(dto.menuGroupUrl())
-								    .description(dto.description())						    
+								    .description(dto.description())
+								    .sequence(dto.sequence())
 								    .build();
 		
 		entity.setAppUrl(dto.clientAppUrl());
@@ -36,7 +38,7 @@ public class MenuGroupSaveDTOMapper {
 	}
 	
 	public static void modifyMenuGroup(MenuGroupSaveDTO dto, MenuGroup menuGroup) {
-		menuGroup.modifyEntity(dto.menuGroupName(), dto.menuGroupUrl(), dto.description());
+		menuGroup.modifyEntity(dto.menuGroupName(), dto.menuGroupUrl(), dto.description(), dto.sequence());
 		
 		menuGroup.setAppUrl(dto.clientAppUrl());
 	}	

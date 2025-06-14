@@ -40,29 +40,36 @@ public class MenuGroup extends AbstractAuditEntity implements Serializable {
 	@Column(name="DESCRIPTION")
 	String description;		
 			
+	@Column(name="SEQ")
+	Long sequence;
+	
 	@Builder
 	public MenuGroup(
 			String companyCode, 
 			String code, 
 			String name, 
 			String menuGroupUrl, 
-			String description
+			String description,
+			Long sequence
 			) {	
 		this.id = new MenuGroupId(companyCode, code);
 		this.name = name;
 		this.menuGroupUrl = menuGroupUrl;
 		this.description = description;
+		this.sequence = sequence;
 	}	
 	
 	@Builder(builderMethodName = "modifyBuilder", buildMethodName = "modify")
 	public void modifyEntity(
 			String menuGroupName,
 			String menuGroupUrl,
-			String description
+			String description,
+			Long sequence
 			) {
 		this.name = menuGroupName;
 		this.menuGroupUrl = menuGroupUrl;
 		this.description = description;
+		this.sequence = sequence;
 	}
 	
 }

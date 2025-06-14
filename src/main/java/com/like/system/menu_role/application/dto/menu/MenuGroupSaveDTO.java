@@ -16,6 +16,7 @@ public record MenuGroupSaveDTO(
 		String menuGroupCode,		
 		String menuGroupName,
 		String menuGroupUrl,
-		String description
+		String description,
+		Long sequence
 		) implements Serializable {		
 }

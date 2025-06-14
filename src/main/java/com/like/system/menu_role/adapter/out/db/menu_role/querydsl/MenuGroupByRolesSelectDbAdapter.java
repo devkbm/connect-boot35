@@ -29,6 +29,7 @@ public class MenuGroupByRolesSelectDbAdapter implements MenuGroupByRolesSelectDb
 				                .on(qMenuGroup.id.companyCode.eq(qMenuRoleMapping.id.companyCode),
 				                	qMenuGroup.id.menuGroupCode.eq(qMenuRoleMapping.id.menuGroupCode))
 				                .where(qMenuRoleMapping.id.roleCode.in(roleCodes))
+				                .orderBy(qMenuGroup.sequence.asc())
 				                .fetch();				               
 	}
 

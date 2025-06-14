@@ -380,6 +380,7 @@ CREATE TABLE COMMENUGROUP (
   	MENU_GROUP_URL		  	VARCHAR(50)			NOT NULL	,
   	ORG_CD				    VARCHAR(10)			NOT NULL	,
   	DESCRIPTION			  	VARCHAR(500)		NULL		,
+  	SEQ						INT					NULL		,
 	constraint pk_commenugroup	primary key(MENU_GROUP_CD, ORG_CD)
 );
 COMMENT ON TABLE COMMENUGROUP IS '메뉴그룹관리';
