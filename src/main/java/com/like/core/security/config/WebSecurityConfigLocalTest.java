@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
@@ -54,13 +55,14 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 		http.csrf(csrf -> csrf.disable())
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 			.headers(headers -> headers.frameOptions(frame -> frame.disable()))	// h2-console 테스트를 위한 설정
-			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))			
+			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))
+			.securityContext((securityContext) -> securityContext.requireExplicitSave(true))
 			.authorizeHttpRequests(authorize -> 
 				authorize.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/api/system/user/login")).permitAll()			// 로그인 API
-						.requestMatchers(new AntPathRequestMatcher("/h2/**")).permitAll()					// h2-console 
-						//.anyRequest().authenticated()
-						.anyRequest().permitAll()
+						.requestMatchers("/api/system/user/login").permitAll()			// 로그인 API
+						.requestMatchers("/h2/**").permitAll()					// h2-console 
+						.anyRequest().authenticated()
+						//.anyRequest().permitAll()
 						)								
 			.oauth2Login(customConfigurer -> customConfigurer
 				.successHandler(oAuth2AuthenticationSuccessHandler)
