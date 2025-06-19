@@ -58,11 +58,13 @@ public class WorkCalendarEvent extends AbstractAuditEntity {
 	WorkCalendar workCalendar;
 
 	@Builder
-	public WorkCalendarEvent(String title 
-						    ,LocalDateTime start 
-						    ,LocalDateTime end 
-					        ,Boolean allDay 
-					        ,WorkCalendar workCalendar) {
+	public WorkCalendarEvent(
+			String title, 
+		    LocalDateTime start, 
+		    LocalDateTime end, 
+	        Boolean allDay, 
+	        WorkCalendar workCalendar
+	        ) {
 		this.title = title;
 		this.start = start;
 		this.end = end;
@@ -70,10 +72,12 @@ public class WorkCalendarEvent extends AbstractAuditEntity {
 		this.workCalendar = workCalendar;		
 	}
 
-	public void modifyEntity(String title
-							,LocalDateTime start
-							,LocalDateTime end
-							,Boolean allDay) {
+	public void modifyEntity(
+			String title,
+			LocalDateTime start,
+			LocalDateTime end,
+			Boolean allDay
+			) {
 		this.title = title;
 		this.start = start;
 		this.end = end;

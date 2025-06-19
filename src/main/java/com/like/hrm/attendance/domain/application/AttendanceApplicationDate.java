@@ -25,9 +25,11 @@ public class AttendanceApplicationDate extends AbstractAuditEntity {
 	@Column(name="DUTY_TIME", nullable = false)
 	private BigDecimal dutyTime;
 	
-	public AttendanceApplicationDate(AttendanceApplication dutyApplication
-							  ,LocalDate date
-							  ,BigDecimal dutyTime) {
+	public AttendanceApplicationDate(
+			AttendanceApplication dutyApplication,
+			LocalDate date,
+			BigDecimal dutyTime
+			) {
 		this.id = new AttendanceApplicationDateId(dutyApplication, date);
 		this.dutyTime = dutyTime;
 	}

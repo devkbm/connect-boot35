@@ -361,7 +361,8 @@ CREATE TABLE HRMDUTYAPPLICATION (
   	DUTY_CODE 				VARCHAR(50)			NOT NULL   	,	
   	DUTY_REASON         	VARCHAR(50)			NULL    	,	
   	FROM_DT 	          	DATETIME  			NULL    	,	
-  	TO_DT   	          	DATETIME  			NULL    	,	  		 
+  	TO_DT   	          	DATETIME  			NULL    	,
+  	HHMM					VARCHAR(4)			NULL		,	  		 
   	CMT                 	VARCHAR(2000)	  	NULL    	,	
 	constraint pk_hrmdutyapplication primary key(DUTY_ID)
 );

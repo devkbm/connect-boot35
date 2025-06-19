@@ -29,8 +29,10 @@ public class AttendanceApplicationDateId implements Serializable {
 	@Column(name="DUTY_DT", nullable = false)	
 	private LocalDate date;
 	
-	public AttendanceApplicationDateId(AttendanceApplication dutyApplication
-			 					,LocalDate date) {
+	public AttendanceApplicationDateId(
+			AttendanceApplication dutyApplication,
+			LocalDate date
+			) {
 		this.dutyApplication = dutyApplication;
 		this.date = date;
 	}

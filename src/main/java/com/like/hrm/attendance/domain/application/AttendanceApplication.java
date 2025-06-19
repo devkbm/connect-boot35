@@ -9,7 +9,6 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -66,6 +65,9 @@ public class AttendanceApplication extends AbstractAuditEntity {
 		@AttributeOverride(name = "to", column = @Column(name = "TO_DT"))
 	})
 	LocalDatePeriod period;
+	
+	@Column(name="HHMM")
+	String hhmm;
 		
 	//@OneToMany(mappedBy = "dutyApplication", orphanRemoval = true, cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "id.dutyApplication", orphanRemoval = true, cascade = CascadeType.ALL)
@@ -82,7 +84,9 @@ public class AttendanceApplication extends AbstractAuditEntity {
 			String dutyReason,
 			LocalDatePeriod period,
 			List<LocalDate> selectedDateList,
-			BigDecimal dutyTime) {
+			BigDecimal dutyTime,
+			String hhmm
+			) {
 		
 		this.companyCode = companyCode;
 		this.staffNo = staffNo;
@@ -97,7 +101,8 @@ public class AttendanceApplication extends AbstractAuditEntity {
 			String dutyReason,
 			LocalDatePeriod period,
 			List<LocalDate> selectedDate,
-			BigDecimal dutyTime) {
+			BigDecimal dutyTime,
+			String hhmm) {
 		
 		this.dutyCode = dutyCode;
 		this.dutyReason = dutyReason;
