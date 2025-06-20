@@ -14,7 +14,7 @@ import com.like.system.holiday.domain.HolidayInfoCollection;
 public class AttendanceApplicationFormDTOMapper {
 
 	public static AttendanceApplication newEntity(AttendanceApplicationFormDTO dto) {
-		
+		/*
 		AttendanceApplication entity = new AttendanceApplication(
 				dto.companyCode(),								  
 		        dto.staffNo(),
@@ -27,10 +27,13 @@ public class AttendanceApplicationFormDTOMapper {
 
 		entity.setAppUrl(dto.clientAppUrl());
 
-		return entity;		
+		return entity;
+				*/
+		return null;
 	}
 	
 	public static void modify(AttendanceApplication entity, AttendanceApplicationFormDTO dto) {
+		/*
 		entity.modify(
 				dto.dutyCode(),
 				dto.dutyReason(),
@@ -38,7 +41,8 @@ public class AttendanceApplicationFormDTOMapper {
 				dto.selectedDate().stream().map(e -> e.date()).toList(),
 				dto.dutyTime()
 				);		
-
+		*/
+		
 		entity.setAppUrl(dto.clientAppUrl());
 	}
 		
@@ -55,16 +59,16 @@ public class AttendanceApplicationFormDTOMapper {
 				   .dutyReason(e.getDutyReason())
 				   .fromDate(e.getPeriod().getFrom())
 				   .toDate(e.getPeriod().getTo())
-				   .selectedDate(AttendanceApplicationFormDTOMapper.convertDutyDate(e, dateInfoList))
-				   .dutyTime(e.getSumDutyTime())
+				   .selectedDate(AttendanceApplicationFormDTOMapper.convertDutyDate(e, dateInfoList))				   
 				   .build();	
 	}
 	
 	
 	private static List<DutyDate> convertDutyDate(AttendanceApplication entity, HolidayInfoCollection dateInfoList) {
 		List<DutyDate> dutyDatelist = new ArrayList<>(dateInfoList.size());
-		List<LocalDate> selectedDate = entity.getSelectedDate();					
+		//List<LocalDate> selectedDate = entity.getSelectedDate();					
 		
+		/*
 		for (HolidayInfo date : dateInfoList.getDates()) {							
 			dutyDatelist.add(new DutyDate(date.getDate()										
 										 ,selectedDate.contains(date.getDate())											 
@@ -72,7 +76,7 @@ public class AttendanceApplicationFormDTOMapper {
 										 ,date.isHoliday()
 										 ,date.isSunday()));
 		}
-		
+		*/
 		
 		
 		return dutyDatelist;

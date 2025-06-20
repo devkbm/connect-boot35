@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.hrm.attendance.application.dto.application.DutyApplicationDTO;
 import com.like.hrm.attendance.domain.application.AttendanceApplication;
 import com.like.hrm.attendance.domain.code.WorkChangeCode;
 //import com.like.hrm.workchangeapp.domain.QWorkChangeApplication;
@@ -20,15 +19,15 @@ public class DutyApplicationQueryJpaRepository implements DutyApplicationQueryRe
 		this.queryFactory = queryFactory;		
 	}
 	
-	@Override
-	public List<AttendanceApplication> getDutyApplicationList(DutyApplicationDTO.Search condition) {
-		return null;
+	//@Override
+	//public List<AttendanceApplication> getDutyApplicationList(DutyApplicationDTO.Search condition) {
+//		return null;
 		/*
 		return queryFactory
 				.selectFrom(QWorkChangeApplication.workChangeApplication)
 				.where(condition.getBooleanBuilder())
 				.fetch();*/
-	}
+	//}
 
 	@Override
 	public long getDutyApplicationCount(String staffId, List<WorkChangeCode> dutyCodeList, LocalDate fromDate,

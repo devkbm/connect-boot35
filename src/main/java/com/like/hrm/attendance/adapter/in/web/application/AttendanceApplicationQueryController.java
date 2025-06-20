@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
 import com.like.hrm.attendance.application.dto.application.AttendanceApplicationQueryResultDTO;
-import com.like.hrm.attendance.application.dto.application.DutyApplicationDTO;
 import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationQueryUseCase;
 import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
 
@@ -31,6 +30,7 @@ public class AttendanceApplicationQueryController {
 		this.holidayUtilService = holidayUtilService;
 	}
 	
+	/*
 	@GetMapping("/api/hrm/dutyapplication")
 	public ResponseEntity<?> getDutyApplicationList(DutyApplicationDTO.Search dto) {
 											
@@ -48,4 +48,5 @@ public class AttendanceApplicationQueryController {
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}
+	*/
 }

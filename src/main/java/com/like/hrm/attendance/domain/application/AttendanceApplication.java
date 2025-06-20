@@ -1,19 +1,16 @@
 package com.like.hrm.attendance.domain.application;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
+
+import java.time.LocalTime;
 import java.util.List;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -67,82 +64,43 @@ public class AttendanceApplication extends AbstractAuditEntity {
 	LocalDatePeriod period;
 	
 	@Column(name="HHMM")
-	String hhmm;
-		
-	//@OneToMany(mappedBy = "dutyApplication", orphanRemoval = true, cascade = CascadeType.ALL)
-	@OneToMany(mappedBy = "id.dutyApplication", orphanRemoval = true, cascade = CascadeType.ALL)
-	List<AttendanceApplicationDate> selectedDateList;
-			
+	LocalTime hhmm;
+					
 	@Transient
-	private List<DutyApplicationAttachedFile> fileList;
-	
+	private List<DutyApplicationAttachedFile> fileList;	
 	
 	public AttendanceApplication(
 			String companyCode,
 			String staffNo,
 			String dutyCode,
 			String dutyReason,
-			LocalDatePeriod period,
-			List<LocalDate> selectedDateList,
-			BigDecimal dutyTime,
-			String hhmm
+			LocalDatePeriod period,			
+			LocalTime hhmm
 			) {
 		
 		this.companyCode = companyCode;
 		this.staffNo = staffNo;
 		this.dutyCode = dutyCode;
-		this.dutyReason = dutyReason;
+		this.dutyReason = dutyReason;		
 		this.period = period;		
-		this.selectedDateList = addApplicationDateList(selectedDateList, dutyTime);
+		this.hhmm = hhmm;
 	}	
 	
 	public void modify(
 			String dutyCode,
 			String dutyReason,
-			LocalDatePeriod period,
-			List<LocalDate> selectedDate,
-			BigDecimal dutyTime,
-			String hhmm) {
+			LocalDatePeriod period,						
+			LocalTime hhmm
+			) {
 		
 		this.dutyCode = dutyCode;
 		this.dutyReason = dutyReason;
-		this.period = period;
-		
-		this.selectedDateList.clear();
-		this.selectedDateList = addApplicationDateList(selectedDate, dutyTime);
+		this.period = period;		
+		this.hhmm = hhmm;
 	}	
 	
 	public void addFile(DutyApplicationAttachedFile file) {
 		this.fileList.add(file);
-	}
-	
-	public List<LocalDate> getSelectedDate() {
-		return this.selectedDateList.stream().map(e -> e.getId().getDate()).toList();
-	}
-	
-	public BigDecimal getSumDutyTime() {
-		// for loop
-		BigDecimal sum = BigDecimal.ZERO;		
-		for (AttendanceApplicationDate dates : this.selectedDateList) sum = sum.add(dates.getDutyTime());
+	}	
 		
-		// stream
-		/*
-		sum = this.selectedDateList.stream()
-								   .map(e -> e.getDutyTime())
-								   .reduce(BigDecimal.ZERO, BigDecimal::add);
-		*/
-		
-		return sum;
-	}
-	
-	private List<AttendanceApplicationDate> addApplicationDateList(List<LocalDate> dateList, BigDecimal dutyTime) {
-		if (this.selectedDateList == null) this.selectedDateList = new ArrayList<>();
-		
-		for (LocalDate date : dateList) {
-			this.selectedDateList.add(new AttendanceApplicationDate(this, date, dutyTime));
-		}
-		
-		return this.selectedDateList;
-	}
-	
 }
