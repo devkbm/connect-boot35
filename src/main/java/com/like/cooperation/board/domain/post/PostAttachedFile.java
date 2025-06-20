@@ -8,8 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
+import io.hypersistence.utils.hibernate.id.Tsid;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +44,7 @@ public class PostAttachedFile extends AbstractAuditEntity implements Serializabl
 	private static final long serialVersionUID = 1933620773768936638L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Tsid
 	@Column(name="POST_FILE_ID")
 	Long postFileId;	
 	

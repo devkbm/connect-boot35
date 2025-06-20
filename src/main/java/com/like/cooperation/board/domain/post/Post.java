@@ -19,6 +19,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.like.cooperation.board.domain.board.Board;
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
+import io.hypersistence.utils.hibernate.id.Tsid;
+
 /**
  * <p>게시글 클래스</p>
  * 
@@ -40,8 +42,8 @@ public class Post extends AbstractAuditEntity {
 	/**
 	 * 게시글 키
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	
+	@Tsid
 	@Column(name="POST_ID")
 	Long postId;	
 		

@@ -7,6 +7,7 @@ import com.like.cooperation.board.domain.post.QPost;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.CaseBuilder;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
@@ -31,9 +32,9 @@ public class PostSelectQuerydsl {
 		return queryFactory
 				.select(
 					Projections.fields(PostFormSelectDTO.class,
-						qPost.board.boardId,
-						qPost.postId,
-						qPost.postParentId,
+						Expressions.asString(qPost.board.boardId.toString()).as("boardId"),
+						Expressions.asString(qPost.postId.toString()).as("postId"),
+						Expressions.asString(qPost.postParentId.toString()).as("postParentId"),						
 						qPost.userId.as("userName"),
 						qPost.content.title,
 						qPost.content.contents,

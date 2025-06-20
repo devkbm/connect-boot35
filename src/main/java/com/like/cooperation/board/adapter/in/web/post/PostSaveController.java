@@ -29,7 +29,7 @@ public class PostSaveController {
 										
 		Long postId = useCase.save(dto);											
 		
-		return toOne(postId, MessageUtil.getSaveMessage(1));
+		return toOne(postId.toString(), MessageUtil.getSaveMessage(1));
 	}	
 	
 }

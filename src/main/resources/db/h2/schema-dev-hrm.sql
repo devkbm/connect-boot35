@@ -367,4 +367,4 @@ CREATE TABLE HRMDUTYAPPLICATION (
 	constraint pk_hrmdutyapplication primary key(DUTY_ID)
 );
 COMMENT ON TABLE HRMDUTYAPPLICATION IS '근태신청';
-s
+

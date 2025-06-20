@@ -13,8 +13,8 @@ public record BoardSaveDTO(
 		String modifiedBy,
 		String clientAppUrl,
 		String companyCode,
-		Long boardId,
-		Long boardParentId,
+		String boardId,
+		String boardParentId,
 		String boardType,
 		@NotEmpty(message="게시판명은 필수 입력사항입니다.")
 		String boardName,

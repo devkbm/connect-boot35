@@ -1,8 +1,8 @@
 package com.like.cooperation.board.application.dto.post;
 
 public record PostListDTO(
-	Long boardId,
-	Long postId,	
+	String boardId,
+	String postId,	
 	String writerId,
 	String writerName,
 	String writerImage,

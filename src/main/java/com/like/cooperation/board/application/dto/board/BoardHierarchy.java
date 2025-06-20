@@ -18,9 +18,9 @@ public class BoardHierarchy implements Serializable {
 	
 	private static final long serialVersionUID = -1211211842381004404L;
 
-	Long key;
+	String key;
 	
-	Long boardParentId;
+	String boardParentId;
 	
 	BoardType boardType;
 	
@@ -40,11 +40,16 @@ public class BoardHierarchy implements Serializable {
 	List<BoardHierarchy> children = new ArrayList<BoardHierarchy>();
 			
 	@QueryProjection
-	public BoardHierarchy(Long key, Long boardParentId, BoardType boardType, 
-						  String title, String boardDescription) {
+	public BoardHierarchy(
+			Long key, 
+			Long boardParentId, 
+			BoardType boardType, 
+			String title, 
+			String boardDescription
+			) {
 		super();
-		this.key 				= key;
-		this.boardParentId 		= boardParentId;
+		this.key 				= key.toString();
+		this.boardParentId 		= boardParentId == null ? null : boardParentId.toString();
 		this.boardType 			= boardType;
 		this.title 				= title;
 		this.boardDescription 	= boardDescription;					

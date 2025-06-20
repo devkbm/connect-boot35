@@ -51,7 +51,7 @@ public class BoardQueryDbAdapter implements BoardQueryDbPort {
 		
 		for ( BoardHierarchy dto : list) {
 			
-			children = getBoardHierarchyChildrenList(dto.getKey());
+			children = getBoardHierarchyChildrenList(Long.parseLong(dto.getKey()));
 			
 			if (children.isEmpty()) {	// leaf 노드이면 다음 리스트 검색
 				dto.setLeaf(true);
@@ -75,8 +75,7 @@ public class BoardQueryDbAdapter implements BoardQueryDbPort {
 										.otherwise(false).as("leaf");*/	
 		
 		JPAQuery<BoardHierarchy> query = queryFactory
-				.select(new QBoardHierarchy(qBoard.boardId, qBoard.parent.boardId, qBoard.boardType
-										   ,qBoard.boardName, qBoard.description))
+				.select(projections(qBoard))
 				.from(qBoard)
 				.where(qBoard.isRootNode());
 													
@@ -87,13 +86,24 @@ public class BoardQueryDbAdapter implements BoardQueryDbPort {
 	private List<BoardHierarchy> getBoardHierarchyChildrenList(Long boardParentId) {
 		
 		JPAQuery<BoardHierarchy> query = queryFactory
-				.select(new QBoardHierarchy(qBoard.boardId, qBoard.parent.boardId, qBoard.boardType
-						   				   ,qBoard.boardName, qBoard.description))
+				.select(projections(qBoard))
 				.from(qBoard)
 				.where(qBoard.parent.boardId.eq(boardParentId));								
 		
 		return query.fetch();
 		
 	}
+	
+	
+	private QBoardHierarchy projections(QBoard qBoard) {
+		return new QBoardHierarchy(
+				qBoard.boardId, 
+				qBoard.parent.boardId, 
+				qBoard.boardType,
+				qBoard.boardName, 
+				qBoard.description
+				);
+	}
+	
 
 }

@@ -11,6 +11,7 @@ import org.springframework.lang.Nullable;
 import com.like.cooperation.board.domain.post.Post;
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
+import io.hypersistence.utils.hibernate.id.Tsid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,8 +37,8 @@ import lombok.ToString;
 @EntityListeners(AuditingEntityListener.class)
 public class Board extends AbstractAuditEntity {		
 		
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	
+	@Tsid
 	@Comment("게시판 ID")
 	@Column(name="BOARD_ID")
 	Long boardId;

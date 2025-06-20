@@ -23,9 +23,9 @@ public class PostFormSelectDTO {
 	LocalDateTime modifiedDt;
 	String modifiedBy;
 	String userName;
-	Long boardId;
-	Long postId;
-	Long postParentId;
+	String boardId;
+	String postId;
+	String postParentId;
 	String title;
 	String contents;
 	String pwd;

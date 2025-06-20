@@ -22,8 +22,8 @@ public interface BoardMapper {
 <script>
 
 <![CDATA[
-SELECT A.BOARD_ID			boardId
-     , A.POST_ID			postId     
+SELECT TO_CHAR(A.BOARD_ID)	boardId
+     , TO_CHAR(A.POST_ID)	postId     
      , D.USER_ID			writerId
      , D.USER_NAME 			writerName
      , D.FK_FILE			writerImage	         	         	        

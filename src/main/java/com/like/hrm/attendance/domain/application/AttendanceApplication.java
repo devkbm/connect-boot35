@@ -8,8 +8,6 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -19,6 +17,7 @@ import org.hibernate.annotations.Comment;
 import com.like.common.vo.LocalDatePeriod;
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
+import io.hypersistence.utils.hibernate.id.Tsid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,7 +38,8 @@ import lombok.ToString;
 public class AttendanceApplication extends AbstractAuditEntity {
 	
 	@Id		
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Tsid
 	@Column(name="DUTY_ID", nullable = false)
 	Long id;
 			
