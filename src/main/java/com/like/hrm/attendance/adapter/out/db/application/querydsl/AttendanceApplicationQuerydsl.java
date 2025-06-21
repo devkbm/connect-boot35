@@ -27,11 +27,13 @@ public class AttendanceApplicationQuerydsl {
 	}
 	
 	public List<AttendanceApplicationQueryResultDTO> select(String staffNo) {
-				
+			
+		return null;
+		/*
 		return queryFactory
 				.select(						
 					Projections.fields(AttendanceApplicationQueryResultDTO.class,
-							qApplication.id,
+							qApplication.appId,
 							qApplication.staffNo,
 							qStaff.name.name.as("staffName"),
 							qApplication.dutyCode,
@@ -55,6 +57,6 @@ public class AttendanceApplicationQuerydsl {
 					)
 				.where(qApplication.staffNo.eq(staffNo))
 				.fetch();
-				
+		*/		
 	}
 }

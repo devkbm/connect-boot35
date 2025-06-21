@@ -50,17 +50,20 @@ public class AttendanceApplicationFormDTOMapper {
 	public static AttendanceApplicationFormDTO toDTO(AttendanceApplication e, DateInfoSelectUseCase service) {
 		if ( e == null ) return null;
 		
-		HolidayInfoCollection dateInfoList = service.select("001", e.getPeriod().getFrom(), e.getPeriod().getTo());
+		return null;
+		//HolidayInfoCollection dateInfoList = service.select("001", e.getPeriod().getFrom(), e.getPeriod().getTo());
 	
+		/*
 		return AttendanceApplicationFormDTO.builder()
-				   .dutyId(e.getId())				   
+				   .dutyId(e.getAppId())				   
 				   .staffNo(e.getStaffNo())
 				   .dutyCode(e.getDutyCode())
 				   .dutyReason(e.getDutyReason())
 				   .fromDate(e.getPeriod().getFrom())
 				   .toDate(e.getPeriod().getTo())
 				   .selectedDate(AttendanceApplicationFormDTOMapper.convertDutyDate(e, dateInfoList))				   
-				   .build();	
+				   .build();
+				   */	
 	}
 	
 	

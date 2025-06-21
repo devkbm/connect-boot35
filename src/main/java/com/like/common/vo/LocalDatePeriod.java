@@ -29,12 +29,15 @@ public class LocalDatePeriod implements Serializable {
 		this.from = from;
 		this.to = to;
 		
-		if (!isValid()) throw new IllegalArgumentException(
-				String.format("시작일시[%s]가 종료일시[%s]보다 클 수 없습니다."
-							 ,from.toString()
-							 ,to.toString())
-				);
-		
+		if (!isValid()) {
+			throw new IllegalArgumentException(		
+				String.format(
+						"시작일시[%s]가 종료일시[%s]보다 클 수 없습니다.",
+						from.toString(),
+						to.toString()
+						)
+			);
+		}	
 	}
 	
 	private boolean isValid() {		
