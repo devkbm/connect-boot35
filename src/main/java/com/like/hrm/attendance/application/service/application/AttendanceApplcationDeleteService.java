@@ -8,11 +8,11 @@ import com.like.hrm.attendance.application.port.out.application.AttendanceApplic
 
 @Transactional
 @Service
-public class AttendanceApplcationFormDeleteService implements AttendanceApplcationFormDeleteUseCase {
+public class AttendanceApplcationDeleteService implements AttendanceApplcationFormDeleteUseCase {
 
 	AttendanceApplicationFormCommandDbPort dbPort;
 	
-	AttendanceApplcationFormDeleteService(AttendanceApplicationFormCommandDbPort dbPort) { 
+	AttendanceApplcationDeleteService(AttendanceApplicationFormCommandDbPort dbPort) { 
 		this.dbPort = dbPort;
 	}
 

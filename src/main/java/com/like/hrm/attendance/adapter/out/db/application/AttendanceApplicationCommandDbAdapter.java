@@ -9,11 +9,11 @@ import com.like.hrm.attendance.application.port.out.application.AttendanceApplic
 import com.like.hrm.attendance.domain.application.AttendanceApplication;
 
 @Repository
-public class AttendanceApplicationFormCommandDbAdapter implements AttendanceApplicationFormCommandDbPort {
+public class AttendanceApplicationCommandDbAdapter implements AttendanceApplicationFormCommandDbPort {
 
 	AttendanceApplicationRepository repository;
 	
-	AttendanceApplicationFormCommandDbAdapter(AttendanceApplicationRepository repository) {
+	AttendanceApplicationCommandDbAdapter(AttendanceApplicationRepository repository) {
 		this.repository = repository;
 	}
 	

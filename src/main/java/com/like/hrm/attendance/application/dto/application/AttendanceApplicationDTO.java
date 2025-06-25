@@ -1,7 +1,8 @@
 package com.like.hrm.attendance.application.dto.application;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,18 +13,24 @@ import com.like.system.holiday.domain.HolidayInfoCollection;
 import lombok.Builder;
 
 @Builder
-public record AttendanceApplicationFormDTO(
+public record AttendanceApplicationDTO(
 		String clientAppUrl,
 		String companyCode,
 		String staffNo,
-		Long dutyId,		
-		String dutyCode,
-		String dutyReason,
-		LocalDate fromDate,
-		LocalDate toDate,
-		List<DutyDate> selectedDate,
-		BigDecimal dutyTime
+		Long dutyId,				
+		String dutyReason, 
+		List<Detail> detail
 		) {
+	
+	public record Detail(
+			Long detailId,
+			String dutyCode,
+			LocalDateTime from,
+			LocalDateTime to,
+			LocalTime hhmm
+			) {
+		
+	}
 	
 	public record DutyDate(
 			LocalDate date,
