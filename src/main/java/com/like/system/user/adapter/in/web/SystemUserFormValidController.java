@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.user.application.port.in.SystemUserSelectUseCase;
+import com.like.system.user.application.port.in.select.SystemUserSelectUseCase;
 
 @RestController
 public class SystemUserFormValidController {

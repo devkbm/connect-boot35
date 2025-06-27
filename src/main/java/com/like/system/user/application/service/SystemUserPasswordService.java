@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.like.system.user.application.dto.SystemUserPasswordChangeDTO;
-import com.like.system.user.application.port.in.SystemUserPasswordChangeUseCase;
-import com.like.system.user.application.port.in.SystemUserPasswordInitUseCase;
+import com.like.system.user.application.port.in.password.SystemUserPasswordChangeDTO;
+import com.like.system.user.application.port.in.password.SystemUserPasswordChangeUseCase;
+import com.like.system.user.application.port.in.password.SystemUserPasswordInitUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserPassword;

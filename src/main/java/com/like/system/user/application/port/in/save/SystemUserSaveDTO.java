@@ -1,8 +1,8 @@
-package com.like.system.user.application.dto;
+package com.like.system.user.application.port.in.save;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-import com.like.excel.upload.ExcelHeader;
 import com.like.system.dept.domain.Dept;
 import com.like.system.user.domain.SystemUserAccountAttribute;
 import com.like.system.user.domain.SystemUser;
@@ -11,26 +11,34 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 
 @Builder
-public record SystemUserSaveByExcelDTO(		
+public record SystemUserSaveDTO(
+		LocalDateTime createdDt,
+		String createdBy,
+		LocalDateTime modifiedDt,
+		String modifiedBy,
 		String clientAppUrl,
-		@ExcelHeader("사용자아이디") String userId,
+		String userId,
 		@NotBlank(message="조직코드를 선택해 주세요.")
-		@ExcelHeader("회사코드") String companyCode,
+		String companyCode,
 		@NotBlank(message="직원번호를 입력해 주세요.")
-		@ExcelHeader("직원번호") String staffNo,
-		@ExcelHeader("직원명") String name,
-		@ExcelHeader("부서코드") String deptCode,		
-		@ExcelHeader("핸드폰번호") String mobileNum,
-		@ExcelHeader("이메일") String email,			
+		String staffNo,
+		String name,
+		String deptCode,
+		String deptName,
+		String mobileNum,
+		String email,
+		String imageBase64,
+		Boolean accountNonExpired,
+		Boolean accountNonLocked,
+		Boolean credentialsNonExpired,
 		Boolean enabled,
 		List<String> roleList,
 		List<String> menuGroupList
 		) {
-	
 	public SystemUser newUser(Dept dept) {
 		SystemUser entity = SystemUser.builder()										  
 									  .name(this.name)											  
-									  .userId(this.staffNo)									  			
+									  .userId(this.staffNo)				
 									  .mobileNum(this.mobileNum)
 									  .email(this.email)					  
 									  .accountSpec(new SystemUserAccountAttribute(true, true, true, true))										  										  			 
@@ -38,7 +46,19 @@ public record SystemUserSaveByExcelDTO(
 		
 		entity.setAppUrl(clientAppUrl);
 		
-		return entity;			
+		return entity;
+		
 	}
+				
+	public void modifyUser(SystemUser user, Dept dept) {
 					
+		user.modifyBuilder()									
+			.name(name)
+			.mobileNum(mobileNum)
+			.email(email)			
+			.modify();
+		
+		user.setAppUrl(clientAppUrl);
+	}
+		
 }

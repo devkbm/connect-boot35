@@ -2,9 +2,9 @@ package com.like.system.user.application.service.select;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.user.application.dto.SystemUserSelectDTO;
-import com.like.system.user.application.dto.SystemUserSelectDTOMapper;
-import com.like.system.user.application.port.in.SystemUserSelectUseCase;
+import com.like.system.user.application.port.in.select.SystemUserSelectDTO;
+import com.like.system.user.application.port.in.select.SystemUserSelectDTOMapper;
+import com.like.system.user.application.port.in.select.SystemUserSelectUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 
 @Service

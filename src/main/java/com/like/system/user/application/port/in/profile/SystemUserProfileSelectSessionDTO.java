@@ -1,4 +1,4 @@
-package com.like.system.user.application.dto;
+package com.like.system.user.application.port.in.profile;
 
 import java.util.Date;
 

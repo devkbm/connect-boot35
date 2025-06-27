@@ -2,10 +2,10 @@ package com.like.system.user.application.service.profile;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.user.application.dto.SystemUserProfileSelectDTO;
-import com.like.system.user.application.dto.SystemUserProfileSelectDTOMapper;
-import com.like.system.user.application.dto.SystemUserProfileSelectSessionDTO;
-import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectDTO;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectDTOMapper;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectSessionDTO;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 

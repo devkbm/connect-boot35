@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.like.system.menu_role.export.MenuHierarchyByRolesSelectUseCase;
 import com.like.system.menu_role.export.MenuHierarchyNgZorroDTO;
-import com.like.system.user.application.port.in.SystemUserMenuHierarchyQueryUseCase;
+import com.like.system.user.application.port.in.query.SystemUserMenuHierarchyQueryUseCase;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.domain.SystemUser;
 

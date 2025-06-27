@@ -1,4 +1,4 @@
-package com.like.system.user.application.dto;
+package com.like.system.user.application.port.in.select;
 
 import java.time.LocalDateTime;
 import java.util.List;

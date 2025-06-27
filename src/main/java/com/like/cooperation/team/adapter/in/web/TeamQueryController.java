@@ -15,8 +15,8 @@ import com.like.cooperation.team.domain.TeamMember;
 import com.like.cooperation.team.domain.port.in.TeamQueryUseCase;
 import com.like.cooperation.team.domain.port.in.dto.TeamQueryDTO;
 import com.like.core.message.MessageUtil;
-import com.like.system.user.application.dto.SystemUserQueryDTO;
-import com.like.system.user.application.dto.SystemUserSaveDTO;
+import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
+import com.like.system.user.application.port.in.save.SystemUserSaveDTO;
 
 @RestController
 public class TeamQueryController {

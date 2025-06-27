@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.user.application.dto.SystemUserQueryDTO;
-import com.like.system.user.application.dto.SystemUserSelectDTO;
-import com.like.system.user.application.dto.SystemUserSelectDTOMapper;
-import com.like.system.user.application.port.in.SystemUserQueryUseCase;
+import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
+import com.like.system.user.application.port.in.query.SystemUserQueryResultDTO;
+import com.like.system.user.application.port.in.query.SystemUserQueryResultDTOMapper;
+import com.like.system.user.application.port.in.query.SystemUserQueryUseCase;
 import com.like.system.user.application.port.out.SystemUserQueryDbPort;
 
 @Transactional(readOnly = true)
@@ -22,10 +22,10 @@ public class SystemUserQueryService implements SystemUserQueryUseCase {
 	}
 	
 	@Override
-	public List<SystemUserSelectDTO> selectList(SystemUserQueryDTO dto) {
+	public List<SystemUserQueryResultDTO> selectList(SystemUserQueryDTO dto) {
 		return this.dbPort.selectList(dto)
 						  .stream()
-						  .map(e -> SystemUserSelectDTOMapper.toDTO(e, dto.companyCode()))
+						  .map(e -> SystemUserQueryResultDTOMapper.toDTO(e, dto.companyCode()))
 						  .toList();
 	}
 

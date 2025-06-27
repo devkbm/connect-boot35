@@ -1,4 +1,4 @@
-package com.like.system.user.application.dto;
+package com.like.system.user.application.port.in.select;
 
 import java.util.Optional;
 
@@ -8,9 +8,9 @@ import com.like.system.user.domain.SystemUserCompany;
 
 import jakarta.persistence.EntityNotFoundException;
 
-public class SystemUserSaveDTOMapper {
+public class SystemUserSelectDTOMapper {
 
-	public static SystemUserSaveDTO toDTO(SystemUser entity, String companyCode) {					
+	public static SystemUserSelectDTO toDTO(SystemUser entity, String companyCode) {					
 		
 		if (entity == null) return null;
 		
@@ -18,7 +18,7 @@ public class SystemUserSaveDTOMapper {
 		
 		Optional<Dept> dept = Optional.ofNullable(company.getDept());			
 		
-		SystemUserSaveDTO dto = SystemUserSaveDTO.builder()																		   
+		SystemUserSelectDTO dto = SystemUserSelectDTO.builder()																		   
 										   .userId(entity.getId().getUserId())										   
 										   .name(entity.getName())												   										   
 										   .mobileNum(entity.getMobileNum())

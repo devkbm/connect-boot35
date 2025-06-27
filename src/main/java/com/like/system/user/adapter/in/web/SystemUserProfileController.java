@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
 import com.like.core.web.util.WebRequestUtil;
-import com.like.system.user.application.dto.SystemUserProfileSelectDTO;
-import com.like.system.user.application.dto.SystemUserProfileSelectSessionDTO;
-import com.like.system.user.application.port.in.SystemUserProfileSelectUseCase;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectDTO;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectSessionDTO;
+import com.like.system.user.application.port.in.profile.SystemUserProfileSelectUseCase;
 
 import jakarta.servlet.http.HttpServletRequest;
 

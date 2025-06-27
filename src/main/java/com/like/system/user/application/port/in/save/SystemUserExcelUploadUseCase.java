@@ -1,8 +1,6 @@
-package com.like.system.user.application.port.in;
+package com.like.system.user.application.port.in.save;
 
 import java.util.List;
-
-import com.like.system.user.application.dto.SystemUserSaveByExcelDTO2;
 
 public interface SystemUserExcelUploadUseCase {
 

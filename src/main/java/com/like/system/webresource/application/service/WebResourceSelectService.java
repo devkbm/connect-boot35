@@ -18,7 +18,7 @@ public class WebResourceSelectService implements WebResourceFormSelectUseCase {
 	
 	@Override
 	public WebResourceFormSelectDTO select(String id) {
-		return WebResourceFormSelectDTOMapper.toDTO(this.port.select(id));
+		return WebResourceFormSelectDTOMapper.toDTO(this.port.select(id).orElse(null));
 	}
 
 }

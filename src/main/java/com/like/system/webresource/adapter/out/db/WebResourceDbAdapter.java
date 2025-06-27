@@ -1,5 +1,7 @@
 package com.like.system.webresource.adapter.out.db;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 import com.like.system.webresource.adapter.out.db.data.WebResourceJpaRepository;
@@ -16,8 +18,13 @@ public class WebResourceDbAdapter implements WebResourceCommandDbPort {
 	}
 	 
 	@Override
-	public WebResource select(String id) {		
-		return this.repository.findById(id).orElse(null);
+	public boolean exists(String id) {
+		return this.repository.existsById(id);
+	}
+	
+	@Override
+	public Optional<WebResource> select(String id) {							
+		return this.repository.findById(id);			
 	}
 
 	@Override

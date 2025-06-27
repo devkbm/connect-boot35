@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.user.adapter.out.db.data.SystemUserRepository;
-import com.like.system.user.application.dto.SystemUserQueryDTO;
+import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
 import com.like.system.user.application.port.out.SystemUserQueryDbPort;
 import com.like.system.user.domain.SystemUser;
 

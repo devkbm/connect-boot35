@@ -20,4 +20,9 @@ public class WebResourceSaveService implements WebResourceSaveUseCase {
 	public void save(WebResourceSaveDTO dto) {
 		this.port.save(WebResourceSaveDTOMapper.toEntity(dto));		
 	}
+
+	@Override
+	public boolean exists(String id) {
+		return this.port.exists(id);
+	}
 }

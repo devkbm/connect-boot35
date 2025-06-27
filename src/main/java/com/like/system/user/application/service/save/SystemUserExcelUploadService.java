@@ -8,8 +8,8 @@ import org.springframework.util.StringUtils;
 
 import com.like.system.dept.application.port.out.DeptCommandDbPort;
 import com.like.system.dept.domain.Dept;
-import com.like.system.user.application.dto.SystemUserSaveByExcelDTO2;
-import com.like.system.user.application.port.in.SystemUserExcelUploadUseCase;
+import com.like.system.user.application.port.in.save.SystemUserExcelUploadUseCase;
+import com.like.system.user.application.port.in.save.SystemUserSaveByExcelDTO2;
 import com.like.system.user.application.port.out.SystemUserCommandDbPort;
 import com.like.system.user.application.port.out.SystemUserCompanyCommandDbPort;
 import com.like.system.user.application.port.out.SystemUserRoleCommandDbPort;
