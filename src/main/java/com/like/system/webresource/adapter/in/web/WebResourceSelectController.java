@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.webresource.application.dto.WebResourceFormSelectDTO;
-import com.like.system.webresource.application.port.in.WebResourceFormSelectUseCase;
+import com.like.system.webresource.application.port.in.select.WebResourceFormSelectDTO;
+import com.like.system.webresource.application.port.in.select.WebResourceFormSelectUseCase;
 
 @RestController
-public class WebResourceFormSelectController {
+public class WebResourceSelectController {
 
 	private WebResourceFormSelectUseCase useCase;
 	
-	public WebResourceFormSelectController(WebResourceFormSelectUseCase useCase) {
+	public WebResourceSelectController(WebResourceFormSelectUseCase useCase) {
 		this.useCase = useCase;		
 	}
 	

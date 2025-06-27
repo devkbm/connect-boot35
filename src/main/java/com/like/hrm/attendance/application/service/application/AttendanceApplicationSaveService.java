@@ -8,6 +8,7 @@ import com.like.hrm.attendance.application.dto.application.AttendanceApplication
 import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationFormSaveUseCase;
 import com.like.hrm.attendance.application.port.out.application.AttendanceApplicationFormCommandDbPort;
 import com.like.hrm.attendance.domain.application.AttendanceApplication;
+import com.like.hrm.attendance.domain.application.AttendanceDetail;
 
 @Transactional
 @Service
@@ -22,6 +23,7 @@ public class AttendanceApplicationSaveService implements AttendanceApplicationFo
 	@Override
 	public void save(AttendanceApplicationDTO dto) {
 		AttendanceApplication entity = null;
+		AttendanceDetail details = null;
 		
 		if (dto.dutyId() == null) {
 			entity = AttendanceApplicationDTOMapper.newEntity(dto);

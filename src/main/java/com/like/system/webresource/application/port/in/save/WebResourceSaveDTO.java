@@ -1,4 +1,4 @@
-package com.like.system.webresource.application.dto;
+package com.like.system.webresource.application.port.in.save;
 
 import java.time.LocalDateTime;
 

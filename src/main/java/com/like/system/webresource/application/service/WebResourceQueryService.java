@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.webresource.application.dto.WebResourceQueryDTO;
-import com.like.system.webresource.application.dto.WebResourceQueryResultDTO;
-import com.like.system.webresource.application.port.in.WebResourceQueryUseCase;
+import com.like.system.webresource.application.port.in.query.WebResourceQueryDTO;
+import com.like.system.webresource.application.port.in.query.WebResourceQueryResultDTO;
+import com.like.system.webresource.application.port.in.query.WebResourceQueryUseCase;
 import com.like.system.webresource.application.port.out.WebResourceQueryDbPort;
 
 @Service

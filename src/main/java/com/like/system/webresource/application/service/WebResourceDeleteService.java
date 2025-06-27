@@ -2,15 +2,15 @@ package com.like.system.webresource.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.webresource.application.port.in.WebResourceFormDeleteUseCase;
+import com.like.system.webresource.application.port.in.delete.WebResourceDeleteUseCase;
 import com.like.system.webresource.application.port.out.WebResourceCommandDbPort;
 
 @Service
-public class WebResourceFormDeleteService implements WebResourceFormDeleteUseCase {
+public class WebResourceDeleteService implements WebResourceDeleteUseCase {
 
 	WebResourceCommandDbPort port;
 	
-	WebResourceFormDeleteService(WebResourceCommandDbPort port) {
+	WebResourceDeleteService(WebResourceCommandDbPort port) {
 		this.port = port;
 	}
 	

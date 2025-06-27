@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.webresource.application.dto.WebResourceSaveDTO;
-import com.like.system.webresource.application.port.in.WebResourceFormSaveUseCase;
+import com.like.system.webresource.application.port.in.save.WebResourceSaveUseCase;
+import com.like.system.webresource.application.port.in.save.WebResourceSaveDTO;
 
 @RestController
-public class WebResourceFormSaveController {
+public class WebResourceSaveController {
 
-	private WebResourceFormSaveUseCase useCase;
+	private WebResourceSaveUseCase useCase;
 	
-	public WebResourceFormSaveController(WebResourceFormSaveUseCase useCase) {
+	public WebResourceSaveController(WebResourceSaveUseCase useCase) {
 		this.useCase = useCase;		
 	}
 		

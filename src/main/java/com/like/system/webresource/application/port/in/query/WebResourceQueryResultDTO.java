@@ -1,4 +1,4 @@
-package com.like.system.webresource.application.dto;
+package com.like.system.webresource.application.port.in.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
