@@ -2,23 +2,23 @@ package com.like.system.holiday.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.holiday.application.dto.HolidaySaveDTO;
-import com.like.system.holiday.application.dto.HolidaySaveDTOMapper;
-import com.like.system.holiday.application.port.in.HolidaySaveUseCase;
-import com.like.system.holiday.application.port.out.HolidaySavePort;
+import com.like.system.holiday.application.port.in.save.HolidaySaveDTO;
+import com.like.system.holiday.application.port.in.save.HolidaySaveDTOMapper;
+import com.like.system.holiday.application.port.in.save.HolidaySaveUseCase;
+import com.like.system.holiday.application.port.out.HolidayCommandDbPort;
 
 @Service
 public class HolidaySaveService implements HolidaySaveUseCase {
 
-	HolidaySavePort port;
+	HolidayCommandDbPort dbPort;
 	
-	public HolidaySaveService(HolidaySavePort port) {
-		this.port = port;
+	public HolidaySaveService(HolidayCommandDbPort dbPort) {
+		this.dbPort = dbPort;
 	}
 	
 	@Override
 	public void save(HolidaySaveDTO dto) {	
-		this.port.save(HolidaySaveDTOMapper.newEntity(dto));
+		this.dbPort.save(HolidaySaveDTOMapper.newEntity(dto));
 	}
 
 }

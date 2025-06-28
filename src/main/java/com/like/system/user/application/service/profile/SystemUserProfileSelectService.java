@@ -21,7 +21,7 @@ public class SystemUserProfileSelectService implements SystemUserProfileSelectUs
 	@Override
 	public SystemUserProfileSelectDTO select(String companyCode, String userId, SystemUserProfileSelectSessionDTO dto) {
 		
-		SystemUser entity = dbPort.select(userId);
+		SystemUser entity = dbPort.select(userId).orElse(null);
 								
 		return SystemUserProfileSelectDTOMapper.toDTO(entity, dto);
 	}

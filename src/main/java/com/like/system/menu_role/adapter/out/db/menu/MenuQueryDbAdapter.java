@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.menu_role.adapter.out.db.menu.data.MenuJpaRepository;
-import com.like.system.menu_role.application.dto.menu.MenuQueryDTO;
+import com.like.system.menu_role.application.port.in.menu.query.MenuQueryDTO;
 import com.like.system.menu_role.application.port.out.menu.MenuQueryDbPort;
 import com.like.system.menu_role.domain.menu.Menu;
 import com.like.system.menu_role.domain.menu.QMenu;

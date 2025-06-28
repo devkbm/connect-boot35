@@ -16,7 +16,12 @@ public class CompanyCommandDbAdapter implements CompanyCommandDbPort {
 	
 	CompanyCommandDbAdapter(CompanyJpaRepository repository) {
 		this.repository = repository;
-	}	
+	}
+	
+	@Override
+	public boolean exists(CompanyInfoId companyId) {
+		return this.repository.existsById(companyId);
+	}
 	
 	@Override
 	public Optional<CompanyInfo> select(CompanyInfoId companyId) {
@@ -32,5 +37,7 @@ public class CompanyCommandDbAdapter implements CompanyCommandDbPort {
 	public void delete(CompanyInfoId companyId) {
 		this.repository.deleteById(companyId);		
 	}
+
+	
 
 }

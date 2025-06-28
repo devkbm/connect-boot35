@@ -6,11 +6,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.system.menu_role.adapter.out.db.role.jpa.RoleJpaEntity;
-import com.like.system.menu_role.application.dto.role.RoleQueryDTO;
+import com.like.system.menu_role.application.port.in.role.query.RoleQueryDTO;
+import com.like.system.menu_role.application.port.in.role.query.RoleQueryResultDTO;
 import com.like.system.menu_role.application.port.out.role.RoleQueryDbPort;
 import com.like.system.menu_role.adapter.out.db.role.jpa.QRoleJpaEntity;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
@@ -24,9 +25,21 @@ public class RoleQueryDbAdpater implements RoleQueryDbPort {
 	}
 	
 	@Override
-	public List<RoleJpaEntity> getRoleList(RoleQueryDTO dto) {		
+	public List<RoleQueryResultDTO> getRoleList(RoleQueryDTO dto) {		
+		
 		return queryFactory
-				.selectFrom(qEntity)
+				.select(
+					Projections.fields(
+							RoleQueryResultDTO.class, 
+							qEntity.modifiedAppUrl.as("clientAppUrl"),
+							qEntity.id.companyCode.as("companyCode"),
+							qEntity.id.roleCode.as("roleCode"),
+							qEntity.roleName,
+							qEntity.description,
+							qEntity.menuGroupCode
+							)
+				)
+				.from(qEntity)
 				.where(toPredicate(dto))
 				.fetch();
 		

@@ -7,7 +7,7 @@ import java.util.List;
 import com.like.common.vo.LocalDatePeriod;
 import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTO.DutyDate;
 import com.like.hrm.attendance.domain.application.AttendanceApplication;
-import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
+import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
 import com.like.system.holiday.domain.HolidayInfo;
 import com.like.system.holiday.domain.HolidayInfoCollection;
 
@@ -47,7 +47,7 @@ public class AttendanceApplicationDTOMapper {
 	}
 		
 	
-	public static AttendanceApplicationDTO toDTO(AttendanceApplication e, DateInfoSelectUseCase service) {
+	public static AttendanceApplicationDTO toDTO(AttendanceApplication e, HolidayQueryUseCase service) {
 		if ( e == null ) return null;
 		
 		return null;

@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.like.core.message.MessageUtil;
 import com.like.hrm.attendance.application.dto.application.AttendanceApplicationQueryResultDTO;
 import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationQueryUseCase;
-import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
+import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
 
 @RestController
 public class AttendanceApplicationQueryController {
 
 	AttendanceApplicationQueryUseCase useCase;
 	
-	DateInfoSelectUseCase holidayUtilService;
+	HolidayQueryUseCase holidayUtilService;
 	
-	AttendanceApplicationQueryController(AttendanceApplicationQueryUseCase useCase, DateInfoSelectUseCase holidayUtilService) {
+	AttendanceApplicationQueryController(AttendanceApplicationQueryUseCase useCase, HolidayQueryUseCase holidayUtilService) {
 		this.useCase = useCase;
 		
 		this.holidayUtilService = holidayUtilService;

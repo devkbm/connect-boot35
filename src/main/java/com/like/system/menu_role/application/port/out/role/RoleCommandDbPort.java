@@ -1,9 +1,14 @@
 package com.like.system.menu_role.application.port.out.role;
 
+import java.util.Optional;
+
 import com.like.system.menu_role.domain.role.Role;
 
 public interface RoleCommandDbPort {
-	Role find(String companyCode, String roleCode);
+	
+	boolean exists(String companyCode, String roleCode);
+	
+	Optional<Role> find(String companyCode, String roleCode);
 	
 	void save(Role entity);
 	

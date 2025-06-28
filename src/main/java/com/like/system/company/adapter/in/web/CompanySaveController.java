@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.company.application.dto.CompanyInfoSaveDTO;
-import com.like.system.company.application.port.in.CompanySaveUseCase;
+import com.like.system.company.application.port.in.save.CompanySaveDTO;
+import com.like.system.company.application.port.in.save.CompanySaveUseCase;
 
 import jakarta.validation.Valid;
 
@@ -23,7 +23,7 @@ public class CompanySaveController {
 	}
 	
 	@PostMapping("/api/system/company")
-	public ResponseEntity<?> saveCompany(@Valid @RequestBody CompanyInfoSaveDTO dto) {			
+	public ResponseEntity<?> saveCompany(@Valid @RequestBody CompanySaveDTO dto) {			
 																
 		useCase.save(dto);		
 											 				

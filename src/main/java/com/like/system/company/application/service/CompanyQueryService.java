@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.company.adapter.out.db.data.CompanyJpaRepository;
-import com.like.system.company.application.dto.CompanyInfoSaveDTO;
-import com.like.system.company.application.dto.CompanyInfoSaveDTOMapstruct;
-import com.like.system.company.application.port.in.CompanyQueryUseCase;
+import com.like.system.company.application.port.in.query.CompanyQueryResultDTO;
+import com.like.system.company.application.port.in.query.CompanyQueryResultDTOMapstruct;
+import com.like.system.company.application.port.in.query.CompanyQueryUseCase;
 
 @Transactional(readOnly = true)
 @Service
@@ -21,11 +21,11 @@ public class CompanyQueryService implements CompanyQueryUseCase {
 	}
 	
 	@Override
-	public List<CompanyInfoSaveDTO> query() {
+	public List<CompanyQueryResultDTO> query() {
 		
 		return this.dbPort.findAll()
 						  .stream()
-						  .map(e -> CompanyInfoSaveDTOMapstruct.INSTANCE.toDTO(e))
+						  .map(e -> CompanyQueryResultDTOMapstruct.INSTANCE.toDTO(e))
 						  .toList();
 	}
 

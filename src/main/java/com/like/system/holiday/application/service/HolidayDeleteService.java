@@ -4,21 +4,21 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.holiday.application.port.in.HolidayDeleteUseCase;
-import com.like.system.holiday.application.port.out.HolidayDeletePort;
+import com.like.system.holiday.application.port.in.delete.HolidayDeleteUseCase;
+import com.like.system.holiday.application.port.out.HolidayCommandDbPort;
 
 @Service
 public class HolidayDeleteService implements HolidayDeleteUseCase {
 
-	HolidayDeletePort port;
+	HolidayCommandDbPort dbPort;
 	
-	public HolidayDeleteService(HolidayDeletePort port) {
-		this.port = port;
+	public HolidayDeleteService(HolidayCommandDbPort dbPort) {
+		this.dbPort = dbPort;
 	}
 	
 	@Override
 	public void delete(String companyCode, LocalDate date) {
-		this.port.delete(companyCode, date);		
+		this.dbPort.delete(companyCode, date);		
 	}
 
 }

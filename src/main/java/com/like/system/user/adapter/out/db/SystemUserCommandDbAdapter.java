@@ -1,6 +1,7 @@
 package com.like.system.user.adapter.out.db;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,8 +21,13 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	}
 	
 	@Override
-	public SystemUser select(String userId) {		
-		return this.repository.findById(new SystemUserId(userId)).orElse(null);
+	public boolean isExists(String userId) {	
+		return this.repository.existsById(new SystemUserId(userId));
+	}
+	
+	@Override
+	public Optional<SystemUser> select(String userId) {		
+		return this.repository.findById(new SystemUserId(userId));
 	}
 	
 	@Override
@@ -37,6 +43,6 @@ public class SystemUserCommandDbAdapter implements SystemUserCommandDbPort {
 	@Override
 	public List<SystemUser> select(List<String> userIds) {	
 		return this.repository.findAllById(userIds.stream().map(e -> new SystemUserId(e)).toList());
-	}
-				
+	}	
+			
 }

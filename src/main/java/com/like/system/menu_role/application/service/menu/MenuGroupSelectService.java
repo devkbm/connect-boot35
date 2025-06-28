@@ -2,10 +2,11 @@ package com.like.system.menu_role.application.service.menu;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu_role.application.dto.menu.MenuGroupSaveDTO;
-import com.like.system.menu_role.application.dto.menu.MenuGroupSaveDTOMapper;
-import com.like.system.menu_role.application.port.in.menu.MenuGroupSelectUseCase;
+import com.like.system.menu_role.application.port.in.menu.select.MenuGroupSelectDTO;
+import com.like.system.menu_role.application.port.in.menu.select.MenuGroupSelectDTOMapper;
+import com.like.system.menu_role.application.port.in.menu.select.MenuGroupSelectUseCase;
 import com.like.system.menu_role.application.port.out.menu.MenuGroupCommandDbPort;
+import com.like.system.menu_role.domain.menu.MenuGroupId;
 
 @Service
 public class MenuGroupSelectService implements MenuGroupSelectUseCase {
@@ -17,8 +18,8 @@ public class MenuGroupSelectService implements MenuGroupSelectUseCase {
 	}
 	
 	@Override
-	public MenuGroupSaveDTO select(String companyCode, String menuGroupCode) {
-		return MenuGroupSaveDTOMapper.toDTO(this.port.select(companyCode, menuGroupCode).orElse(null));
+	public MenuGroupSelectDTO select(String companyCode, String menuGroupCode) {
+		return MenuGroupSelectDTOMapper.toDTO(this.port.select(new MenuGroupId(companyCode, menuGroupCode)).orElse(null));
 	}
 
 }

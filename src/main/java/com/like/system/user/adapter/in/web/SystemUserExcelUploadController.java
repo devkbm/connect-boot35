@@ -11,51 +11,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.like.core.message.MessageUtil;
 import com.like.excel.upload.ExcelUploader;
-import com.like.system.user.application.port.in.save.SystemUserExcelUploadUseCase;
-import com.like.system.user.application.port.in.save.SystemUserSaveByExcelDTO;
-import com.like.system.user.application.port.in.save.SystemUserSaveByExcelDTO2;
-import com.like.system.user.application.port.in.save.SystemUserSaveByExcelDTOMapper;
-import com.like.system.user.application.port.in.save.SystemUserSaveUseCase;
+import com.like.system.user.application.port.in.upload.SystemUserExcelUploadUseCase;
+import com.like.system.user.application.port.in.upload.SystemUserExcelUploadDTO2;
 
 @Controller
 public class SystemUserExcelUploadController {
-
-	SystemUserSaveUseCase useCase;
 	
 	SystemUserExcelUploadUseCase uploadUseCase;
 	
-	public SystemUserExcelUploadController(SystemUserSaveUseCase useCase, SystemUserExcelUploadUseCase uploadUseCase) {		
-		this.useCase = useCase;
+	public SystemUserExcelUploadController(SystemUserExcelUploadUseCase uploadUseCase) {				
 		this.uploadUseCase = uploadUseCase;
 	}		
-	
-	//@PostMapping("/api/system/user-excel")	
-	public ResponseEntity<?> ss(MultipartFile file) {
 		
-		List<SystemUserSaveByExcelDTO> list = SystemUserSaveByExcelDTOMapper.map(file);
-		
-		useCase.save(list);
-		
-		return toList(list, MessageUtil.getQueryMessage(list.size()));
-	}
-	
-	
-	@PostMapping("/api/system/user-excel2")	
-	public ResponseEntity<?> ss2(MultipartFile file) {
-				
-		ExcelUploader<SystemUserSaveByExcelDTO> uploader = new ExcelUploader<>(SystemUserSaveByExcelDTO.class);
-		List<SystemUserSaveByExcelDTO> list = uploader.map(file);
-		
-		useCase.save(list);
-		
-		return toList(list, MessageUtil.getQueryMessage(list.size()));
-	}
 	
 	@PostMapping("/api/system/user-excel")	
 	public ResponseEntity<?> ss3(MultipartFile file) {
 		
-		ExcelUploader<SystemUserSaveByExcelDTO2> uploader = new ExcelUploader<>(SystemUserSaveByExcelDTO2.class);
-		List<SystemUserSaveByExcelDTO2> list = uploader.map(file);
+		ExcelUploader<SystemUserExcelUploadDTO2> uploader = new ExcelUploader<>(SystemUserExcelUploadDTO2.class);
+		List<SystemUserExcelUploadDTO2> list = uploader.map(file);
 		
 		uploadUseCase.save(list);
 		

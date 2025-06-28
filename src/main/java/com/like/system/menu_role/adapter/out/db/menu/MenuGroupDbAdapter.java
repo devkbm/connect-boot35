@@ -17,11 +17,17 @@ public class MenuGroupDbAdapter implements MenuGroupCommandDbPort {
 	MenuGroupDbAdapter(MenuGroupJpaRepository repository) {
 		this.repository = repository;
 	}
+	
+	@Override
+	public boolean exist(MenuGroupId id) {
+		// new MenuGroupId(companyCode, menuGroupCode)
+		return this.repository.existsById(id);
+	}
 
 	@Override
-	public Optional<MenuGroup> select(String companyCode, String menuGroupCode) {		
+	public Optional<MenuGroup> select(MenuGroupId id) {		
 		
-		return this.repository.findById(new MenuGroupId(companyCode, menuGroupCode)); 
+		return this.repository.findById(id); 
 	}
 	
 	@Override
@@ -30,8 +36,8 @@ public class MenuGroupDbAdapter implements MenuGroupCommandDbPort {
 	}
 
 	@Override
-	public void delete(String companyCode, String menuGroupCode) {
-		this.repository.deleteById(new MenuGroupId(companyCode, menuGroupCode));		
+	public void delete(MenuGroupId id) {
+		this.repository.deleteById(id);		
 	}
 	
 }

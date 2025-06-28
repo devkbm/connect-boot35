@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
+import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
 import com.like.system.holiday.domain.HolidayInfo;
 
 @RestController
 public class HolidayQueryController {
 
-	private DateInfoSelectUseCase useCase;
+	private HolidayQueryUseCase useCase;
 	
-	public HolidayQueryController(DateInfoSelectUseCase useCase) {
+	public HolidayQueryController(HolidayQueryUseCase useCase) {
 		this.useCase = useCase;
 	}
 		

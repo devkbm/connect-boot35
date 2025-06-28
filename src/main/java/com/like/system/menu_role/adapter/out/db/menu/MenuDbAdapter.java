@@ -23,11 +23,16 @@ public class MenuDbAdapter implements MenuCommandDbPort {
 		this.repository = repository;
 		this.menuGroupRepository = menuGroupRepository;
 	}
+	
+	@Override
+	public boolean exist(MenuId id) {
+		// new MenuId(companyCode, menuGroupCode, menuCode)
+		return this.repository.existsById(id);
+	}
 
 	@Override
-	public Optional<Menu> select(String companyCode, String menuGroupCode, String menuCode) {		
-						
-		return this.repository.findById(new MenuId(companyCode, menuGroupCode, menuCode));
+	public Optional<Menu> select(MenuId id) {							
+		return this.repository.findById(id);
 	}
 	
 	@Override
@@ -36,8 +41,8 @@ public class MenuDbAdapter implements MenuCommandDbPort {
 	}
 
 	@Override
-	public void delete(String companyCode, String menuGroupCode, String menuCode) {
-		this.repository.deleteById(new MenuId(companyCode, menuGroupCode, menuCode));		
+	public void delete(MenuId id) {
+		this.repository.deleteById(id);		
 	}
 	
 }

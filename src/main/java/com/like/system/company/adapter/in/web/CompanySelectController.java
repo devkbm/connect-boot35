@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.company.application.dto.CompanyInfoSaveDTO;
-import com.like.system.company.application.port.in.CompanySelectUseCase;
+import com.like.system.company.application.port.in.select.CompanySelectDTO;
+import com.like.system.company.application.port.in.select.CompanySelectUseCase;
 
 @RestController
 public class CompanySelectController {
@@ -23,7 +23,7 @@ public class CompanySelectController {
 	@GetMapping("/api/system/company/{companyCode}")
 	public ResponseEntity<?> getCompany(@PathVariable String companyCode) {									 
 		
-		CompanyInfoSaveDTO dto = useCase.select(companyCode);
+		CompanySelectDTO dto = useCase.select(companyCode);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

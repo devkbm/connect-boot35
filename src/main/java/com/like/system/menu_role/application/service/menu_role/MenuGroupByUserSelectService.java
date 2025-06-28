@@ -16,8 +16,10 @@ public class MenuGroupByUserSelectService implements MenuGroupByUserSelectUseCas
 	MenuGroupByRolesSelectDbPort dbPort;
 	SystemUserDTOSelectUseCase userSelectUseCase;
 	
-	MenuGroupByUserSelectService(MenuGroupByRolesSelectDbPort dbPort
-								,SystemUserDTOSelectUseCase userSelectUseCase) {
+	MenuGroupByUserSelectService(
+			MenuGroupByRolesSelectDbPort dbPort,
+			SystemUserDTOSelectUseCase userSelectUseCase
+			) {
 		this.dbPort = dbPort;
 		this.userSelectUseCase = userSelectUseCase;
 	}

@@ -2,9 +2,10 @@ package com.like.system.menu_role.application.service.role;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu_role.application.port.in.role.RoleSelectUseCase;
+import com.like.system.menu_role.application.port.in.role.select.RoleSelectDTO;
+import com.like.system.menu_role.application.port.in.role.select.RoleSelectDTOMapper;
+import com.like.system.menu_role.application.port.in.role.select.RoleSelectUseCase;
 import com.like.system.menu_role.application.port.out.role.RoleCommandDbPort;
-import com.like.system.menu_role.domain.role.Role;
 
 @Service
 public class RoleSelectService implements RoleSelectUseCase {
@@ -16,8 +17,8 @@ public class RoleSelectService implements RoleSelectUseCase {
 	}
 	
 	@Override
-	public Role select(String companyCode, String roleCode) { 
-		return port.find(companyCode, roleCode);
+	public RoleSelectDTO select(String companyCode, String roleCode) { 
+		return RoleSelectDTOMapper.toDTO(port.find(companyCode, roleCode).orElse(null));
 	}
 
 }

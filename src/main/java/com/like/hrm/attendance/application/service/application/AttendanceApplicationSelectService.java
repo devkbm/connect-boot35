@@ -6,16 +6,16 @@ import com.like.hrm.attendance.application.dto.application.AttendanceApplication
 import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTOMapper;
 import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationFormSelectUseCase;
 import com.like.hrm.attendance.application.port.out.application.AttendanceApplicationFormCommandDbPort;
-import com.like.system.holiday.application.port.in.DateInfoSelectUseCase;
+import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
 
 @Service
 public class AttendanceApplicationSelectService implements AttendanceApplicationFormSelectUseCase {
 
 	AttendanceApplicationFormCommandDbPort dbPort;
 	
-	DateInfoSelectUseCase service;
+	HolidayQueryUseCase service;
 	
-	AttendanceApplicationSelectService(AttendanceApplicationFormCommandDbPort dbPort, DateInfoSelectUseCase service) {
+	AttendanceApplicationSelectService(AttendanceApplicationFormCommandDbPort dbPort, HolidayQueryUseCase service) {
 		this.dbPort = dbPort;
 		this.service = service;
 	}

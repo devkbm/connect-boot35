@@ -7,6 +7,8 @@ import com.like.system.company.domain.CompanyInfoId;
 
 public interface CompanyCommandDbPort {
 
+	boolean exists(CompanyInfoId companyId);
+	
 	Optional<CompanyInfo> select(CompanyInfoId companyId);
 	
 	void save(CompanyInfo entity);

@@ -4,23 +4,23 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.holiday.application.dto.HolidaySaveDTO;
-import com.like.system.holiday.application.dto.HolidaySaveDTOMapper;
-import com.like.system.holiday.application.port.in.HolidaySelectUseCase;
-import com.like.system.holiday.application.port.out.HolidaySelectPort;
+import com.like.system.holiday.application.port.in.select.HolidaySelectDTO;
+import com.like.system.holiday.application.port.in.select.HolidaySelectDTOMapper;
+import com.like.system.holiday.application.port.in.select.HolidaySelectUseCase;
+import com.like.system.holiday.application.port.out.HolidayCommandDbPort;
 
 @Service
 public class HolidaySelectService implements HolidaySelectUseCase {
 
-	HolidaySelectPort port;
+	HolidayCommandDbPort dbPort;
 	
-	public HolidaySelectService(HolidaySelectPort port) {
-		this.port = port;
+	public HolidaySelectService(HolidayCommandDbPort dbPort) {
+		this.dbPort = dbPort;
 	}
 	
 	@Override
-	public HolidaySaveDTO select(String companyCode, LocalDate date) {		
-		return HolidaySaveDTOMapper.toDTO(this.port.select(companyCode, date));
+	public HolidaySelectDTO select(String companyCode, LocalDate date) {		
+		return HolidaySelectDTOMapper.toDTO(this.dbPort.select(companyCode, date).orElse(null));
 	}
 	
 }

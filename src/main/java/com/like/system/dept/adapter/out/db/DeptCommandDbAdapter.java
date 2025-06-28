@@ -17,6 +17,11 @@ public class DeptCommandDbAdapter implements DeptCommandDbPort {
 	public DeptCommandDbAdapter(DeptJpaRepository repository) {
 		this.repository = repository;
 	}
+	
+	@Override
+	public boolean exists(String companyCode, String deptCode) {
+		return this.repository.existsById(new DeptId(companyCode, deptCode));
+	}
 
 	@Override
 	public Optional<Dept> select(String companyCode, String deptCode) {		
@@ -32,6 +37,5 @@ public class DeptCommandDbAdapter implements DeptCommandDbPort {
 	public void delete(String companyCode, String deptCode) {
 		this.repository.deleteById(new DeptId(companyCode, deptCode));		
 	}
-
 	
 }

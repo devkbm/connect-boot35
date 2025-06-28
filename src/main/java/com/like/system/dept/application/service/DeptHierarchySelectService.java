@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.system.dept.application.dto.DeptHierarchyNgZorro;
-import com.like.system.dept.application.dto.DeptQueryDTO;
-import com.like.system.dept.application.port.in.DeptHierarchySelectUseCase;
+import com.like.system.dept.application.port.in.hierarchy.DeptHierarchyNgZorro;
+import com.like.system.dept.application.port.in.hierarchy.DeptHierarchyQueryDTO;
+import com.like.system.dept.application.port.in.hierarchy.DeptHierarchyQueryUseCase;
 import com.like.system.dept.application.port.out.DeptHierarchySelectDbPort;
 import com.like.system.dept.domain.DeptHierarchy;
 import com.like.system.dept.domain.DeptHierarchyGenerator;
 
 @Transactional(readOnly = true)
 @Service
-public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
+public class DeptHierarchySelectService implements DeptHierarchyQueryUseCase {
 
 	DeptHierarchySelectDbPort repository;
 			
@@ -24,7 +24,7 @@ public class DeptHierarchySelectService implements DeptHierarchySelectUseCase {
 	}		
 
 	@Override
-	public List<?> select(DeptQueryDTO dto) {
+	public List<?> query(DeptHierarchyQueryDTO dto) {
 		
 		String comanyCode = dto.company() == null ? dto.companyCode() : dto.company();
 

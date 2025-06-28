@@ -48,17 +48,19 @@ public class DeptHierarchy {
 	 * @param parentDeptCode
 	 * @param children
 	 */
-	public DeptHierarchy(String companyCode, 
-						 String deptCode, 
-						 String deptNameKorean,
-						 String deptAbbreviationKorean, 
-						 String deptNameEnglish, 
-						 String deptAbbreviationEnglish,
-						 LocalDatePeriod period, 
-						 Integer seq, 
-						 String comment, 
-						 String parentDeptCode, 
-						 List<DeptHierarchy> children) {
+	public DeptHierarchy(
+			String companyCode, 
+			String deptCode, 
+			String deptNameKorean,
+			String deptAbbreviationKorean, 
+			String deptNameEnglish, 
+			String deptAbbreviationEnglish,
+			LocalDatePeriod period, 
+			Integer seq, 
+			String comment, 
+			String parentDeptCode, 
+			List<DeptHierarchy> children
+			) {
 		this.companyCode = companyCode;		
 		this.deptCode = deptCode;
 		this.deptNameKorean = deptNameKorean;

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menu_role.application.port.in.role.RoleSelectUseCase;
-import com.like.system.menu_role.domain.role.Role;
+import com.like.system.menu_role.application.port.in.role.select.RoleSelectDTO;
+import com.like.system.menu_role.application.port.in.role.select.RoleSelectUseCase;
 
 @RestController
 public class RoleSelectController {
@@ -22,11 +22,11 @@ public class RoleSelectController {
 	}		
 	
 	@GetMapping("/api/system/role/{roleId}")
-	public ResponseEntity<?> getAuthority(@RequestParam String companyCode, @PathVariable String roleId) {			
+	public ResponseEntity<?> getRole(@RequestParam String companyCode, @PathVariable String roleId) {			
 		
-		Role authority = useCase.select(companyCode, roleId);										
+		RoleSelectDTO role = useCase.select(companyCode, roleId);										
 		
-		return toOne(authority, MessageUtil.getQueryMessage(authority == null ? 0 : 1));
+		return toOne(role, MessageUtil.getQueryMessage(role == null ? 0 : 1));
 	}
 				
 	

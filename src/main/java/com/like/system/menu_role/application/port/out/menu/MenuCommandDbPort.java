@@ -3,11 +3,14 @@ package com.like.system.menu_role.application.port.out.menu;
 import java.util.Optional;
 
 import com.like.system.menu_role.domain.menu.Menu;
+import com.like.system.menu_role.domain.menu.MenuId;
 
 public interface MenuCommandDbPort {
-	Optional<Menu> select(String companyCode, String menuGroupCode, String menuCode);
+	boolean exist(MenuId id);
+	
+	Optional<Menu> select(MenuId id);
 	
 	void save(Menu dto);
 	
-	void delete(String companyCode, String menuGroupCode, String menuCode);
+	void delete(MenuId id);
 }

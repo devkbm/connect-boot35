@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.system.company.application.dto.CompanyInfoSaveDTO;
-import com.like.system.company.application.port.in.CompanyQueryUseCase;
+import com.like.system.company.application.port.in.query.CompanyQueryResultDTO;
+import com.like.system.company.application.port.in.query.CompanyQueryUseCase;
 
 @RestController
 public class CompanyQueryController {
@@ -23,7 +23,7 @@ public class CompanyQueryController {
 	@GetMapping("/api/system/company")
 	public ResponseEntity<?> getList() {
 							
-		List<CompanyInfoSaveDTO> list = useCase.query();  						 						
+		List<CompanyQueryResultDTO> list = useCase.query();  						 						
 		
 		return toList(list, String.format("%d 건 조회되었습니다.", list.size()));
 	}

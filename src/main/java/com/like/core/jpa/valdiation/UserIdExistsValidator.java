@@ -25,7 +25,7 @@ public class UserIdExistsValidator implements ConstraintValidator<UserIdExists, 
 	@Override
 	public boolean isValid(SystemUserId value, ConstraintValidatorContext context) {
 
-		SystemUser user = this.userService.select(value.getUserId());
+		SystemUser user = this.userService.select(value.getUserId()).orElse(null);
 		
 		if (user == null) {
 			context.buildConstraintViolationWithTemplate("test message")

@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu_role.application.port.in.menu.MenuHierarchyNgZorro;
-import com.like.system.menu_role.application.port.in.menu.MenuHierarchySelectUseCase;
+import com.like.system.menu_role.application.port.in.menu.hierarchy.MenuHierarchyNgZorro;
+import com.like.system.menu_role.application.port.in.menu.hierarchy.MenuHierarchySelectUseCase;
 import com.like.system.menu_role.application.port.out.menu.MenuHierarchySelectDbPort;
 import com.like.system.menu_role.domain.menu.MenuHierarchy;
 import com.like.system.menu_role.domain.menu.MenuHierarchyGenerator;

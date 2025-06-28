@@ -1,5 +1,7 @@
 package com.like.system.menu_role.adapter.out.db.role;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,13 +21,18 @@ public class RoleCommandDbAdapter implements RoleCommandDbPort {
 	public RoleCommandDbAdapter(RoleJpaRepository jpaRepository) {
 		this.jpaRepository = jpaRepository;
 	}
+	
+	@Override
+	public boolean exists(String companyCode, String roleCode) {
+		return this.jpaRepository.existsById(new RoleJpaEntityId(companyCode, roleCode));
+	}
 
 	@Override
-	public Role find(String companyCode, String roleCode) {
+	public Optional<Role> find(String companyCode, String roleCode) {
 		RoleJpaEntity entity = this.jpaRepository.findById(new RoleJpaEntityId(companyCode, roleCode)).orElse(null);
 		
 		//return RoleJpaEntityMapper.toEntity(entity);
-		return RoleEntityMapper.INSTANCE.toEntity(entity);
+		return Optional.ofNullable(RoleEntityMapper.INSTANCE.toEntity(entity));
 	}
 
 	@Override
@@ -38,4 +45,6 @@ public class RoleCommandDbAdapter implements RoleCommandDbPort {
 	public void delete(String companyCode, String roleCode) {
 		this.jpaRepository.deleteById(new RoleJpaEntityId(companyCode, roleCode));		
 	}
+
+	
 }

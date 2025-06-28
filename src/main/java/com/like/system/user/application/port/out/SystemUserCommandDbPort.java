@@ -1,11 +1,15 @@
 package com.like.system.user.application.port.out;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.like.system.user.domain.SystemUser;
 
 public interface SystemUserCommandDbPort {
-	SystemUser select(String userId);
+	
+	boolean isExists(String userId);
+	
+	Optional<SystemUser> select(String userId);
 	
 	List<SystemUser> select(List<String> userIds);
 	

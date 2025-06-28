@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.menu_role.application.dto.menu.MenuSaveDTO;
-import com.like.system.menu_role.application.port.in.menu.MenuSelectUseCase;
+import com.like.system.menu_role.application.port.in.menu.select.MenuSelectDTO;
+import com.like.system.menu_role.application.port.in.menu.select.MenuSelectUseCase;
 
 @RestController
 public class MenuSelectController {
@@ -22,11 +22,13 @@ public class MenuSelectController {
 	}				
 	
 	@GetMapping("/api/system/menugroup/{menuGroupCode}/menu/{menuCode}")
-	public ResponseEntity<?> getMenu(@RequestParam String companyCode
-									,@PathVariable String menuGroupCode
-									,@PathVariable String menuCode) {				
+	public ResponseEntity<?> getMenu(
+			@RequestParam String companyCode,
+			@PathVariable String menuGroupCode,
+			@PathVariable String menuCode
+			) {				
 		
-		MenuSaveDTO dto = useCase.select(companyCode, menuGroupCode, menuCode);					
+		MenuSelectDTO dto = useCase.select(companyCode, menuGroupCode, menuCode);					
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

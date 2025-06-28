@@ -18,6 +18,6 @@ public class SystemUserSelectService implements SystemUserSelectUseCase {
 
 	@Override
 	public SystemUserSelectDTO selectDTO(String userId, String companyCode) {
-		return SystemUserSelectDTOMapper.toDTO(this.dbPort.select(userId), companyCode);
+		return SystemUserSelectDTOMapper.toDTO(this.dbPort.select(userId).orElse(null), companyCode);
 	}
 }

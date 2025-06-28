@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.holiday.application.dto.HolidaySaveDTO;
-import com.like.system.holiday.application.port.in.HolidaySaveUseCase;
+import com.like.system.holiday.application.port.in.save.HolidaySaveDTO;
+import com.like.system.holiday.application.port.in.save.HolidaySaveUseCase;
 
 @RestController
 public class HolidaySaveController {

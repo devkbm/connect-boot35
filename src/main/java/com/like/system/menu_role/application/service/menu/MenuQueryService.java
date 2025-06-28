@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.menu_role.application.dto.menu.MenuQueryDTO;
-import com.like.system.menu_role.application.dto.menu.MenuSaveDTO;
-import com.like.system.menu_role.application.dto.menu.MenuSaveDTOMapper;
-import com.like.system.menu_role.application.port.in.menu.MenuQueryUseCase;
+import com.like.system.menu_role.application.port.in.menu.query.MenuQueryDTO;
+import com.like.system.menu_role.application.port.in.menu.query.MenuQueryResultDTO;
+import com.like.system.menu_role.application.port.in.menu.query.MenuQueryResultDTOMapper;
+import com.like.system.menu_role.application.port.in.menu.query.MenuQueryUseCase;
 import com.like.system.menu_role.application.port.out.menu.MenuQueryDbPort;
 
 @Service
@@ -20,10 +20,10 @@ public class MenuQueryService implements MenuQueryUseCase {
 	}
 	
 	@Override
-	public List<MenuSaveDTO> selectList(MenuQueryDTO dto) {
+	public List<MenuQueryResultDTO> selectList(MenuQueryDTO dto) {
 		return this.dbPort.selectList(dto)
 						  .stream()
-					  	  .map(e -> MenuSaveDTOMapper.toDTO(e))
+					  	  .map(e -> MenuQueryResultDTOMapper.toDTO(e))
 						  .toList();
 	}
 }
