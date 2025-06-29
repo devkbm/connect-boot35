@@ -1,4 +1,4 @@
-package com.like.system.systemcode.application.dto;
+package com.like.system.systemcode.application.port.in.save;
 
 import lombok.Builder;
 

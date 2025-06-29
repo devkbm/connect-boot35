@@ -1,4 +1,4 @@
-package com.like.system.systemcode.application.dto;
+package com.like.system.systemcode.application.port.in.select;
 
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizCode;
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizCodeType;
@@ -6,7 +6,7 @@ import com.like.system.systemcode.adapter.out.db.entity.JpaBizCodeType;
 import lombok.Builder;
 
 @Builder
-public record BizCodeSaveDTO(
+public record BizCodeSelectDTO(
 		String clientAppUrl,
 		String companyCode,
 		String typeId,
@@ -17,10 +17,10 @@ public record BizCodeSaveDTO(
 		String comment
 		) {
 
-	public static BizCodeSaveDTO convert(JpaBizCode entity) {			
+	public static BizCodeSelectDTO convert(JpaBizCode entity) {			
 		if (entity == null) return null;
 		
-		return BizCodeSaveDTO.builder()
+		return BizCodeSelectDTO.builder()
 							   .typeId(entity.getId().getBizCodeTypeId().getTypeId())
 							   .code(entity.getId().getCode())
 							   .codeName(entity.getCodeName())

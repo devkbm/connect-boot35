@@ -2,9 +2,9 @@ package com.like.system.systemcode.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.systemcode.application.dto.BizCodeSaveDTO;
-import com.like.system.systemcode.application.dto.BizCodeSaveDTOMapper;
-import com.like.system.systemcode.application.port.in.BizCodeSaveUseCase;
+import com.like.system.systemcode.application.port.in.save.BizCodeSaveDTO;
+import com.like.system.systemcode.application.port.in.save.BizCodeSaveDTOMapper;
+import com.like.system.systemcode.application.port.in.save.BizCodeSaveUseCase;
 import com.like.system.systemcode.application.port.out.BizCodeCommandDbPort;
 import com.like.system.systemcode.application.port.out.BizCodeTypeCommandDbPort;
 import com.like.system.systemcode.domain.BizCodeType;

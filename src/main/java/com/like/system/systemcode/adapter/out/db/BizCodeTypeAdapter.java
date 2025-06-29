@@ -9,7 +9,6 @@ import com.like.system.systemcode.adapter.out.db.data.BizCodeTypeJpaRepository;
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizCodeType;
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizCodeTypeId;
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizCodeTypeMapper;
-import com.like.system.systemcode.application.dto.BizCodeTypeSaveDTO;
 import com.like.system.systemcode.application.port.out.BizCodeTypeCommandDbPort;
 import com.like.system.systemcode.domain.BizCodeType;
 
@@ -29,12 +28,6 @@ public class BizCodeTypeAdapter implements BizCodeTypeCommandDbPort {
 		
 		return Optional.ofNullable(JpaBizCodeTypeMapper.toDomainEntity(jpaEntity));
 	}	
-	
-	@Override
-	public BizCodeTypeSaveDTO selectDTO(String companyCode, String typeId) {
-		JpaBizCodeType jpaEntity = this.repository.findById(new JpaBizCodeTypeId(companyCode, typeId)).orElse(null);
-		return JpaBizCodeTypeMapper.toDTO(jpaEntity);
-	}
 	
 	@Override
 	public void Save(BizCodeType entity) {

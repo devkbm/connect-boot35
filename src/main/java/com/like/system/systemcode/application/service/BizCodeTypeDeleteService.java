@@ -2,7 +2,7 @@ package com.like.system.systemcode.application.service;
 
 import org.springframework.stereotype.Service;
 
-import com.like.system.systemcode.application.port.in.BizCodeTypeDeleteUseCase;
+import com.like.system.systemcode.application.port.in.delete.BizCodeTypeDeleteUseCase;
 import com.like.system.systemcode.application.port.out.BizCodeTypeCommandDbPort;
 
 @Service

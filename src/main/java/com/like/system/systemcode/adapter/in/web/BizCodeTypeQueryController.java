@@ -13,15 +13,15 @@ import com.like.common.dto.HtmlSelectOptionRecord;
 import com.like.common.dto.HtmlSelectOptionable;
 import com.like.core.message.MessageUtil;
 import com.like.system.systemcode.adapter.out.db.entity.JpaBizTypeEnum;
-import com.like.system.systemcode.application.dto.BizCodeTypeSaveDTO;
-import com.like.system.systemcode.application.port.in.BizCodeTypeQuerylUseCase;
+import com.like.system.systemcode.application.port.in.query.BizCodeTypeQueryResultDTO;
+import com.like.system.systemcode.application.port.in.query.BizCodeTypeQueryUseCase;
 
 @RestController
 public class BizCodeTypeQueryController {
 
-	private BizCodeTypeQuerylUseCase service;
+	private BizCodeTypeQueryUseCase service;
 	
-	public BizCodeTypeQueryController(BizCodeTypeQuerylUseCase service) {
+	public BizCodeTypeQueryController(BizCodeTypeQueryUseCase service) {
 		this.service = service;
 	}
 	
@@ -35,7 +35,7 @@ public class BizCodeTypeQueryController {
 	
 	@GetMapping("/api/system/bizcodetype")
 	public ResponseEntity<?> getBizCodeTypeList(@RequestParam String companyCode) {			
-		List<BizCodeTypeSaveDTO> list = service.select(companyCode);											   
+		List<BizCodeTypeQueryResultDTO> list = service.select(companyCode);											   
 					
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}

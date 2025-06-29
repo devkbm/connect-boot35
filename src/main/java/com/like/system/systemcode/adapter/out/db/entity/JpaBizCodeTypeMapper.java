@@ -1,6 +1,6 @@
 package com.like.system.systemcode.adapter.out.db.entity;
 
-import com.like.system.systemcode.application.dto.BizCodeTypeSaveDTO;
+import com.like.system.systemcode.application.port.in.save.BizCodeTypeSaveDTO;
 import com.like.system.systemcode.domain.BizCodeType;
 import com.like.system.systemcode.domain.BizTypeEnum;
 

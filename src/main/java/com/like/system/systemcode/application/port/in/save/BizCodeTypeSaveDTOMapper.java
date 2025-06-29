@@ -1,9 +1,9 @@
-package com.like.system.systemcode.application.dto;
+package com.like.system.systemcode.application.port.in.save;
 
 import com.like.system.systemcode.domain.BizCodeType;
 import com.like.system.systemcode.domain.BizTypeEnum;
 
-public class BizCodeTypeSelectDTOMapper {
+public class BizCodeTypeSaveDTOMapper {
 
 	public static BizCodeType toEntity(BizCodeTypeSaveDTO dto) {
 		return new BizCodeType(dto.companyCode()

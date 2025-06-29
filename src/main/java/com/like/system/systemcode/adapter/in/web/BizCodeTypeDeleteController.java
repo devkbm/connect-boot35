@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.system.systemcode.application.port.in.BizCodeTypeDeleteUseCase;
+import com.like.system.systemcode.application.port.in.delete.BizCodeTypeDeleteUseCase;
 
 @RestController
 public class BizCodeTypeDeleteController {

@@ -1,4 +1,4 @@
-package com.like.system.systemcode.application.dto;
+package com.like.system.systemcode.application.port.in.save;
 
 import com.like.system.systemcode.domain.BizCode;
 import com.like.system.systemcode.domain.BizCodeType;
