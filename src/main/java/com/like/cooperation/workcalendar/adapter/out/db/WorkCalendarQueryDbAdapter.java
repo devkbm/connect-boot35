@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.cooperation.workcalendar.domain.WorkCalendar;
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarQueryDTO;
+import com.like.cooperation.workcalendar.application.port.in.calendar.query.WorkCalendarQueryDTO;
+import com.like.cooperation.workcalendar.application.port.in.calendar.query.WorkCalendarQueryResultDTO;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarQueryDbPort;
 import com.like.cooperation.workcalendar.domain.QWorkCalendar;
 import com.like.cooperation.workcalendar.domain.QWorkCalendarMember;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -23,18 +24,32 @@ public class WorkCalendarQueryDbAdapter implements WorkCalendarQueryDbPort {
 	}
 	
 	@Override
-	public List<WorkCalendar> getWorkGroupList(WorkCalendarQueryDTO searchCondition) {
+	public List<WorkCalendarQueryResultDTO> getWorkGroupList(WorkCalendarQueryDTO searchCondition) {
 		return queryFactory
-				.selectFrom(qWorkCalendar)
+				.select(Projections.fields(
+						WorkCalendarQueryResultDTO.class,
+						qWorkCalendar.id,
+						qWorkCalendar.name,
+						qWorkCalendar.color
+						)
+				)
+				.from(qWorkCalendar)
 				.where(searchCondition.getBooleanBuilder())
 				.fetch();
 	}
 
 	@Override
-	public List<WorkCalendar> getWorkGroupList(String userId) {
+	public List<WorkCalendarQueryResultDTO> getWorkGroupList(String userId) {
 
 		return queryFactory
-				.selectFrom(qWorkCalendar)				
+				.select(Projections.fields(
+						WorkCalendarQueryResultDTO.class,
+						qWorkCalendar.id,
+						qWorkCalendar.name,
+						qWorkCalendar.color
+						)
+				)
+				.from(qWorkCalendar)
 				.where(qWorkCalendar.id.in(
 						   JPAExpressions
                            .select(qWorkCalendarMember.id.workCalendar)

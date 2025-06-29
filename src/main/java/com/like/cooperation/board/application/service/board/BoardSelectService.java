@@ -2,9 +2,9 @@ package com.like.cooperation.board.application.service.board;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.dto.board.BoardSaveDTO;
-import com.like.cooperation.board.application.dto.board.BoardSaveDTOMapper;
-import com.like.cooperation.board.application.port.in.board.BoardSelectUseCase;
+import com.like.cooperation.board.application.port.in.board.select.BoardSelectDTO;
+import com.like.cooperation.board.application.port.in.board.select.BoardSelectDTOMapper;
+import com.like.cooperation.board.application.port.in.board.select.BoardSelectUseCase;
 import com.like.cooperation.board.application.port.out.board.BoardCommandDbPort;
 
 @Service
@@ -17,8 +17,8 @@ public class BoardSelectService implements BoardSelectUseCase {
 	}
 	
 	@Override
-	public BoardSaveDTO select(Long boardId) {
-		return BoardSaveDTOMapper.toDTO(this.dbPort.select(boardId).orElse(null));
+	public BoardSelectDTO select(Long boardId) {
+		return BoardSelectDTOMapper.toDTO(this.dbPort.select(boardId).orElse(null));
 	}
 
 }

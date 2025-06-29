@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.like.common.dto.HtmlSelectOptionRecord;
 import com.like.common.dto.HtmlSelectOptionable;
-import com.like.cooperation.board.application.dto.board.BoardQueryDTO;
-import com.like.cooperation.board.application.dto.board.BoardSaveDTO;
-import com.like.cooperation.board.application.dto.board.BoardTypeDTO;
-import com.like.cooperation.board.application.port.in.board.BoardQueryUseCase;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryDTO;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryResultDTO;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryUseCase;
+import com.like.cooperation.board.application.port.in.board.query.BoardTypeDTO;
 import com.like.core.message.MessageUtil;
 
 @RestController
@@ -43,7 +43,7 @@ public class BoardQueryController {
 	
 	@GetMapping("/api/grw/board")
 	public ResponseEntity<?> getBoardList(BoardQueryDTO dto) {
-		List<BoardSaveDTO> dtoList = useCase.selectList(dto); 												
+		List<BoardQueryResultDTO> dtoList = useCase.selectList(dto); 												
 				
 		return toList(dtoList, MessageUtil.getQueryMessage(dtoList.size()));
 	}	

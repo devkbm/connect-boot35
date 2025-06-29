@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.like.cooperation.board.adapter.out.file.PostAttachedFileServerRepository;
-import com.like.cooperation.board.application.port.in.post.PostAttachedFileUploadUseCase;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileUploadUseCase;
 import com.like.cooperation.board.application.port.out.post.PostAttachedFileDbPort;
 import com.like.cooperation.board.application.port.out.post.PostCommandDbPort;
 import com.like.cooperation.board.domain.post.Post;

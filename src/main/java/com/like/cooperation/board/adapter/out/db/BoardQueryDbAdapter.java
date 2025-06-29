@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.cooperation.board.domain.board.QBoard;
-import com.like.cooperation.board.application.dto.board.BoardHierarchy;
-import com.like.cooperation.board.application.dto.board.BoardQueryDTO;
-import com.like.cooperation.board.application.dto.board.BoardSaveDTO;
-import com.like.cooperation.board.application.dto.board.BoardSaveDTOMapper;
+import com.like.cooperation.board.application.port.in.board.query.BoardHierarchy;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryDTO;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryResultDTO;
+import com.like.cooperation.board.application.port.in.board.query.QBoardHierarchy;
 import com.like.cooperation.board.application.port.out.board.BoardQueryDbPort;
-import com.like.cooperation.board.domain.board.Board;
-import com.like.cooperation.board.application.dto.board.QBoardHierarchy;
+
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -26,15 +26,17 @@ public class BoardQueryDbAdapter implements BoardQueryDbPort {
 	}	
 	
 	@Override
-	public List<BoardSaveDTO> selectList(BoardQueryDTO dto) {
-		List<Board> list = queryFactory.selectFrom(qBoard)
-									   .where(dto.getBooleanBuilder())
-									   .fetch(); 
-		
-		return list.stream()
-					.map(e -> BoardSaveDTOMapper.toDTO(e))
-					.toList();
-				
+	public List<BoardQueryResultDTO> selectList(BoardQueryDTO dto) {
+		 		
+		return queryFactory				
+				.select(Projections.fields(
+						BoardQueryResultDTO.class,
+						qBoard.modifiedAppUrl.as("clientAppUrl")
+						)
+				)
+				.from(qBoard)
+				.where(dto.getBooleanBuilder())
+				.fetch();				
 	}
 
 	@Override

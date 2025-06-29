@@ -15,8 +15,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.like.cooperation.board.application.port.in.post.PostAttachedFileDownloadUseCase;
-import com.like.cooperation.board.application.dto.post.PostAttachedFileDownloadDTO;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDownloadDTO;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDownloadUseCase;
 
 import jakarta.servlet.http.HttpServletResponse;
 

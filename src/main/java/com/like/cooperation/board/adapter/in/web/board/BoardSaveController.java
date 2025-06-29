@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.board.application.dto.board.BoardSaveDTO;
-import com.like.cooperation.board.application.port.in.board.BoardSaveUseCase;
+import com.like.cooperation.board.application.port.in.board.save.BoardSaveDTO;
+import com.like.cooperation.board.application.port.in.board.save.BoardSaveUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

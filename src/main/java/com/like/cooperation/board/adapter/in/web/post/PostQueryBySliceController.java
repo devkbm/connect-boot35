@@ -7,9 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.like.cooperation.board.application.dto.post.PostListDTO;
-import com.like.cooperation.board.application.dto.post.PostQueryDTO;
-import com.like.cooperation.board.application.port.in.post.PostQueryBySliceUseCase;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryResultDTO;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryBySliceUseCase;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryDTO;
 import com.like.core.util.SessionUtil;
 
 @Controller
@@ -24,8 +24,8 @@ public class PostQueryBySliceController {
 	@GetMapping("/api/grw/board/post_slice")
 	public ResponseEntity<?> getSlice(PostQueryDTO dto, Pageable pageable) {
 																			  											
-		Slice<PostListDTO> list = useCase.getAritlceSlice(SessionUtil.getUserId(), dto, pageable);
+		Slice<PostQueryResultDTO> list = useCase.getAritlceSlice(SessionUtil.getUserId(), dto, pageable);
 		
-		return new ResponseEntity<Slice<PostListDTO>>(list, HttpStatus.OK);		
+		return new ResponseEntity<Slice<PostQueryResultDTO>>(list, HttpStatus.OK);		
 	}
 }

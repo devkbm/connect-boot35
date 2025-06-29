@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.like.cooperation.board.application.dto.post.PostSaveMultipartDTO;
-import com.like.cooperation.board.application.port.in.post.PostSaveByMultiPartUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveByMultiPartUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveByMultipartDTO;
 import com.like.core.message.MessageUtil;
 
 @Controller
@@ -22,7 +22,7 @@ public class PostSaveByMultiPartController {
 			
 	@PostMapping("/api/grw/board/post_multipart")
 	@ResponseBody
-	public ResponseEntity<?> saveArticleWithMultiPartFile(PostSaveMultipartDTO dto) throws Exception {													
+	public ResponseEntity<?> saveArticleWithMultiPartFile(PostSaveByMultipartDTO dto) throws Exception {													
 											
 		useCase.save(dto);											
 		

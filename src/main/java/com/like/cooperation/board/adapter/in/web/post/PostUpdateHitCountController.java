@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.board.application.port.in.post.PostUserHitCountUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostUserHitCountUseCase;
 import com.like.cooperation.board.util.Base64Util;
 
 @RestController

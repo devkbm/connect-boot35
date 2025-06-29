@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.like.cooperation.board.application.dto.post.PostFormSelectDTO;
-import com.like.cooperation.board.application.port.in.post.PostSelectUseCase;
+import com.like.cooperation.board.application.port.in.post.select.PostSelectDTO;
+import com.like.cooperation.board.application.port.in.post.select.PostSelectUseCase;
 import com.like.cooperation.board.util.Base64Util;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
@@ -29,7 +29,7 @@ public class PostSelectController {
 							
 		Long decodedId = Base64Util.fromBase64Decode(id);
 		
-		PostFormSelectDTO response = useCase.select(SessionUtil.getUserId(), decodedId);				
+		PostSelectDTO response = useCase.select(SessionUtil.getUserId(), decodedId);				
 		
 		return toOne(response, MessageUtil.getQueryMessage(response == null ? 0 : 1));
 	}

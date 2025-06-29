@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarEventSaveDTO;
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventSaveUseCase;
+import com.like.cooperation.workcalendar.application.port.in.event.save.WorkCalendarEventSaveDTO;
+import com.like.cooperation.workcalendar.application.port.in.event.save.WorkCalendarEventSaveUseCase;
 import com.like.core.message.MessageUtil;
 
 import jakarta.validation.Valid;

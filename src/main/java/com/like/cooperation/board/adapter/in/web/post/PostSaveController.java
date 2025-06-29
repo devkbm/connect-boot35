@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.like.cooperation.board.application.dto.post.PostFormSaveDTO;
-import com.like.cooperation.board.application.port.in.post.PostSaveByJsonUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveDTO;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveUseCase;
 import com.like.core.message.MessageUtil;
 
 @Controller
 public class PostSaveController {	
 					
-	PostSaveByJsonUseCase useCase;	
+	PostSaveUseCase useCase;	
 	
-	public PostSaveController(PostSaveByJsonUseCase useCase) {				
+	public PostSaveController(PostSaveUseCase useCase) {				
 		this.useCase = useCase;
 	}	
 					
 	@PostMapping("/api/grw/board/post")
 	@ResponseBody
-	public ResponseEntity<?> saveArticleJson(@RequestBody @Valid PostFormSaveDTO dto) throws Exception {															
+	public ResponseEntity<?> saveArticleJson(@RequestBody @Valid PostSaveDTO dto) throws Exception {															
 										
 		Long postId = useCase.save(dto);											
 		

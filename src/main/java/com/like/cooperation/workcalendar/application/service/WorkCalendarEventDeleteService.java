@@ -3,7 +3,7 @@ package com.like.cooperation.workcalendar.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventDeleteUseCase;
+import com.like.cooperation.workcalendar.application.port.in.event.delete.WorkCalendarEventDeleteUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarEventCommandDbPort;
 
 @Transactional

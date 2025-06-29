@@ -2,7 +2,7 @@ package com.like.cooperation.board.application.service.board;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.port.in.board.BoardDeleteUseCase;
+import com.like.cooperation.board.application.port.in.board.delete.BoardDeleteUseCase;
 import com.like.cooperation.board.application.port.out.board.BoardCommandDbPort;
 
 @Service

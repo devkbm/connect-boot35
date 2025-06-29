@@ -2,7 +2,7 @@ package com.like.cooperation.board.adapter.out.db.querydsl;
 
 import org.springframework.stereotype.Repository;
 
-import com.like.cooperation.board.application.dto.post.PostFormSelectDTO;
+import com.like.cooperation.board.application.port.in.post.select.PostSelectDTO;
 import com.like.cooperation.board.domain.post.QPost;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.Projections;
@@ -22,7 +22,7 @@ public class PostSelectQuerydsl {
 	}	
 	
 	
-	public PostFormSelectDTO get(String readerUserId, Long postId) {
+	public PostSelectDTO get(String readerUserId, Long postId) {
 		
 		Expression<Boolean> editable = new CaseBuilder()
 				.when(qPost.userId.eq(readerUserId)).then(true)
@@ -31,7 +31,7 @@ public class PostSelectQuerydsl {
 		
 		return queryFactory
 				.select(
-					Projections.fields(PostFormSelectDTO.class,
+					Projections.fields(PostSelectDTO.class,
 						Expressions.asString(qPost.board.boardId.toString()).as("boardId"),
 						Expressions.asString(qPost.postId.toString()).as("postId"),
 						Expressions.asString(qPost.postParentId.toString()).as("postParentId"),						

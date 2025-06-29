@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarEventQueryDTO;
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarEventResponseDTO;
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventQueryUseCase;
+import com.like.cooperation.workcalendar.application.port.in.event.query.WorkCalendarEventQueryDTO;
+import com.like.cooperation.workcalendar.application.port.in.event.query.WorkCalendarEventQueryResultDTO;
+import com.like.cooperation.workcalendar.application.port.in.event.query.WorkCalendarEventQueryUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarEventQueryDbPort;
 
 @Transactional(readOnly=true)
@@ -21,10 +21,10 @@ public class WorkCalendarEventQueryService implements WorkCalendarEventQueryUseC
 	}
 
 	@Override
-	public List<WorkCalendarEventResponseDTO> getScheduleList(WorkCalendarEventQueryDTO searchCondition) {
+	public List<WorkCalendarEventQueryResultDTO> getScheduleList(WorkCalendarEventQueryDTO searchCondition) {
 		return this.dbPort.getScheduleList(searchCondition)
 						  .stream()
-						  .map(e -> WorkCalendarEventResponseDTO.toDTO(e))
+						  .map(e -> WorkCalendarEventQueryResultDTO.toDTO(e))
 						  .toList();
 	}	
 }

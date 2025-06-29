@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.like.cooperation.board.application.dto.post.PostExcelUploadDTO;
-import com.like.cooperation.board.application.port.in.post.PostExcelUploadUseCase;
+import com.like.cooperation.board.application.port.in.post.upload.PostExcelUploadDTO;
+import com.like.cooperation.board.application.port.in.post.upload.PostExcelUploadUseCase;
 import com.like.core.message.MessageUtil;
 import com.like.core.util.SessionUtil;
 import com.like.excel.upload.ExcelUploader;

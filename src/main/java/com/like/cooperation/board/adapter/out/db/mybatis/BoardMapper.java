@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.like.cooperation.board.application.dto.post.PostListDTO;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryResultDTO;
 
 @Mapper
 public interface BoardMapper {
@@ -66,6 +66,6 @@ limit #{pagesize} + 1 offset #{pagenumber} * #{pagesize}
 
 </script>
 	""")	
-	List<PostListDTO> getArticleList(Map<String, Object> params);
+	List<PostQueryResultDTO> getArticleList(Map<String, Object> params);
 			
 }

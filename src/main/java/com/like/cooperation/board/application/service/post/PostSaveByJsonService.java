@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.like.cooperation.board.application.dto.post.PostFormSaveDTO;
-import com.like.cooperation.board.application.dto.post.PostFormSaveDTOMapper;
-import com.like.cooperation.board.application.port.in.post.PostSaveByJsonUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveDTO;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveDTOMapper;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveUseCase;
 import com.like.cooperation.board.application.port.out.board.BoardCommandDbPort;
 import com.like.cooperation.board.application.port.out.post.PostAttachedFileDbPort;
 import com.like.cooperation.board.application.port.out.post.PostCommandDbPort;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Transactional
 @Service
-public class PostSaveByJsonService implements PostSaveByJsonUseCase {
+public class PostSaveByJsonService implements PostSaveUseCase {
 
 	BoardCommandDbPort boardDbPort;
 	PostCommandDbPort dbPort;
@@ -47,7 +47,7 @@ public class PostSaveByJsonService implements PostSaveByJsonUseCase {
 	
 	
 	@Override
-	public Long save(PostFormSaveDTO dto) {
+	public Long save(PostSaveDTO dto) {
 		log.info(dto.toString());
 		Board board = boardDbPort.select(Base64Util.fromBase64Decode(dto.boardId()))
 								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));		
@@ -55,9 +55,9 @@ public class PostSaveByJsonService implements PostSaveByJsonUseCase {
 		Post entity = StringUtils.hasText(dto.postId()) ? this.findPost(Base64Util.fromBase64Decode(dto.postId())) : null; 
 								
 		if (entity == null) {
-			entity = PostFormSaveDTOMapper.create(dto, board); 
+			entity = PostSaveDTOMapper.create(dto, board); 
 		} else {
-			PostFormSaveDTOMapper.modify(dto, entity);
+			PostSaveDTOMapper.modify(dto, entity);
 		}
 				
 		this.dbPort.save(entity);					

@@ -3,8 +3,8 @@ package com.like.cooperation.workcalendar.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarSaveDTO;
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarSelectUseCase;
+import com.like.cooperation.workcalendar.application.port.in.calendar.select.WorkCalendarSelectDTO;
+import com.like.cooperation.workcalendar.application.port.in.calendar.select.WorkCalendarSelectUseCase;
 import com.like.cooperation.workcalendar.application.port.out.WorkCalendarCommandDbPort;
 
 @Transactional
@@ -18,8 +18,8 @@ public class WorkCalendarSelectService implements WorkCalendarSelectUseCase {
 	}
 	
 	@Override
-	public WorkCalendarSaveDTO select(Long id) {
-		return WorkCalendarSaveDTO.toDTO(this.dbPort.select(id));
+	public WorkCalendarSelectDTO select(Long id) {
+		return WorkCalendarSelectDTO.toDTO(this.dbPort.select(id));
 	}
 
 }

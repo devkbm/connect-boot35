@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.dto.board.BoardHierarchy;
-import com.like.cooperation.board.application.dto.board.BoardQueryDTO;
-import com.like.cooperation.board.application.dto.board.BoardSaveDTO;
-import com.like.cooperation.board.application.port.in.board.BoardQueryUseCase;
+import com.like.cooperation.board.application.port.in.board.query.BoardHierarchy;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryDTO;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryResultDTO;
+import com.like.cooperation.board.application.port.in.board.query.BoardQueryUseCase;
 import com.like.cooperation.board.application.port.out.board.BoardQueryDbPort;
 
 @Transactional(readOnly=true)
@@ -22,7 +22,7 @@ public class BoardQueryService implements BoardQueryUseCase {
 	}	
 	
 	@Override
-	public List<BoardSaveDTO> selectList(BoardQueryDTO dto) {
+	public List<BoardQueryResultDTO> selectList(BoardQueryDTO dto) {
 		return this.port.selectList(dto);
 	}
 

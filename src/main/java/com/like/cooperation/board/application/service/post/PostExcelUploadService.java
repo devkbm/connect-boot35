@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.dto.post.PostExcelUploadDTO;
-import com.like.cooperation.board.application.port.in.post.PostExcelUploadUseCase;
+import com.like.cooperation.board.application.port.in.post.upload.PostExcelUploadDTO;
+import com.like.cooperation.board.application.port.in.post.upload.PostExcelUploadUseCase;
 import com.like.cooperation.board.application.port.out.board.BoardCommandDbPort;
 import com.like.cooperation.board.application.port.out.post.PostCommandDbPort;
 import com.like.cooperation.board.domain.board.Board;

@@ -5,9 +5,9 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.dto.post.PostListDTO;
-import com.like.cooperation.board.application.dto.post.PostQueryDTO;
-import com.like.cooperation.board.application.port.in.post.PostQueryBySliceUseCase;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryResultDTO;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryBySliceUseCase;
+import com.like.cooperation.board.application.port.in.post.query.PostQueryDTO;
 import com.like.cooperation.board.application.port.out.post.PostQueryBySliceDbPort;
 
 @Transactional(readOnly = true)
@@ -21,7 +21,7 @@ public class PostQueryBySliceService implements PostQueryBySliceUseCase {
 	}
 		
 	@Override
-	public Slice<PostListDTO> getAritlceSlice(String userId, PostQueryDTO dto, Pageable pageable) {
+	public Slice<PostQueryResultDTO> getAritlceSlice(String userId, PostQueryDTO dto, Pageable pageable) {
 		return this.dbPort.getAritlceSlice(userId, dto, pageable);
 	}
 

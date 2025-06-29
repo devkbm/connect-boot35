@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.springframework.stereotype.Service;
 
-import com.like.cooperation.board.application.dto.post.PostAttachedFileDownloadDTO;
-import com.like.cooperation.board.application.port.in.post.PostAttachedFileDownloadUseCase;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDownloadDTO;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDownloadUseCase;
 import com.like.cooperation.board.application.port.out.post.PostAttachedFileDbPort;
 import com.like.cooperation.board.domain.post.PostAttachedFile;
 

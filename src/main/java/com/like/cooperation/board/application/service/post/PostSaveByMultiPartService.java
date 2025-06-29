@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.board.application.dto.post.PostSaveMultipartDTO;
-import com.like.cooperation.board.application.port.in.post.PostSaveByMultiPartUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveByMultiPartUseCase;
+import com.like.cooperation.board.application.port.in.post.save.PostSaveByMultipartDTO;
 import com.like.cooperation.board.application.port.out.board.BoardCommandDbPort;
 import com.like.cooperation.board.application.port.out.post.PostCommandDbPort;
 import com.like.cooperation.board.domain.board.Board;
@@ -37,7 +37,7 @@ public class PostSaveByMultiPartService implements PostSaveByMultiPartUseCase {
 	}	
 
 	@Override
-	public void save(PostSaveMultipartDTO dto) {
+	public void save(PostSaveByMultipartDTO dto) {
 		Board board = boardDbPort.select(dto.boardId())
 								 .orElseThrow(() -> new IllegalArgumentException("존재 하지 않은 게시판입니다."));
 		

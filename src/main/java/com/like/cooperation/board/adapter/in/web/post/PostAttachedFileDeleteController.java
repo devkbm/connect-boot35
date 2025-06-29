@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.like.cooperation.board.application.port.in.post.PostAttachedFileDeleteUseCase;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDeleteUseCase;
 import com.like.core.message.MessageUtil;
 
 @Controller

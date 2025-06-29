@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarEventResponseDTO;
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarEventSelectUseCase;
+import com.like.cooperation.workcalendar.application.port.in.event.select.WorkCalendarEventResponseDTO;
+import com.like.cooperation.workcalendar.application.port.in.event.select.WorkCalendarEventSelectUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarDeleteUseCase;
+import com.like.cooperation.workcalendar.application.port.in.calendar.delete.WorkCalendarDeleteUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

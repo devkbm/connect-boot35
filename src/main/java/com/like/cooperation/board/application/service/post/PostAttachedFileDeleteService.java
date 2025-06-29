@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.like.cooperation.board.adapter.out.file.PostAttachedFileServerRepository;
-import com.like.cooperation.board.application.port.in.post.PostAttachedFileDeleteUseCase;
+import com.like.cooperation.board.application.port.in.post.attach.PostAttachedFileDeleteUseCase;
 import com.like.cooperation.board.application.port.out.post.PostAttachedFileDbPort;
 import com.like.cooperation.board.application.port.out.post.PostCommandDbPort;
 import com.like.cooperation.board.domain.post.Post;

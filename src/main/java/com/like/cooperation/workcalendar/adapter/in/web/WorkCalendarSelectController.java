@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.workcalendar.application.dto.WorkCalendarSaveDTO;
-import com.like.cooperation.workcalendar.application.port.in.WorkCalendarSelectUseCase;
+import com.like.cooperation.workcalendar.application.port.in.calendar.select.WorkCalendarSelectDTO;
+import com.like.cooperation.workcalendar.application.port.in.calendar.select.WorkCalendarSelectUseCase;
 import com.like.core.message.MessageUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class WorkCalendarSelectController {
 	@GetMapping("/api/grw/workcalendar/{id}")
 	public ResponseEntity<?> getWorkGroup(@PathVariable Long id) {																
 		
-		WorkCalendarSaveDTO dto = useCase.select(id);
+		WorkCalendarSelectDTO dto = useCase.select(id);
 		
 		log.info(dto.toString());
 		
