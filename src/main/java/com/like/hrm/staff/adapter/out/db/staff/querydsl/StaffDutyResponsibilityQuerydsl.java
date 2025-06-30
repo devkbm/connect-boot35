@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.hrmcode.domain.QHrmCode;
-import com.like.hrm.staff.application.dto.staff.dutyresponsibility.StaffDutyResponsibilityQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.dutyresponsibility.query.StaffDutyResponsibilityQueryResultDTO;
 import com.like.hrm.staff.domain.staff.dutyresponsibility.QStaffDuty;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;

@@ -11,7 +11,7 @@ import com.like.hrm.staff.application.dto.staff.QResponseStaffDutyResponsibility
 import com.like.hrm.staff.application.dto.staff.ResponseStaffAppointmentRecord;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffDutyResponsibility;
-import com.like.hrm.staff.application.dto.staff.StaffQueryConditionDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
 import com.like.hrm.staff.domain.staff.QStaff;
 import com.like.hrm.staff.domain.staff.appointment.QAppointmentRecord;
 import com.like.hrm.staff.domain.staff.dutyresponsibility.QStaffDuty;
@@ -34,10 +34,11 @@ public class StaffQuery implements StaffQueryRepository {
 	}
 	
 	@Override
-	public List<Staff> getStaffList(StaffQueryConditionDTO dto) {
+	public List<Staff> getStaffList(StaffQueryDTO dto) {
 		return queryFactory.selectFrom(qStaff).fetch();
 	}
 	
+	/*
 	@Override
 	public List<ResponseStaffAppointmentRecord> getStaffAppointmentRecordList(String companyCode, String staffNo) {		
 		
@@ -97,6 +98,7 @@ public class StaffQuery implements StaffQueryRepository {
 							 .and(qStaff.id.staffNo.eq(staffNo)))
 						   .fetch();						   
 	}
+	*/
 	
 	@Override
 	public ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo) {
@@ -150,6 +152,7 @@ public class StaffQuery implements StaffQueryRepository {
 				   	.fetchFirst();				   	
 	}
 	
+	/*
 	@Override
 	public List<ResponseStaffDutyResponsibility> getStaffDutyResponsibility(String companyCode, String staffNo) {
 		QHrmCode dutyResponsibilityCode = new QHrmCode("dutyResponsibilityCode");
@@ -163,6 +166,7 @@ public class StaffQuery implements StaffQueryRepository {
 					   	   		.and(qStaffDuty.dutyResponsibilityCode.eq(dutyResponsibilityCode.id.code)))
 						   .fetch();		
 	}
+	*/
 	
 	private QResponseStaffAppointmentRecord projectionAppointmentRecord(QStaff qStaff								
 											, QAppointmentRecord qRecord

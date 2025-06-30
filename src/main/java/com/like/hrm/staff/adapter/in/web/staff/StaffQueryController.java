@@ -12,27 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.ResponseStaff;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.dto.staff.StaffQueryConditionDTO;
-import com.like.hrm.staff.application.service.staff.StaffQueryService;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryUseCase;
 
 @RestController
 public class StaffQueryController {
 	
-	private StaffQueryService service;
+	StaffQueryUseCase useCase;
 	
-	public StaffQueryController(StaffQueryService service) {
-		this.service = service;		
+	StaffQueryController(StaffQueryUseCase useCase) {
+		this.useCase = useCase;		
 	}
 	
 	@GetMapping("/api/hrm/staff")
-	public ResponseEntity<?> getStaffList(StaffQueryConditionDTO dto) {
+	public ResponseEntity<?> getStaffList(StaffQueryDTO dto) {
 									
-		List<ResponseStaff> list = service.getStaff(dto)
-												   .stream()
-												   .map(e -> ResponseStaff.toDTO(e))
-												   .toList(); 
+		List<StaffQueryResultDTO> list = useCase.getStaffList(dto); 
 		
 		return toList(list, MessageUtil.getQueryMessage(list.size()));
 	}
@@ -49,7 +46,7 @@ public class StaffQueryController {
 	@GetMapping("/api/hrm/staff/{id}/currentappointment")
 	public ResponseEntity<?> getStaffCurrentAppointment(@RequestParam String companyCode, @PathVariable String id) {
 		
-		ResponseStaffCurrentAppointment dto = service.getStaffCurrentAppointment(companyCode, id);								
+		ResponseStaffCurrentAppointment dto = useCase.getStaffCurrentAppointment(companyCode, id);								
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

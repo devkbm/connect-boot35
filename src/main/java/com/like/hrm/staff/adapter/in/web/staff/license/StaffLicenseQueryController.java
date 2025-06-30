@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.license.StaffLicenseQueryResultDTO;
-import com.like.hrm.staff.application.port.in.staff.license.StaffLicenseQueryUseCase;
+import com.like.hrm.staff.application.port.in.staff.license.query.StaffLicenseQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.license.query.StaffLicenseQueryUseCase;
 
 @RestController
 public class StaffLicenseQueryController {

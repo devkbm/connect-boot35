@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.like.excel.upload.ExcelUploader;
-import com.like.hrm.staff.application.dto.staff.StaffCreateExcelUploadDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffCreateExcelUploadDTO;
 import com.like.hrm.staff.application.port.in.staff.StaffCreateExcelUploadUseCase;
 
 @RestController

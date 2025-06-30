@@ -2,7 +2,7 @@ package com.like.hrm.staff.application.service.staff.schoolcareer;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.in.staff.schoolcareer.StaffSchoolCareerDeleteUseCase;
+import com.like.hrm.staff.application.port.in.staff.schoolcareer.delete.StaffSchoolCareerDeleteUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;
 

@@ -2,7 +2,7 @@ package com.like.hrm.staff.application.service.staff;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.dto.staff.ResponseStaff;
+import com.like.hrm.staff.application.port.in.staff.StaffSelectDTO;
 import com.like.hrm.staff.application.port.in.staff.StaffSelectUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 
@@ -16,8 +16,8 @@ public class StaffSelectService implements StaffSelectUseCase {
 	}
 	
 	@Override
-	public ResponseStaff select(String companyCode, String staffNo) {
-		return ResponseStaff.toDTO(this.dbPort.select(companyCode, staffNo).orElse(null));
+	public StaffSelectDTO select(String companyCode, String staffNo) {
+		return StaffSelectDTO.toDTO(this.dbPort.select(companyCode, staffNo).orElse(null));
 	}
 	
 }

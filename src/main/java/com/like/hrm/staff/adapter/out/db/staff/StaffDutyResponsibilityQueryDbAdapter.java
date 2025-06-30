@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.staff.adapter.out.db.staff.querydsl.StaffDutyResponsibilityQuerydsl;
-import com.like.hrm.staff.application.dto.staff.dutyresponsibility.StaffDutyResponsibilityQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.dutyresponsibility.query.StaffDutyResponsibilityQueryResultDTO;
 import com.like.hrm.staff.application.port.out.staff.StaffDutyResponsibilityQueryDbPort;
 
 @Repository

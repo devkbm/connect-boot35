@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.appointment.StaffAppointmentQueryResultDTO;
-import com.like.hrm.staff.application.port.in.staff.appointment.StaffAppointmentQueryUseCase;
+import com.like.hrm.staff.application.port.in.staff.appointment.query.StaffAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.appointment.query.StaffAppointmentQueryUseCase;
 
 @RestController
 public class StaffAppointmentQueryController {

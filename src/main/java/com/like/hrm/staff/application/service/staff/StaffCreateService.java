@@ -2,7 +2,7 @@ package com.like.hrm.staff.application.service.staff;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.dto.staff.StaffCreateDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffCreateDTO;
 import com.like.hrm.staff.application.port.in.staff.StaffCreateUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;

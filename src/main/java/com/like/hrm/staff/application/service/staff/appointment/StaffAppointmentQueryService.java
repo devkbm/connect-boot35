@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.dto.staff.appointment.StaffAppointmentQueryResultDTO;
-import com.like.hrm.staff.application.port.in.staff.appointment.StaffAppointmentQueryUseCase;
+import com.like.hrm.staff.application.port.in.staff.appointment.query.StaffAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.appointment.query.StaffAppointmentQueryUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffAppointmentQueryDbPort;
 
 @Transactional(readOnly = true)

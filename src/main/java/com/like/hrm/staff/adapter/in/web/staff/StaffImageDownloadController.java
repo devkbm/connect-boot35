@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.like.hrm.staff.application.dto.staff.ResponseStaff;
+import com.like.hrm.staff.application.port.in.staff.StaffSelectDTO;
 import com.like.hrm.staff.application.port.in.staff.StaffSelectUseCase;
 import com.like.system.file.adapter.out.file.FileConverterUtil;
 
@@ -28,7 +28,7 @@ public class StaffImageDownloadController {
 	public void downloadStaffImage(String companyCode
 								  ,String staffNo
 								  ,HttpServletResponse response) throws Exception {
-		ResponseStaff dto = useCase.select(companyCode, staffNo);
+		StaffSelectDTO dto = useCase.select(companyCode, staffNo);
 		
 		File file = new File(dto.imagePath());
 		

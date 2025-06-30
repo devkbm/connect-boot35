@@ -2,8 +2,8 @@ package com.like.hrm.staff.application.service.staff.dutyresponsibility;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.dto.staff.dutyresponsibility.StaffDutyResponsibilityFormDTO;
-import com.like.hrm.staff.application.port.in.staff.dutyresponsibility.StaffDutyResponsibilitySelectUseCase;
+import com.like.hrm.staff.application.port.in.staff.dutyresponsibility.select.StaffDutyResponsibilitySelectDTO;
+import com.like.hrm.staff.application.port.in.staff.dutyresponsibility.select.StaffDutyResponsibilitySelectUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;
 import com.like.hrm.staff.domain.staff.dutyresponsibility.StaffDuty;
@@ -20,12 +20,12 @@ public class StaffDutyResponsibilitySelectService implements StaffDutyResponsibi
 	}
 
 	@Override
-	public StaffDutyResponsibilityFormDTO select(String companyCode, String staffNo, Long seq) {
+	public StaffDutyResponsibilitySelectDTO select(String companyCode, String staffNo, Long seq) {
 		Staff staff = this.dbPort.select(companyCode, staffNo)
 								 .orElseThrow(() -> new EntityNotFoundException(staffNo + " 직원정보가 존재하지 않습니다."));
 		StaffDuty entity = staff.getStaffDutyResponsibilityList().get(staff, seq);
 				
-		return StaffDutyResponsibilityFormDTO.toDTO(entity);
+		return StaffDutyResponsibilitySelectDTO.toDTO(entity);
 	}
 	
 	

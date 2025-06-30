@@ -3,38 +3,30 @@ package com.like.hrm.staff.application.service.staff;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.dto.staff.ResponseStaffAppointmentRecord;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.dto.staff.ResponseStaffDutyResponsibility;
-import com.like.hrm.staff.application.dto.staff.StaffQueryConditionDTO;
-import com.like.hrm.staff.domain.staff.Staff;
-import com.like.hrm.staff.domain.staff.StaffQueryRepository;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.StaffQueryUseCase;
+import com.like.hrm.staff.application.port.out.staff.StaffQueryDbPort;
 
 @Service
-@Transactional(readOnly = true)
-public class StaffQueryService {
+public class StaffQueryService implements StaffQueryUseCase {
 
-	private StaffQueryRepository repository;
+	StaffQueryDbPort dbPort;
 	
-	public StaffQueryService(StaffQueryRepository repository) {
-		this.repository = repository;		
+	StaffQueryService(StaffQueryDbPort dbPort) {
+		this.dbPort = dbPort;
 	}
 	
-	public List<Staff> getStaff(StaffQueryConditionDTO dto) {
-		return repository.getStaffList(dto);
+	@Override
+	public List<StaffQueryResultDTO> getStaffList(StaffQueryDTO dto) {
+		return this.dbPort.getStaffList(dto);
 	}
-	
-	public List<ResponseStaffAppointmentRecord> getStaffAppointmentRecordList(String companyCode, String staffNo) {
-		return repository.getStaffAppointmentRecordList(companyCode, staffNo);
-	}
-	
+
+	@Override
 	public ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo) {
-		return repository.getStaffCurrentAppointment(companyCode, staffNo);
+		return this.dbPort.getStaffCurrentAppointment(companyCode, staffNo);
 	}
-	
-	public List<ResponseStaffDutyResponsibility> getStaffDutyResponsibility(String companyCode, String staffNo) {
-		return repository.getStaffDutyResponsibility(companyCode, staffNo);
-	}
+
 }

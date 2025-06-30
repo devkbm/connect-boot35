@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.family.StaffFamilyFormDTO;
-import com.like.hrm.staff.application.port.in.staff.family.StaffFamilySelectUseCase;
+import com.like.hrm.staff.application.port.in.staff.family.select.StaffFamilySelectDTO;
+import com.like.hrm.staff.application.port.in.staff.family.select.StaffFamilySelectUseCase;
 
 
 @RestController
@@ -23,11 +23,12 @@ public class StaffFamilySelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/family/{seq}")
-	public ResponseEntity<?> getFamily(@RequestParam String companyCode
-									  ,@PathVariable String staffId
-									  ,@PathVariable Long seq) {				
+	public ResponseEntity<?> getFamily(
+			@RequestParam String companyCode,
+			@PathVariable String staffId,
+			@PathVariable Long seq) {				
 				
-		StaffFamilyFormDTO dto =  useCase.select(companyCode, staffId, seq);
+		StaffFamilySelectDTO dto =  useCase.select(companyCode, staffId, seq);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));							
 	}

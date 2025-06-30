@@ -2,9 +2,9 @@ package com.like.hrm.staff.application.service.staff.contact;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.dto.staff.contact.StaffContactSaveDTO;
-import com.like.hrm.staff.application.dto.staff.contact.StaffContactSaveDTOMapper;
-import com.like.hrm.staff.application.port.in.staff.StaffContractSaveUseCase;
+import com.like.hrm.staff.application.port.in.staff.contact.save.StaffContactSaveDTO;
+import com.like.hrm.staff.application.port.in.staff.contact.save.StaffContactSaveDTOMapper;
+import com.like.hrm.staff.application.port.in.staff.contact.save.StaffContractSaveUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.application.port.out.staff.StaffContactInfoCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;

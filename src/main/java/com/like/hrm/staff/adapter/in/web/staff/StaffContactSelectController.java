@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.contact.StaffContactSaveDTO;
-import com.like.hrm.staff.application.port.in.staff.StaffContractSelectUseCase;
+import com.like.hrm.staff.application.port.in.staff.contact.select.StaffContactSelectDTO;
+import com.like.hrm.staff.application.port.in.staff.contact.select.StaffContractSelectUseCase;
 
 @RestController
 public class StaffContactSelectController {
@@ -24,7 +24,7 @@ public class StaffContactSelectController {
 	@GetMapping("/api/hrm/staff/{staffId}/contact")
 	public ResponseEntity<?> getAppointmentRecordList(@RequestParam String companyCode, @PathVariable String staffId) {
 										
-		StaffContactSaveDTO dto = useCase.select(companyCode, staffId);										  									
+		StaffContactSelectDTO dto = useCase.select(companyCode, staffId);										  									
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

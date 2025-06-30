@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.schoolcareer.StaffSchoolCareerFormDTO;
-import com.like.hrm.staff.application.port.in.staff.schoolcareer.StaffSchoolCareerSaveUseCase;
+import com.like.hrm.staff.application.port.in.staff.schoolcareer.save.StaffSchoolCareerSaveDTO;
+import com.like.hrm.staff.application.port.in.staff.schoolcareer.save.StaffSchoolCareerSaveUseCase;
 
 @RestController
 public class StaffSchoolCareerSaveController {
@@ -23,7 +23,7 @@ public class StaffSchoolCareerSaveController {
 	}
 		
 	@PostMapping("/api/hrm/staff/{staffId}/schoolcareer")
-	public ResponseEntity<?> saveSchoolCareer(@RequestBody @Valid StaffSchoolCareerFormDTO dto) {
+	public ResponseEntity<?> saveSchoolCareer(@RequestBody @Valid StaffSchoolCareerSaveDTO dto) {
 		useCase.save(dto);
 											 				
 		return toOne(null, MessageUtil.getSaveMessage(1));

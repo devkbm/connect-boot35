@@ -3,8 +3,8 @@ package com.like.hrm.staff.application.service.staff.schoolcareer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.staff.application.dto.staff.schoolcareer.StaffSchoolCareerFormDTO;
-import com.like.hrm.staff.application.port.in.staff.schoolcareer.StaffSchoolCareerSaveUseCase;
+import com.like.hrm.staff.application.port.in.staff.schoolcareer.save.StaffSchoolCareerSaveDTO;
+import com.like.hrm.staff.application.port.in.staff.schoolcareer.save.StaffSchoolCareerSaveUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.application.port.out.staff.StaffSchoolCareerCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;
@@ -26,7 +26,7 @@ public class StaffSchoolCareerSaveService implements StaffSchoolCareerSaveUseCas
 	}
 	
 	@Override
-	public void save(StaffSchoolCareerFormDTO dto) {
+	public void save(StaffSchoolCareerSaveDTO dto) {
 		Staff staff = staffDbPort.select(dto.companyCode(), dto.staffNo())
 							.orElseThrow(() -> new EntityNotFoundException(dto.staffNo() + " 직원정보가 존재하지 않습니다."));		
 		StaffSchoolCareer entity = this.schoolCareerDbPort.select(new StaffSchoolCareerId(staff, dto.seq())).orElse(null);

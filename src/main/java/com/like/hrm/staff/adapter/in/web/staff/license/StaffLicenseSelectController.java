@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.license.StaffLicenseFormDTO;
-import com.like.hrm.staff.application.port.in.staff.license.StaffLicenseSelectUseCase;
+import com.like.hrm.staff.application.port.in.staff.license.select.StaffLicenseSelectDTO;
+import com.like.hrm.staff.application.port.in.staff.license.select.StaffLicenseSelectUseCase;
 
 @RestController
 public class StaffLicenseSelectController {
@@ -22,11 +22,13 @@ public class StaffLicenseSelectController {
 	}	
 	
 	@GetMapping("/api/hrm/staff/{staffId}/license/{id}")
-	public ResponseEntity<?> getLicense(@RequestParam String companyCode
-									   ,@PathVariable String staffId
-									   ,@PathVariable Long id) {
+	public ResponseEntity<?> getLicense(
+			@RequestParam String companyCode,
+			@PathVariable String staffId,
+			@PathVariable Long id
+			) {
 		
-		StaffLicenseFormDTO dto = useCase.select(companyCode, staffId, id); 
+		StaffLicenseSelectDTO dto = useCase.select(companyCode, staffId, id); 
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

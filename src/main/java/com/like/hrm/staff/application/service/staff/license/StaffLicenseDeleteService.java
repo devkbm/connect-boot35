@@ -2,7 +2,7 @@ package com.like.hrm.staff.application.service.staff.license;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.staff.application.port.in.staff.license.StaffLicenseDeleteUseCase;
+import com.like.hrm.staff.application.port.in.staff.license.delete.StaffLicenseDeleteUseCase;
 import com.like.hrm.staff.application.port.out.staff.StaffCommandDbPort;
 import com.like.hrm.staff.domain.staff.Staff;
 
