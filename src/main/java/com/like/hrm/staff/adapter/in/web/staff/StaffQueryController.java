@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryResultDTO;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryUseCase;
+import com.like.hrm.staff.application.port.in.staff.query.StaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryUseCase;
 
 @RestController
 public class StaffQueryController {
@@ -46,7 +46,7 @@ public class StaffQueryController {
 	@GetMapping("/api/hrm/staff/{id}/currentappointment")
 	public ResponseEntity<?> getStaffCurrentAppointment(@RequestParam String companyCode, @PathVariable String id) {
 		
-		ResponseStaffCurrentAppointment dto = useCase.getStaffCurrentAppointment(companyCode, id);								
+		StaffCurrentAppointmentQueryResultDTO dto = useCase.getStaffCurrentAppointment(companyCode, id);								
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

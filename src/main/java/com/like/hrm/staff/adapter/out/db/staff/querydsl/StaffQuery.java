@@ -6,23 +6,23 @@ import org.springframework.stereotype.Repository;
 
 import com.like.hrm.hrmcode.domain.QHrmCode;
 import com.like.hrm.staff.application.dto.staff.QResponseStaffAppointmentRecord;
-import com.like.hrm.staff.application.dto.staff.QResponseStaffCurrentAppointment;
 import com.like.hrm.staff.application.dto.staff.QResponseStaffDutyResponsibility;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffAppointmentRecord;
-import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
 import com.like.hrm.staff.application.dto.staff.ResponseStaffDutyResponsibility;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.query.QStaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryDTO;
 import com.like.hrm.staff.domain.staff.QStaff;
 import com.like.hrm.staff.domain.staff.appointment.QAppointmentRecord;
 import com.like.hrm.staff.domain.staff.dutyresponsibility.QStaffDuty;
 import com.like.hrm.staff.domain.staff.Staff;
-import com.like.hrm.staff.domain.staff.StaffQueryRepository;
+
 import com.like.system.dept.domain.QDept;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 
 @Repository
-public class StaffQuery implements StaffQueryRepository {
+public class StaffQuery {
 
 	private JPAQueryFactory queryFactory;	
 	private final QStaff qStaff = QStaff.staff;
@@ -33,7 +33,7 @@ public class StaffQuery implements StaffQueryRepository {
 		this.queryFactory = queryFactory;
 	}
 	
-	@Override
+	
 	public List<Staff> getStaffList(StaffQueryDTO dto) {
 		return queryFactory.selectFrom(qStaff).fetch();
 	}
@@ -100,8 +100,8 @@ public class StaffQuery implements StaffQueryRepository {
 	}
 	*/
 	
-	@Override
-	public ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo) {
+	
+	public StaffCurrentAppointmentQueryResultDTO getStaffCurrentAppointment(String companyCode, String staffNo) {
 
 		QDept blngDeptCode = QDept.dept;
 		QDept workDeptCode = new QDept("workDeptCode");
@@ -209,7 +209,7 @@ public class StaffQuery implements StaffQueryRepository {
 	}
 
 	
-	private QResponseStaffCurrentAppointment projectionCurrentAppointment(QStaff qStaff			
+	private QStaffCurrentAppointmentQueryResultDTO projectionCurrentAppointment(QStaff qStaff			
 													   ,QDept blngDeptCode
 													   ,QDept workDeptCode
 													   ,QHrmCode jobGroupCode
@@ -218,7 +218,7 @@ public class StaffQuery implements StaffQueryRepository {
 													   ,QHrmCode jobGradeCode
 													   ,QHrmCode payStepCode
 													   ,QHrmCode jobCode) {
-		return new QResponseStaffCurrentAppointment(qStaff.id.companyCode
+		return new QStaffCurrentAppointmentQueryResultDTO(qStaff.id.companyCode
 												   ,qStaff.id.staffNo
 												   ,qStaff.currentAppointment.blngDeptCode
 												   ,blngDeptCode.deptNameKorean

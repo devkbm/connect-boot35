@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTO;
-import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationFormSaveUseCase;
+import com.like.hrm.attendance.application.port.in.application.save.AttendanceApplicationSaveDTO;
+import com.like.hrm.attendance.application.port.in.application.save.AttendanceApplicationSaveUseCase;
 
 @RestController
 public class AttendanceApplicationSaveController {
 
-	AttendanceApplicationFormSaveUseCase useCase;
+	AttendanceApplicationSaveUseCase useCase;
 	
-	AttendanceApplicationSaveController(AttendanceApplicationFormSaveUseCase useCase) {
+	AttendanceApplicationSaveController(AttendanceApplicationSaveUseCase useCase) {
 		this.useCase = useCase;
 	}
 	
 	@PostMapping("/api/hrm/dutyapplication")
-	public ResponseEntity<?> saveDutyApplication(@RequestBody AttendanceApplicationDTO dto) {				
+	public ResponseEntity<?> saveDutyApplication(@RequestBody AttendanceApplicationSaveDTO dto) {				
 																			
 		useCase.save(dto);						
 								 					

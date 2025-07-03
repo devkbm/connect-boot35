@@ -1,4 +1,4 @@
-package com.like.hrm.staff.application.dto.staff;
+package com.like.hrm.staff.application.port.in.staff.query;
 
 import com.querydsl.core.annotations.QueryProjection;
 
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ResponseStaffCurrentAppointment {
+public class StaffCurrentAppointmentQueryResultDTO {
 	
 	String companyCode;
 	String staffNo;
@@ -30,11 +30,26 @@ public class ResponseStaffCurrentAppointment {
 	String jobName;
 	
 	@QueryProjection
-	public ResponseStaffCurrentAppointment(String companyCode, String staffNo, String blngDeptCode,
-			String blngDeptName, String workDeptCode, String workDeptName, String jobGroupCode, String jobGroupName,
-			String jobPositionCode, String jobPositionName, String occupationCode, String occupationName,
-			String jobGradeCode, String jobGradeName, String payStepCode, String payStepName, String jobCode,
-			String jobName) {				
+	public StaffCurrentAppointmentQueryResultDTO(
+			String companyCode, 
+			String staffNo, 
+			String blngDeptCode,
+			String blngDeptName, 
+			String workDeptCode, 
+			String workDeptName, 
+			String jobGroupCode, 
+			String jobGroupName,
+			String jobPositionCode, 
+			String jobPositionName, 
+			String occupationCode, 
+			String occupationName,
+			String jobGradeCode, 
+			String jobGradeName, 
+			String payStepCode, 
+			String payStepName, 
+			String jobCode,
+			String jobName
+			) {				
 		this.companyCode = companyCode;
 		this.staffNo = staffNo;
 		this.blngDeptCode = blngDeptCode;

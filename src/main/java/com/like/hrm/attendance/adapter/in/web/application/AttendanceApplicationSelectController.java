@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.like.core.message.MessageUtil;
-import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTO;
-import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationFormSelectUseCase;
+import com.like.hrm.attendance.application.port.in.application.save.AttendanceApplicationSaveDTO;
+import com.like.hrm.attendance.application.port.in.application.select.AttendanceApplicationSelectUseCase;
 
 @RestController
 public class AttendanceApplicationSelectController {
 
-	AttendanceApplicationFormSelectUseCase useCase;
+	AttendanceApplicationSelectUseCase useCase;
 	
-	AttendanceApplicationSelectController(AttendanceApplicationFormSelectUseCase useCase) {
+	AttendanceApplicationSelectController(AttendanceApplicationSelectUseCase useCase) {
 		this.useCase = useCase;
 	}
 	
 	@GetMapping("/api/hrm/dutyapplication/{id}")
 	public ResponseEntity<?> getDutyApplication(@PathVariable Long id) {
 											
-		AttendanceApplicationDTO dto = useCase.select(id);
+		AttendanceApplicationSaveDTO dto = useCase.select(id);
 		
 		return toOne(dto, MessageUtil.getQueryMessage(dto == null ? 0 : 1));
 	}

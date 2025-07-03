@@ -1,4 +1,4 @@
-package com.like.hrm.attendance.application.dto.application;
+package com.like.hrm.attendance.application.port.in.application.select;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import com.like.system.holiday.domain.HolidayInfoCollection;
 import lombok.Builder;
 
 @Builder
-public record AttendanceApplicationDTO(
+public record AttendanceApplicationSelectDTO(
 		String clientAppUrl,
 		String companyCode,
 		String staffNo,

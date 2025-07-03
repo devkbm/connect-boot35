@@ -1,53 +1,17 @@
-package com.like.hrm.attendance.application.dto.application;
+package com.like.hrm.attendance.application.port.in.application.select;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.like.common.vo.LocalDatePeriod;
-import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTO.DutyDate;
+import com.like.hrm.attendance.application.port.in.application.select.AttendanceApplicationSelectDTO.DutyDate;
 import com.like.hrm.attendance.domain.application.AttendanceApplication;
 import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
-import com.like.system.holiday.domain.HolidayInfo;
 import com.like.system.holiday.domain.HolidayInfoCollection;
 
-public class AttendanceApplicationDTOMapper {
+public class AttendanceApplicationSelectDTOMapper {
 
-	public static AttendanceApplication newEntity(AttendanceApplicationDTO dto) {
-		/*
-		AttendanceApplication entity = new AttendanceApplication(
-				dto.companyCode(),								  
-		        dto.staffNo(),
-		        dto.dutyCode(),
-		        dto.dutyReason(),
-		        new LocalDatePeriod(dto.fromDate(), dto.toDate()),
-		        dto.selectedDate().stream().map(e -> e.date()).toList(),
-		        dto.dutyTime()
-		        );
-
-		entity.setAppUrl(dto.clientAppUrl());
-
-		return entity;
-				*/
-		return null;
-	}
-	
-	public static void modify(AttendanceApplication entity, AttendanceApplicationDTO dto) {
-		/*
-		entity.modify(
-				dto.dutyCode(),
-				dto.dutyReason(),
-				new LocalDatePeriod(dto.fromDate(), dto.toDate()),
-				dto.selectedDate().stream().map(e -> e.date()).toList(),
-				dto.dutyTime()
-				);		
-		*/
-		
-		entity.setAppUrl(dto.clientAppUrl());
-	}
-		
-	
-	public static AttendanceApplicationDTO toDTO(AttendanceApplication e, HolidayQueryUseCase service) {
+			
+	public static AttendanceApplicationSelectDTO toDTO(AttendanceApplication e, HolidayQueryUseCase service) {
 		if ( e == null ) return null;
 		
 		return null;

@@ -3,7 +3,7 @@ package com.like.hrm.attendance.application.service.application;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.hrm.attendance.application.port.in.application.AttendanceApplcationFormDeleteUseCase;
+import com.like.hrm.attendance.application.port.in.application.delete.AttendanceApplcationFormDeleteUseCase;
 import com.like.hrm.attendance.application.port.out.application.AttendanceApplicationFormCommandDbPort;
 
 @Transactional

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.staff.adapter.out.db.staff.querydsl.StaffQueryQuerydsl;
-import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryResultDTO;
 import com.like.hrm.staff.application.port.out.staff.StaffQueryDbPort;
 
 @Repository
@@ -25,7 +25,7 @@ public class StaffQueryDbAdapter implements StaffQueryDbPort {
 	}
 
 	@Override
-	public ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo) {
+	public StaffCurrentAppointmentQueryResultDTO getStaffCurrentAppointment(String companyCode, String staffNo) {
 		return this.repository.getStaffCurrentAppointment(companyCode, staffNo);
 	}
 

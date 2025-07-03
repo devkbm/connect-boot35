@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.like.hrm.hrmcode.domain.QHrmCode;
-import com.like.hrm.staff.application.dto.staff.QResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.dto.staff.ResponseStaffCurrentAppointment;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryDTO;
-import com.like.hrm.staff.application.port.in.staff.StaffQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.QStaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffCurrentAppointmentQueryResultDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryDTO;
+import com.like.hrm.staff.application.port.in.staff.query.StaffQueryResultDTO;
 import com.like.hrm.staff.domain.staff.QStaff;
 import com.like.system.dept.domain.QDept;
 import com.querydsl.core.types.Projections;
@@ -44,7 +44,7 @@ public class StaffQueryQuerydsl {
 				.fetch();
 	}
 		
-	public ResponseStaffCurrentAppointment getStaffCurrentAppointment(String companyCode, String staffNo) {
+	public StaffCurrentAppointmentQueryResultDTO getStaffCurrentAppointment(String companyCode, String staffNo) {
 
 		QDept blngDeptCode = QDept.dept;
 		QDept workDeptCode = new QDept("workDeptCode");
@@ -99,7 +99,7 @@ public class StaffQueryQuerydsl {
 	}
 			
 	
-	private QResponseStaffCurrentAppointment projectionCurrentAppointment(
+	private QStaffCurrentAppointmentQueryResultDTO projectionCurrentAppointment(
 			QStaff qStaff,	
 			QDept blngDeptCode,
 			QDept workDeptCode,
@@ -110,7 +110,7 @@ public class StaffQueryQuerydsl {
 			QHrmCode payStepCode,
 			QHrmCode jobCode
 			) {
-		return new QResponseStaffCurrentAppointment(
+		return new QStaffCurrentAppointmentQueryResultDTO(
 				qStaff.id.companyCode,
 				qStaff.id.staffNo,
 				qStaff.currentAppointment.blngDeptCode,

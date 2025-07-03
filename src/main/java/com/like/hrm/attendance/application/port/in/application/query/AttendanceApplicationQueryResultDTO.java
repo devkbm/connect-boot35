@@ -1,4 +1,4 @@
-package com.like.hrm.attendance.application.dto.application;
+package com.like.hrm.attendance.application.port.in.application.query;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.like.hrm.staff.application.port.in.staff;
+package com.like.hrm.staff.application.port.in.staff.query;
 
 import java.time.LocalDate;
 

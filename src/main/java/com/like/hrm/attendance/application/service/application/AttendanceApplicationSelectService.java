@@ -2,14 +2,14 @@ package com.like.hrm.attendance.application.service.application;
 
 import org.springframework.stereotype.Service;
 
-import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTO;
-import com.like.hrm.attendance.application.dto.application.AttendanceApplicationDTOMapper;
-import com.like.hrm.attendance.application.port.in.application.AttendanceApplicationFormSelectUseCase;
+import com.like.hrm.attendance.application.port.in.application.save.AttendanceApplicationSaveDTO;
+import com.like.hrm.attendance.application.port.in.application.save.AttendanceApplicationSaveDTOMapper;
+import com.like.hrm.attendance.application.port.in.application.select.AttendanceApplicationSelectUseCase;
 import com.like.hrm.attendance.application.port.out.application.AttendanceApplicationFormCommandDbPort;
 import com.like.system.holiday.application.port.in.query.HolidayQueryUseCase;
 
 @Service
-public class AttendanceApplicationSelectService implements AttendanceApplicationFormSelectUseCase {
+public class AttendanceApplicationSelectService implements AttendanceApplicationSelectUseCase {
 
 	AttendanceApplicationFormCommandDbPort dbPort;
 	
@@ -21,10 +21,10 @@ public class AttendanceApplicationSelectService implements AttendanceApplication
 	}
 	
 	@Override
-	public AttendanceApplicationDTO select(Long id) {
+	public AttendanceApplicationSaveDTO select(Long id) {
 		this.dbPort.select(id);
 				
-		return AttendanceApplicationDTOMapper.toDTO(this.dbPort.select(id).orElse(null), service);
+		return AttendanceApplicationSaveDTOMapper.toDTO(this.dbPort.select(id).orElse(null), service);
 	}
 
 }
