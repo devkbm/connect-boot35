@@ -11,8 +11,8 @@ import lombok.Builder;
 public record TodoSaveDTO(
 		String clientAppUrl,
 		String companyCode,
-		Long pkTodoGroup,
-		Long pkTodo,
+		String pkTodoGroup,
+		String pkTodo,
 		String todo,
 		boolean isCompleted,
 		LocalDate dueDate,
@@ -40,8 +40,8 @@ public record TodoSaveDTO(
 	
 	public static TodoSaveDTO toDTO(Todo entity) {		
 		return TodoSaveDTO.builder()
-				       .pkTodoGroup(entity.getTodoGroup().getPkTodoGroup())
-				       .pkTodo(entity.getPkTodo())
+				       .pkTodoGroup(entity.getTodoGroup().getPkTodoGroup().toString())
+				       .pkTodo(entity.getPkTodo().toString())
 				       .todo(entity.getTodo())
 				       .isCompleted(entity.isCompleted())
 				       .dueDate(entity.getDueDate())

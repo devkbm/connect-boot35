@@ -22,13 +22,13 @@ public class TodoSaveService implements TodoSaveUseCase {
 	@Override
 	public TodoSaveDTO save(TodoSaveDTO dto) {
 		
-		TodoGroup todoGroup = dbPort.select(dto.pkTodoGroup());
+		TodoGroup todoGroup = dbPort.select(Long.parseLong(dto.pkTodoGroup()));
 		Todo entity = null;
 		
 		if (dto.pkTodo() == null) {			
 			todoGroup.addTodo(dto.newEntity(todoGroup));
 		} else {
-			entity = todoGroup.getTodo(dto.pkTodo());
+			entity = todoGroup.getTodo(Long.parseLong(dto.pkTodo()));
 			dto.modifyEntity(entity);
 		}
 					

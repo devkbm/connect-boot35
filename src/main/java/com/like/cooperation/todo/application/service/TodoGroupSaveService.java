@@ -20,7 +20,7 @@ public class TodoGroupSaveService implements TodoGroupSaveUseCase {
 	
 	@Override
 	public void save(TodoGroupSaveDTO dto) {
-		TodoGroup entity = dbPort.select(dto.pkTodoGroup());
+		TodoGroup entity = dbPort.select(Long.parseLong(dto.pkTodoGroup()));
 		
 		entity.modify(dto.todoGroupName());
 		

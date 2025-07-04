@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class WorkCalendarQueryResultDTO {
 
-	Long id;
+	String id;
 	String name;
 	String color;
 	

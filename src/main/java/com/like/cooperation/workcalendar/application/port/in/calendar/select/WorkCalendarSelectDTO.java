@@ -18,7 +18,7 @@ public record WorkCalendarSelectDTO(
 		String modifiedBy,
 		String clientAppUrl,
 		String companyCode,
-		Long workCalendarId,
+		String workCalendarId,
 		@NotEmpty
 		String workCalendarName,
 		String color,
@@ -42,7 +42,7 @@ public record WorkCalendarSelectDTO(
 		log.info(entity.toString());
 		
 		WorkCalendarSelectDTO dto = WorkCalendarSelectDTO.builder()
-									   .workCalendarId(entity.getId())
+									   .workCalendarId(entity.getId().toString())
 									   .workCalendarName(entity.getName())
 									   .color(entity.getColor())
 									   .memberList(entity.getMemberList().stream()

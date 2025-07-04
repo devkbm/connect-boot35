@@ -25,8 +25,8 @@ public class PostSelectQuerydsl {
 	public PostSelectDTO get(String readerUserId, Long postId) {
 		
 		Expression<Boolean> editable = new CaseBuilder()
-				.when(qPost.userId.eq(readerUserId)).then(true)
-				.otherwise(false)
+				.when(qPost.userId.eq(readerUserId)).then(true)				
+				.otherwise(false)		
 				.as("editable");
 		
 		return queryFactory

@@ -8,8 +8,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -18,6 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
+import io.hypersistence.utils.hibernate.id.Tsid;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -31,7 +30,7 @@ public class TodoGroup extends AbstractAuditEntity {
 	static String DEFAULT_GROUP_NAME = "기본일정";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Tsid
 	@Column(name="ID")
 	Long pkTodoGroup;	
 	

@@ -14,8 +14,8 @@ public record WorkCalendarEventResponseDTO(
 		String createdBy,
 		LocalDateTime modifiedDt,
 		String modifiedBy,
-		Long workCalendarId,
-		Long id,
+		String workCalendarId,
+		String id,
 		String text,
 		String color,
 		//@DateTimeFormat(pattern="E MMM dd yyyy HH:mm:ss 'GMT'Z")
@@ -34,8 +34,8 @@ public record WorkCalendarEventResponseDTO(
 		WorkCalendar workCalendar = entity.getWorkCalendar();
 		
 		WorkCalendarEventResponseDTO dto = WorkCalendarEventResponseDTO.builder()
-							   .workCalendarId(workCalendar.getId())
-							   .id(entity.getId())
+							   .workCalendarId(workCalendar.getId().toString())
+							   .id(entity.getId().toString())
 							   .text(entity.getTitle())
 							   .color(workCalendar.getColor())
 							   .start(entity.getStart())
