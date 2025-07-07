@@ -11,7 +11,7 @@ import com.like.core.jpa.domain.AuditorDetails;
 
 @Configuration
 @EnableJpaAuditing
-@Profile("!localtest")
+@Profile("prod")
 public class JpaRepositoryAuditConfig {
 	
 	@Bean
