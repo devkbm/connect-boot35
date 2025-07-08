@@ -20,7 +20,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 				
 		OAuth2LoginRequestThreadLocal.remove();
 		
-		String CLIENT_URL = "https://localhost:4200/oauth2/";
+		//String CLIENT_URL = "https://localhost:4200/oauth2/";
+		String CLIENT_URL = "https://connect-one.zapto.org/oauth2/";
 		
 		getRedirectStrategy().sendRedirect(request, response, CLIENT_URL + request.getSession().getId());
 	
