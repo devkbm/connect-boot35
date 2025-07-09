@@ -6,15 +6,16 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-/*
+
 @ConfigurationProperties(prefix = "user-image")
 public record UserImagePathProperties(
 		String uploadPath
 		) {
 
 }
-*/
 
+
+/*
 @Component
 @Accessors(fluent = true)
 @Data
@@ -22,3 +23,4 @@ public record UserImagePathProperties(
 public class UserImagePathProperties {
 	String uploadPath;
 }
+*/

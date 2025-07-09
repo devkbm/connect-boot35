@@ -22,11 +22,11 @@ public class PostAttachedFileServerRepository {
 	
 	public PostAttachedFileServerRepository(PostAttachedFileProperties properties) {
 		this.properties = properties;
-		PostAttachedFileServerRepository.fileDownLoadUrl = properties.getClientDownloadUrl();
+		PostAttachedFileServerRepository.fileDownLoadUrl = properties.clientDownloadUrl();
 	}
 	
 	public String getFileServerUploadPath() {	
-		return this.properties.getLocation();
+		return this.properties.location();
 	}
 	
 	public String fileTransfer(MultipartFile sourceFile, String serverFileName) throws FileNotFoundException, IOException {		
