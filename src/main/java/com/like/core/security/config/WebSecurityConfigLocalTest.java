@@ -21,6 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.like.core.security.CustomAuthenticationEntryPoint;
 import com.like.core.security.oauth2.CustomAuthorizationRequestResolver;
 import com.like.core.security.oauth2.CustomOAuth2UserService;
 import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
@@ -67,6 +68,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 				.authorizationEndpoint(endPointConfig -> endPointConfig.authorizationRequestResolver(customAuthorizationRequestResolver))
 				.userInfoEndpoint(endPointConfig -> endPointConfig.userService(customOAuth2UserService))														
 			)
+			.exceptionHandling((auth) -> auth.authenticationEntryPoint(new CustomAuthenticationEntryPoint("/login")))	// HTTP STATUS 302 -> 401 Unauthorized 로 변경
 			//.oauth2Login(Customizer.withDefaults())
 			//.oauth2Client(Customizer.withDefaults())
 			/*

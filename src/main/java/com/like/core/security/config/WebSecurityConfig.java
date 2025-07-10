@@ -21,6 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.like.core.security.CustomAuthenticationEntryPoint;
 import com.like.core.security.oauth2.CustomAuthorizationRequestResolver;
 import com.like.core.security.oauth2.CustomOAuth2UserService;
 import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
@@ -52,22 +53,22 @@ public class WebSecurityConfig<S extends Session> {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
-			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-			.headers(headers -> headers.frameOptions(frame -> frame.disable()))	// h2-console 테스트를 위한 설정
-			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))
+			.cors(cors -> cors.configurationSource(corsConfigurationSource()))			
+			.sessionManagement((s) -> s.sessionFixation().changeSessionId().maximumSessions(1).sessionRegistry(sessionRegistry()))
 			.securityContext((securityContext) -> securityContext.requireExplicitSave(true))
 			.authorizeHttpRequests(authorize -> 
 				authorize.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-						.requestMatchers("/api/system/user/login").permitAll()			// 로그인 API
-						.requestMatchers("/h2/**").permitAll()					// h2-console 
+						.requestMatchers("/api/system/user/login").permitAll()			// 로그인 API						
 						.anyRequest().authenticated()
 						//.anyRequest().permitAll()
+						
 						)								
 			.oauth2Login(customConfigurer -> customConfigurer
 				.successHandler(oAuth2AuthenticationSuccessHandler)
 				.authorizationEndpoint(endPointConfig -> endPointConfig.authorizationRequestResolver(customAuthorizationRequestResolver))
 				.userInfoEndpoint(endPointConfig -> endPointConfig.userService(customOAuth2UserService))														
 			)
+			.exceptionHandling((auth) -> auth.authenticationEntryPoint(new CustomAuthenticationEntryPoint("/login")))	// HTTP STATUS 302 -> 401 Unauthorized 로 변경
 			//.oauth2Login(Customizer.withDefaults())
 			//.oauth2Client(Customizer.withDefaults())
 			/*
