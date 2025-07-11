@@ -51,7 +51,7 @@ public class WebSecurityConfigLocalTest<S extends Session> {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable())
+		http.csrf(csrf -> csrf.disable())			
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 			.headers(headers -> headers.frameOptions(frame -> frame.disable()))	// h2-console 테스트를 위한 설정
 			.sessionManagement((s) -> s.maximumSessions(1).sessionRegistry(sessionRegistry()))
