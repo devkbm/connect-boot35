@@ -1,4 +1,4 @@
-package com.like.login.domain;
+package com.like.login.application.port.in;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,17 +30,19 @@ public class AuthenticationToken implements Serializable {
     
        
     @Builder
-    public AuthenticationToken(String companyCode
-    						  ,String userId
-    						  ,String userName    						  
-    						  ,String staffNo 
-    						  ,String email
-    						  ,String imageUrl
-    						  ,String ipAddress
-    						  ,String sessionId
-    						  ,String oAuthAccessToken
-    						  ,List<String> roleList
-    						  ,List<MenuGroupDTO> menuGroupList) {
+    public AuthenticationToken(
+    		String companyCode,
+    		String userId,
+    		String userName,  
+    		String staffNo, 
+    		String email,
+    		String imageUrl,
+    		String ipAddress,
+    		String sessionId,
+    		String oAuthAccessToken,
+    		List<String> roleList,
+    		List<MenuGroupDTO> menuGroupList
+    		) {
     	
     	this.companyCode = companyCode;
     	this.userId = userId;

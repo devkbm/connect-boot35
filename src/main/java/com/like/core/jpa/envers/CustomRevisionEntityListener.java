@@ -1,4 +1,4 @@
-package com.like.core.envers;
+package com.like.core.jpa.envers;
 
 import org.hibernate.envers.RevisionListener;
 import org.springframework.security.core.Authentication;

@@ -1,4 +1,4 @@
-package com.like.login.domain.port.in.impl;
+package com.like.login.application.service;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import com.like.system.user.export.SystemUserDTOSelectUseCase;
 
 import lombok.extern.slf4j.Slf4j;
 
-import com.like.login.domain.AuthenticationToken;
-import com.like.login.domain.port.in.AuthenticationTokenSelectUseCase;
+import com.like.login.application.port.in.AuthenticationToken;
+import com.like.login.application.port.in.AuthenticationTokenSelectUseCase;
 
 @Slf4j
 @Transactional
@@ -23,8 +23,10 @@ public class AuthenticationTokenSelectService implements AuthenticationTokenSele
 	SystemUserDTOSelectUseCase userSelectUseCase;
 	MenuGroupByUserSelectUseCase menuGroupSelectUseCase;
 	
-	AuthenticationTokenSelectService(SystemUserDTOSelectUseCase userSelectUseCase
-			 						,MenuGroupByUserSelectUseCase menuGroupSelectUseCase) {
+	AuthenticationTokenSelectService(
+			SystemUserDTOSelectUseCase userSelectUseCase,
+			MenuGroupByUserSelectUseCase menuGroupSelectUseCase
+			) {
 		this.userSelectUseCase = userSelectUseCase;
 		this.menuGroupSelectUseCase = menuGroupSelectUseCase;
 	}

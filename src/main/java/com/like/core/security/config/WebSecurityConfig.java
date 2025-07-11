@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
 import org.springframework.session.security.SpringSessionBackedSessionRegistry;
@@ -22,6 +23,7 @@ import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.like.core.security.CustomAuthenticationEntryPoint;
+import com.like.core.security.SpaCsrfTokenRequestHandler;
 import com.like.core.security.oauth2.CustomAuthorizationRequestResolver;
 import com.like.core.security.oauth2.CustomOAuth2UserService;
 import com.like.core.security.oauth2.OAuth2AuthenticationSuccessHandler;
@@ -53,6 +55,12 @@ public class WebSecurityConfig<S extends Session> {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
+			/*
+		    .csrf((csrf) -> csrf
+					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())   
+					.csrfTokenRequestHandler(new SpaCsrfTokenRequestHandler())   
+			)
+			*/
 			.cors(cors -> cors.configurationSource(corsConfigurationSource()))			
 			.sessionManagement((s) -> s.sessionFixation().changeSessionId().maximumSessions(1).sessionRegistry(sessionRegistry()))
 			.securityContext((securityContext) -> securityContext.requireExplicitSave(true))
@@ -136,3 +144,4 @@ public class WebSecurityConfig<S extends Session> {
 		return (web) -> web.ignoring().requestMatchers("/static/**");
 	}
 }
+

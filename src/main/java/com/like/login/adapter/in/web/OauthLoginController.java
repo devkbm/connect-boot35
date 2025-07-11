@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.like.login.domain.AuthenticationToken;
+import com.like.login.application.port.in.AuthenticationToken;
 import com.like.system.user.application.service.select.SystemUserSelectService;
 import com.like.system.user.domain.SystemUser;
 

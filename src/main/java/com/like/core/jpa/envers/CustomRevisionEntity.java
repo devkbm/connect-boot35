@@ -1,4 +1,4 @@
-package com.like.core.envers;
+package com.like.core.jpa.envers;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

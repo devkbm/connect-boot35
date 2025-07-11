@@ -1,4 +1,4 @@
-package com.like.login.domain;
+package com.like.core.security;
 
 import java.util.Collection;
 

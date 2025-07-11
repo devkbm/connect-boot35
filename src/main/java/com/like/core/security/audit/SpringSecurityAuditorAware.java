@@ -1,4 +1,4 @@
-package com.like.core.audit;
+package com.like.core.security.audit;
 
 import java.util.Optional;
 

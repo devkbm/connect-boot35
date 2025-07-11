@@ -1,6 +1,4 @@
-package com.like.login.domain.port.in;
-
-import com.like.login.domain.AuthenticationToken;
+package com.like.login.application.port.in;
 
 public interface AuthenticationTokenSelectUseCase {
 	AuthenticationToken select(String userId, String companyCode, String sessionId, String ipAddress);

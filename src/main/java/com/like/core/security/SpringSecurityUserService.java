@@ -1,4 +1,4 @@
-package com.like.login.domain.port.in.impl;
+package com.like.core.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.like.login.adapter.in.web.LoginRequestContext;
-import com.like.login.domain.CustomUserDetails;
 import com.like.system.user.adapter.out.db.data.SystemUserRepository;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
