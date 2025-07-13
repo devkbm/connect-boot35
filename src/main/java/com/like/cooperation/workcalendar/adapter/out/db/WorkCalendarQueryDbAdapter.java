@@ -10,7 +10,6 @@ import com.like.cooperation.workcalendar.application.port.out.WorkCalendarQueryD
 import com.like.cooperation.workcalendar.domain.QWorkCalendar;
 import com.like.cooperation.workcalendar.domain.QWorkCalendarMember;
 import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -29,7 +28,8 @@ public class WorkCalendarQueryDbAdapter implements WorkCalendarQueryDbPort {
 		return queryFactory
 				.select(Projections.fields(
 						WorkCalendarQueryResultDTO.class,
-						Expressions.asString(qWorkCalendar.id.stringValue()).as("id"),
+						//Expressions.asString(qWorkCalendar.id.stringValue()).as("id"),
+						qWorkCalendar.id.stringValue().as("id"),
 						qWorkCalendar.name,
 						qWorkCalendar.color
 						)
@@ -45,7 +45,8 @@ public class WorkCalendarQueryDbAdapter implements WorkCalendarQueryDbPort {
 		return queryFactory
 				.select(Projections.fields(
 						WorkCalendarQueryResultDTO.class,
-						Expressions.asString(qWorkCalendar.id.stringValue()).as("id"),
+						//Expressions.asString(qWorkCalendar.id.stringValue()).as("id"),
+						qWorkCalendar.id.stringValue().as("id"),
 						qWorkCalendar.name,
 						qWorkCalendar.color
 						)

@@ -5,30 +5,23 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.todo.adapter.out.db.data.TodoGroupJpaRepository;
-import com.like.cooperation.todo.application.port.in.TodoGroupQueryUseCase;
-import com.like.cooperation.todo.domain.QTodoGroup;
-import com.like.cooperation.todo.domain.TodoGroup;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupQueryResultDTO;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupQueryUseCase;
+import com.like.cooperation.todo.application.port.out.TodoGroupQueryDbPort;
 
 @Transactional(readOnly=true)
 @Service
 public class TodoGroupQueryService implements TodoGroupQueryUseCase {
 	
-	private TodoGroupJpaRepository repository;
+	TodoGroupQueryDbPort dbPort;
 	
-	public TodoGroupQueryService(TodoGroupJpaRepository repository) {
-		this.repository = repository;
+	TodoGroupQueryService(TodoGroupQueryDbPort dbPort) {
+		this.dbPort = dbPort;
 	}			
 
 	@Override
-	public List<TodoGroup> select(String userId) {
-		QTodoGroup qTodoGroup = QTodoGroup.todoGroup;
-		
-		//Iterable<TodoGroup> result = repository.findAll(qTodoGroup.createdBy.eq(userId)); 
-		//List<TodoGroup> list = new ArrayList<>();
-		//result.forEach(e -> list.add(e));
-		
-		return repository.findAll(qTodoGroup.userId.eq(userId));
+	public List<TodoGroupQueryResultDTO> select(String userId) {			
+		return this.dbPort.select(userId);
 	}
 		
 }

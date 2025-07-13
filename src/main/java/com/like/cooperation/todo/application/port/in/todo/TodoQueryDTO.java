@@ -1,4 +1,4 @@
-package com.like.cooperation.todo.application.dto;
+package com.like.cooperation.todo.application.port.in.todo;
 
 import java.time.LocalDate;
 

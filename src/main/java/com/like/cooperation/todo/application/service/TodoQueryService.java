@@ -5,29 +5,23 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.todo.adapter.out.db.data.TodoJpaRepository;
-import com.like.cooperation.todo.application.dto.TodoSaveDTO;
-import com.like.cooperation.todo.application.port.in.TodoQueryUseCase;
-import com.like.cooperation.todo.domain.QTodo;
+import com.like.cooperation.todo.application.port.in.todo.TodoQueryResultDTO;
+import com.like.cooperation.todo.application.port.in.todo.TodoQueryUseCase;
+import com.like.cooperation.todo.application.port.out.TodoQueryDbPort;
 
 @Transactional(readOnly=true)
 @Service
 public class TodoQueryService implements TodoQueryUseCase {
 
-	TodoJpaRepository repository;
+	TodoQueryDbPort dbPort;
 	
-	TodoQueryService(TodoJpaRepository repository) {
-		this.repository = repository;
+	TodoQueryService(TodoQueryDbPort dbPort) {
+		this.dbPort = dbPort;
 	}
 	
 	@Override
-	public List<TodoSaveDTO> select(Long todoGroupId) {
-		QTodo qTodo = QTodo.todo1;
-				
-		return this.repository.findAll(qTodo.todoGroup.pkTodoGroup.eq(todoGroupId))
-							  .stream()
-							  .map(e -> TodoSaveDTO.toDTO(e))
-							  .toList();
+	public List<TodoQueryResultDTO> select(Long todoGroupId) {					
+		return this.dbPort.select(todoGroupId);
 	}
 
 	

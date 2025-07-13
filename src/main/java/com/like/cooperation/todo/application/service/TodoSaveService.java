@@ -2,9 +2,10 @@ package com.like.cooperation.todo.application.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
-import com.like.cooperation.todo.application.dto.TodoSaveDTO;
-import com.like.cooperation.todo.application.port.in.TodoSaveUseCase;
+import com.like.cooperation.todo.application.port.in.todo.TodoSaveDTO;
+import com.like.cooperation.todo.application.port.in.todo.TodoSaveUseCase;
 import com.like.cooperation.todo.application.port.out.TodoGroupCommandDbPort;
 import com.like.cooperation.todo.domain.Todo;
 import com.like.cooperation.todo.domain.TodoGroup;
@@ -22,14 +23,14 @@ public class TodoSaveService implements TodoSaveUseCase {
 	@Override
 	public TodoSaveDTO save(TodoSaveDTO dto) {
 		
-		TodoGroup todoGroup = dbPort.select(Long.parseLong(dto.pkTodoGroup()));
+		TodoGroup todoGroup = dbPort.select(Long.parseLong(dto.groupId()));
 		Todo entity = null;
 		
-		if (dto.pkTodo() == null) {			
-			todoGroup.addTodo(dto.newEntity(todoGroup));
+		if (StringUtils.hasText(dto.todoId())) {
+			entity = todoGroup.getTodo(Long.parseLong(dto.todoId()));
+			dto.modifyEntity(entity);			
 		} else {
-			entity = todoGroup.getTodo(Long.parseLong(dto.pkTodo()));
-			dto.modifyEntity(entity);
+			todoGroup.addTodo(dto.newEntity(todoGroup));
 		}
 					
 		dbPort.save(todoGroup);			

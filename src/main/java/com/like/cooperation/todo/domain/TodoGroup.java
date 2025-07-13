@@ -32,7 +32,7 @@ public class TodoGroup extends AbstractAuditEntity {
 	@Id
 	@Tsid
 	@Column(name="ID")
-	Long pkTodoGroup;	
+	Long groupId;	
 	
 	@Column(name="USER_ID")
 	String userId;
@@ -59,8 +59,9 @@ public class TodoGroup extends AbstractAuditEntity {
 		this.todoGroupName = todoGroupName;		
 	}
 	
+	
 	public Todo getTodo(Long id) {
-		return this.todoList.stream().filter(e -> e.pkTodo.equals(id)).findFirst().orElse(null);
+		return this.todoList.stream().filter(e -> e.todoId.equals(id)).findFirst().orElse(null);
 	}
 	
 	public Todo getLastTodo() {
@@ -76,7 +77,7 @@ public class TodoGroup extends AbstractAuditEntity {
 	}
 	
 	public void removeTodo(Long id) {
-		this.todoList.removeIf(e -> e.pkTodo.equals(id));		
+		this.todoList.removeIf(e -> e.todoId.equals(id));		
 	}
-	
+		
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.todo.application.port.in.TodoGroupDeleteUseCase;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupDeleteUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

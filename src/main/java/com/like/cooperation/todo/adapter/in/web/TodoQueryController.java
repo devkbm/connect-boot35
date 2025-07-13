@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.todo.application.dto.TodoSaveDTO;
-import com.like.cooperation.todo.application.port.in.TodoQueryUseCase;
+import com.like.cooperation.todo.application.port.in.todo.TodoQueryResultDTO;
+import com.like.cooperation.todo.application.port.in.todo.TodoQueryUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController
@@ -25,7 +25,7 @@ public class TodoQueryController {
 	@GetMapping("/api/todo/group/{id}/list")
 	public ResponseEntity<?> getTodoList(@PathVariable Long id) {				
 		
-		List<TodoSaveDTO> dtoList = useCase.select(id); 											
+		List<TodoQueryResultDTO> dtoList = useCase.select(id); 											
 		
 		return toList(dtoList, MessageUtil.getQueryMessage(dtoList.size()));
 	}

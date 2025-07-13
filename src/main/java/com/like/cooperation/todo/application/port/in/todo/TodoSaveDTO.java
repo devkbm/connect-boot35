@@ -1,4 +1,4 @@
-package com.like.cooperation.todo.application.dto;
+package com.like.cooperation.todo.application.port.in.todo;
 
 import java.time.LocalDate;
 
@@ -11,10 +11,10 @@ import lombok.Builder;
 public record TodoSaveDTO(
 		String clientAppUrl,
 		String companyCode,
-		String pkTodoGroup,
-		String pkTodo,
-		String todo,
-		boolean isCompleted,
+		String groupId,
+		String todoId,
+		String todo,		
+		Boolean completed,
 		LocalDate dueDate,
 		String comments
 		) {
@@ -33,17 +33,17 @@ public record TodoSaveDTO(
 	}
 	
 	public void modifyEntity(Todo entity) {
-		entity.modify(todo, isCompleted, dueDate, comments);
+		entity.modify(todo, completed, dueDate, comments);
 		
 		entity.setAppUrl(clientAppUrl);
 	}
 	
 	public static TodoSaveDTO toDTO(Todo entity) {		
 		return TodoSaveDTO.builder()
-				       .pkTodoGroup(entity.getTodoGroup().getPkTodoGroup().toString())
-				       .pkTodo(entity.getPkTodo().toString())
+				       .groupId(entity.getTodoGroup().getGroupId().toString())
+				       .todoId(entity.getTodoId().toString())
 				       .todo(entity.getTodo())
-				       .isCompleted(entity.isCompleted())
+				       .completed(entity.isCompleted())
 				       .dueDate(entity.getDueDate())
 				       .comments(entity.getComments())
 					   .build();	

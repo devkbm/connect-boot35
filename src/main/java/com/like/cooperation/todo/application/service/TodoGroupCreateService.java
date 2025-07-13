@@ -3,7 +3,7 @@ package com.like.cooperation.todo.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.todo.application.port.in.TodoGroupCreateUseCase;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupCreateUseCase;
 import com.like.cooperation.todo.application.port.out.TodoGroupCommandDbPort;
 import com.like.cooperation.todo.domain.TodoGroup;
 

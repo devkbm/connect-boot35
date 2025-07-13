@@ -34,7 +34,7 @@ public class Todo extends AbstractAuditEntity {
 	@Id
 	@Tsid
 	@Column(name="ID")
-	Long pkTodo;	
+	Long todoId;	
 
 	@Column(name="TODO")
 	String todo;		
@@ -54,17 +54,24 @@ public class Todo extends AbstractAuditEntity {
 	TodoGroup todoGroup;	
 	
 	@Builder
-	public Todo(TodoGroup todoGroup, String todo, LocalDate dueDate, String comments) {
+	public Todo(
+			TodoGroup todoGroup,
+			String todo,
+			LocalDate dueDate,
+			String comments
+			) {
 		this.todoGroup = todoGroup;
 		this.todo = todo;
 		this.dueDate = dueDate;
 		this.comments = comments;
 	}
 	
-	public void modify(String todo
-					  ,boolean isCompleted
-					  ,LocalDate dueDate
-					  ,String comments) {
+	public void modify(
+			String todo,
+			boolean isCompleted,
+			LocalDate dueDate,
+			String comments
+			) {
 		this.todo = todo;
 		this.isCompleted = isCompleted;
 		this.dueDate = dueDate;

@@ -3,8 +3,8 @@ package com.like.cooperation.todo.application.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.todo.application.dto.TodoGroupSaveDTO;
-import com.like.cooperation.todo.application.port.in.TodoGroupSaveUseCase;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupSaveDTO;
+import com.like.cooperation.todo.application.port.in.group.TodoGroupSaveUseCase;
 import com.like.cooperation.todo.application.port.out.TodoGroupCommandDbPort;
 import com.like.cooperation.todo.domain.TodoGroup;
 
@@ -20,7 +20,7 @@ public class TodoGroupSaveService implements TodoGroupSaveUseCase {
 	
 	@Override
 	public void save(TodoGroupSaveDTO dto) {
-		TodoGroup entity = dbPort.select(Long.parseLong(dto.pkTodoGroup()));
+		TodoGroup entity = dbPort.select(Long.parseLong(dto.groupId()));
 		
 		entity.modify(dto.todoGroupName());
 		

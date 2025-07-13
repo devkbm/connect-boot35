@@ -32,9 +32,14 @@ public class PostSelectQuerydsl {
 		return queryFactory
 				.select(
 					Projections.fields(PostSelectDTO.class,
+						/*	
 						Expressions.asString(qPost.board.boardId.toString()).as("boardId"),
 						Expressions.asString(qPost.postId.toString()).as("postId"),
-						Expressions.asString(qPost.postParentId.toString()).as("postParentId"),						
+						Expressions.asString(qPost.postParentId.toString()).as("postParentId"),
+						*/						
+						qPost.board.boardId.stringValue().as("boardId"),
+						qPost.postId.stringValue().as("postId"),
+						qPost.postParentId.stringValue().as("postParentId"),
 						qPost.userId.as("userName"),
 						qPost.content.title,
 						qPost.content.contents,

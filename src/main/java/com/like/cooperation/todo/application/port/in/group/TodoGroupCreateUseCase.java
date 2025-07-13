@@ -1,4 +1,4 @@
-package com.like.cooperation.todo.application.port.in;
+package com.like.cooperation.todo.application.port.in.group;
 
 import com.like.cooperation.todo.domain.TodoGroup;
 

@@ -20,7 +20,7 @@ public class TodoDbAdapter implements TodoCommandDbPort {
 	
 	@Override
 	public List<Todo> selectList(Long todoGroupId) {
-		return this.repository.findAll(QTodo.todo1.todoGroup.pkTodoGroup.eq(todoGroupId));
+		return this.repository.findAll(QTodo.todo1.todoGroup.groupId.eq(todoGroupId));
 	}
 
 	@Override

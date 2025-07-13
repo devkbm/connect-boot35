@@ -1,4 +1,4 @@
-package com.like.cooperation.todo.application.dto;
+package com.like.cooperation.todo.application.port.in.group;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.like.cooperation.todo.domain.TodoGroup;
@@ -7,7 +7,7 @@ import com.like.cooperation.todo.domain.TodoGroup;
 public record TodoGroupSaveDTO(			
 		String clientAppUrl,
 		String companyCode,
-		String pkTodoGroup,
+		String groupId,
 		String todoGroupName
 		) {
 	
