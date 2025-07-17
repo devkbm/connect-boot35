@@ -5,12 +5,12 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.like.system.user.adapter.out.db.data.SystemUserSocialRepository;
-import com.like.system.user.application.port.out.SystemUserSocialCommandDbPort;
-import com.like.system.user.domain.oauth2.SystemUserSocial;
-import com.like.system.user.domain.oauth2.SystemUserSocialId;
+import com.like.system.user.application.port.out.SystemUserSocialEmailCommandDbPort;
+import com.like.system.user.domain.oauth2.SystemUserSocialEmail;
+import com.like.system.user.domain.oauth2.SystemUserSocialEmailId;
 
 @Repository
-public class SystemUserSocialCommandDbAdapter implements SystemUserSocialCommandDbPort {
+public class SystemUserSocialCommandDbAdapter implements SystemUserSocialEmailCommandDbPort {
 
 	SystemUserSocialRepository repository;
 	
@@ -19,17 +19,17 @@ public class SystemUserSocialCommandDbAdapter implements SystemUserSocialCommand
 	}
 	
 	@Override
-	public Optional<SystemUserSocial> select(SystemUserSocialId id) {
+	public Optional<SystemUserSocialEmail> select(SystemUserSocialEmailId id) {
 		return repository.findById(id);
 	}
 
 	@Override
-	public void save(SystemUserSocial entity) {
+	public void save(SystemUserSocialEmail entity) {
 		repository.save(entity);
 	}
 
 	@Override
-	public void delete(SystemUserSocialId id) {
+	public void delete(SystemUserSocialEmailId id) {
 		repository.deleteById(id);
 	}
 

@@ -1,4 +1,4 @@
-package com.like.system.user.application.port.in.query;
+package com.like.system.user.application.port.in.menu;
 
 import java.util.List;
 

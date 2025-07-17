@@ -1,4 +1,4 @@
-package com.like.core.security.oauth2;
+package com.like.core.security.oauth2.social;
 
 import java.io.Serializable;
 

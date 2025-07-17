@@ -9,14 +9,17 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 소셜 이메일 정보 관리
+ */
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "COMUSERSOCIAL")
-public class SystemUserSocial extends AbstractAuditEntity {
+public class SystemUserSocialEmail extends AbstractAuditEntity {
 
 	@EmbeddedId
-	SystemUserSocialId id;
+	SystemUserSocialEmailId id;
 	
 	@Column(name="REG_ID")
 	String registrationId;
@@ -24,8 +27,8 @@ public class SystemUserSocial extends AbstractAuditEntity {
 	@Column(name="EMAIL")
 	String email;
 	
-	public SystemUserSocial(
-			SystemUserSocialId id,
+	public SystemUserSocialEmail(
+			SystemUserSocialEmailId id,
 			String registrationId,
 			String email
 			) {

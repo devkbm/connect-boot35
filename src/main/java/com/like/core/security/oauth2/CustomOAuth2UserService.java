@@ -10,12 +10,15 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.like.core.security.oauth2.social.SocialLogin;
+import com.like.core.security.oauth2.social.SocialLoginID;
+import com.like.core.security.oauth2.social.SocialLoginRepository;
 import com.like.system.user.adapter.out.db.data.SystemUserRepository;
 import com.like.system.user.adapter.out.db.data.SystemUserSocialRepository;
 import com.like.system.user.domain.SystemUser;
 import com.like.system.user.domain.SystemUserId;
-import com.like.system.user.domain.oauth2.QSystemUserSocial;
-import com.like.system.user.domain.oauth2.SystemUserSocial;
+import com.like.system.user.domain.oauth2.QSystemUserSocialEmail;
+import com.like.system.user.domain.oauth2.SystemUserSocialEmail;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -104,7 +107,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 	}
 		
 	private Optional<SystemUser> findSystemUserBySocialEmail(String email) {
-		Optional<SystemUserSocial> social = this.userSocialRepository.findBy(QSystemUserSocial.systemUserSocial.email.eq(email), q-> q.first());
+		Optional<SystemUserSocialEmail> social = this.userSocialRepository.findBy(QSystemUserSocialEmail.systemUserSocialEmail.email.eq(email), q-> q.first());
 		
 		String userId = social.map(e -> e.getId().userId()).orElseThrow(() -> new RuntimeException("동일한 이메일 정보를 가진 사용자가 없습니다."));
 		

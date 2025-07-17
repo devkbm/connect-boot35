@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"userId", "seq"})
 @Embeddable
-public class SystemUserSocialId implements Serializable {
+public class SystemUserSocialEmailId implements Serializable {
 
 	private static final long serialVersionUID = -8963960540472374338L;
 
@@ -26,7 +26,7 @@ public class SystemUserSocialId implements Serializable {
 	@Column(name="SEQ")
 	Long seq;	
 				
-	public SystemUserSocialId(String userId, Long seq) {
+	public SystemUserSocialEmailId(String userId, Long seq) {
 		this.userId = new SystemUserId(userId);
 		this.seq = seq;
 	}

@@ -1,4 +1,4 @@
-package com.like.core.security.oauth2;
+package com.like.core.security.oauth2.social;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.ListQuerydslPredicateExecutor;

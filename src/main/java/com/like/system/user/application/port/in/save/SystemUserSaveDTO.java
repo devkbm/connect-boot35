@@ -35,6 +35,7 @@ public record SystemUserSaveDTO(
 		List<String> roleList,
 		List<String> menuGroupList
 		) {
+	
 	public SystemUser newUser(Dept dept) {
 		SystemUser entity = SystemUser.builder()										  
 									  .name(this.name)											  

@@ -1,4 +1,4 @@
-package com.like.core.security.oauth2;
+package com.like.core.security.oauth2.social;
 
 import java.time.LocalDateTime;
 
@@ -41,10 +41,10 @@ public class SocialLogin {
 	//LocalDateTime modifiedDt;
 		
 	public static SocialLogin newSocialLogin(
-			SocialLoginID id
-			,String userId						 
-			,String name
-			,String email
+			SocialLoginID id,
+			String userId,						 
+			String name,
+			String email
 			) {
 		return SocialLogin
 				.builder()			
