@@ -37,7 +37,7 @@ public class SystemUserImageUploadController {
 		
 		File uploadedFile = uploader.upload(companyCode, userId, file);
 		
-		String fileName = useCase.saveUploadImagePath(companyCode, userId, uploadedFile);			
+		String fileName = useCase.upload(companyCode, userId, uploadedFile);			
 							
 		return new ResponseEntity<Map<String,Object>>(setUploadResponseBody(fileName), setUploadResponseHeader(), HttpStatus.OK);
 	}	

@@ -21,7 +21,7 @@ public class SystemUserImageUploadService implements SystemUserImageUploadUseCas
 	}	
 
 	@Override
-	public String saveUploadImagePath(String companyCode, String userId, File file) throws IOException {
+	public String upload(String companyCode, String userId, File file) throws IOException {
 		SystemUser user = this.port.select(userId).orElse(null);
 		
 		if (user == null) return null;
