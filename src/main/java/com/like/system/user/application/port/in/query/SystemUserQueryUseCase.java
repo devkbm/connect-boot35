@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface SystemUserQueryUseCase {
 	List<SystemUserQueryResultDTO> selectList(SystemUserQueryDTO dto);
+	
+	List<SystemUserQueryResultDTO2> selectList2(SystemUserQueryDTO dto);
 }

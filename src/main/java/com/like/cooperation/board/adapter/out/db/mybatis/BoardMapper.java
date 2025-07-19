@@ -109,10 +109,12 @@ SELECT TO_CHAR(A.BOARD_ID)	boardId
 <if test="data.contents != null"><![CDATA[
    AND A.CONTENTS LIKE #{data.contents}
 ]]></if>           
+<if test="_databaseId == 'oracle'">
  ORDER
     BY A.POST_ID DESC
 OFFSET #{pagenumber} * #{pagesize} ROWS 
-FETCH NEXT #{pagesize} + 1 ROWS ONLY      		
+FETCH NEXT #{pagesize} + 1 ROWS ONLY      	
+ </if>	
 </script>
 	""")	
 	List<PostQueryResultDTO> getArticleList(Map<String, Object> params);
