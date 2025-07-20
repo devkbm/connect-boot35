@@ -26,7 +26,8 @@ public interface SystemUserMapper {
 		<![CDATA[
 		SELECT A.USER_ID												 	userId
 		     , A.USER_NAME												 	name
-		     , A.USER_ID													staffNo
+		     , B.ORG_CD														companyCode
+		     , A.USER_ID													staffNo		     
 		     , B.DEPT_CD													deptCode
 		     , B.DEPT_NM_KOR												deptName
 		     , A.MOBILE_NUM													mobileNum
@@ -85,8 +86,9 @@ public interface SystemUserMapper {
 	    </if>
 	    <![CDATA[ 
          GROUP 
-            BY A.USER_ID
+            BY A.USER_ID             
              , A.USER_NAME
+             , B.ORG_CD
 		     , B.DEPT_CD
 		     , B.DEPT_NM_KOR
 		     , A.MOBILE_NUM	
