@@ -7,8 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.query.SystemUserQueryResultDTO;
-import com.like.system.user.application.port.in.query.SystemUserQueryResultDTO2;
-import com.like.system.user.application.port.in.query.SystemUserQueryResultDTOMapper;
 import com.like.system.user.application.port.in.query.SystemUserQueryUseCase;
 import com.like.system.user.application.port.out.SystemUserQueryDbPort;
 
@@ -20,20 +18,11 @@ public class SystemUserQueryService implements SystemUserQueryUseCase {
 	
 	SystemUserQueryService(SystemUserQueryDbPort dbPort) {
 		this.dbPort = dbPort;
-	}
-	
-	@Override
-	public List<SystemUserQueryResultDTO> selectList(SystemUserQueryDTO dto) {
-		return this.dbPort.selectList(dto)
-						  .stream()
-						  .map(e -> SystemUserQueryResultDTOMapper.toDTO(e, dto.companyCode()))
-						  .toList();
-	}
+	}	
 
 	@Override
-	public List<SystemUserQueryResultDTO2> selectList2(SystemUserQueryDTO dto) {
-		
-		return this.dbPort.selectList2(dto);
+	public List<SystemUserQueryResultDTO> selectList(SystemUserQueryDTO dto) {		
+		return this.dbPort.selectList(dto);
 	}
 
 }

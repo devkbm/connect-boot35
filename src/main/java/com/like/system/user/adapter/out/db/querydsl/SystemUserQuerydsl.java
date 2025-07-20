@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
-import com.like.system.user.application.port.in.query.SystemUserQueryResultDTO2;
+import com.like.system.user.application.port.in.query.SystemUserQueryResultDTO;
 import com.like.system.user.domain.QSystemUser;
 import com.like.system.user.domain.QSystemUserCompanyRole;
 import com.querydsl.core.types.Projections;
@@ -24,12 +24,12 @@ public class SystemUserQuerydsl {
 		this.queryFactory = queryFactory;
 	}
 	
-	public List<SystemUserQueryResultDTO2> selectList2(SystemUserQueryDTO dto) {
+	public List<SystemUserQueryResultDTO> selectList2(SystemUserQueryDTO dto) {
 									
 		return this.queryFactory
 				.select(
 					Projections.fields(
-							SystemUserQueryResultDTO2.class,
+							SystemUserQueryResultDTO.class,
 							qSystemUser.id.userId,
 							qSystemUserCompanyRole.id.roleCode.as("roleList")							
 					)					
