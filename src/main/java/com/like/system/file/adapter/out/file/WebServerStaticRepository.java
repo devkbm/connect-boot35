@@ -1,3 +1,4 @@
+/*
 package com.like.system.file.adapter.out.file;
 
 import java.io.File;
@@ -48,3 +49,4 @@ public class WebServerStaticRepository {
 	}
 	
 }
+*/

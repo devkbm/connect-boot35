@@ -21,7 +21,7 @@ public class FileServerDeleteController {
 	
 	
 	@DeleteMapping("/api/system/file/{id}")
-	public ResponseEntity<?> deleteDept(@PathVariable String id) {				
+	public ResponseEntity<?> delete(@PathVariable String id) {				
 												
 		useCase.delete(id);							
 		

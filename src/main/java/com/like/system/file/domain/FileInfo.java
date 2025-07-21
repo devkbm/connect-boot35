@@ -2,7 +2,6 @@ package com.like.system.file.domain;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.like.core.jpa.domain.AbstractAuditEntity;
 
-import io.hypersistence.tsid.TSID;
+
 import io.hypersistence.utils.hibernate.id.Tsid;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,8 +36,6 @@ public class FileInfo extends AbstractAuditEntity implements Serializable {
 	@Tsid
 	@Column(name="FILE_ID")
 	Long id;
-	//@Column(name="FILE_ID", columnDefinition = "BINARY(16)")
-	//UUID id;	
 
 	@Column(name="APP_URL")
 	String appUrl;

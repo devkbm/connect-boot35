@@ -12,7 +12,7 @@ public class FileServerProperties {
 	/**
 	 * Web Server Static Resource Path
 	 */
-	String webStaticLocation;
+	//String webStaticLocation;
 	
 	/**
 	 * Dynamic Resource Path

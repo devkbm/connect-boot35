@@ -1,3 +1,4 @@
+/*
 package com.like.system.file.application.service;
 
 import java.io.File;
@@ -69,3 +70,4 @@ public class WebServerDownloadService implements WebServerDownloadUseCase {
 
 	
 }
+*/
