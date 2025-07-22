@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.like.cooperation.team.domain.port.in.TeamSelectUseCase;
-import com.like.cooperation.team.domain.port.in.dto.TeamSaveDTO;
+import com.like.cooperation.team.application.port.in.save.TeamSaveDTO;
+import com.like.cooperation.team.application.port.in.select.TeamSelectUseCase;
 import com.like.core.message.MessageUtil;
 
 @RestController

@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.like.cooperation.team.application.port.in.query.TeamQueryDTO;
+import com.like.cooperation.team.application.port.out.TeamQueryRepository;
 import com.like.cooperation.team.domain.QTeam;
 import com.like.cooperation.team.domain.QTeamMember;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
-import com.like.cooperation.team.domain.port.in.dto.TeamQueryDTO;
-import com.like.cooperation.team.domain.port.out.TeamQueryRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository

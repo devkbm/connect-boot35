@@ -1,11 +1,11 @@
-package com.like.cooperation.team.domain.port.in.impl;
+package com.like.cooperation.team.application.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.like.cooperation.team.domain.port.in.TeamSelectUseCase;
-import com.like.cooperation.team.domain.port.in.dto.TeamSaveDTO;
-import com.like.cooperation.team.domain.port.out.TeamCommandDbPort;
+import com.like.cooperation.team.application.port.in.save.TeamSaveDTO;
+import com.like.cooperation.team.application.port.in.select.TeamSelectUseCase;
+import com.like.cooperation.team.application.port.out.TeamCommandDbPort;
 
 @Transactional
 @Service

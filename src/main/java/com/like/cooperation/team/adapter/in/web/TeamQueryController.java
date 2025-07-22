@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.like.cooperation.team.application.port.in.query.TeamQueryDTO;
+import com.like.cooperation.team.application.port.in.query.TeamQueryUseCase;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
-import com.like.cooperation.team.domain.port.in.TeamQueryUseCase;
-import com.like.cooperation.team.domain.port.in.dto.TeamQueryDTO;
 import com.like.core.message.MessageUtil;
 import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.save.SystemUserSaveDTO;

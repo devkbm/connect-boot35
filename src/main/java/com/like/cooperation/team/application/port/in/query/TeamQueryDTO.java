@@ -1,4 +1,4 @@
-package com.like.cooperation.team.domain.port.in.dto;
+package com.like.cooperation.team.application.port.in.query;
 
 import static org.springframework.util.StringUtils.hasText;
 

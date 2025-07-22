@@ -1,4 +1,4 @@
-package com.like.cooperation.team.domain.port.out;
+package com.like.cooperation.team.application.port.out;
 
 import com.like.cooperation.team.domain.Team;
 

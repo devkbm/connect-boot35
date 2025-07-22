@@ -1,15 +1,15 @@
-package com.like.cooperation.team.domain.port.in.impl;
+package com.like.cooperation.team.application.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.like.cooperation.team.application.port.in.query.TeamQueryDTO;
+import com.like.cooperation.team.application.port.in.query.TeamQueryUseCase;
+import com.like.cooperation.team.application.port.out.TeamQueryRepository;
 import com.like.cooperation.team.domain.Team;
 import com.like.cooperation.team.domain.TeamMember;
-import com.like.cooperation.team.domain.port.in.TeamQueryUseCase;
-import com.like.cooperation.team.domain.port.in.dto.TeamQueryDTO;
-import com.like.cooperation.team.domain.port.out.TeamQueryRepository;
 import com.like.system.user.application.port.in.query.SystemUserQueryDTO;
 import com.like.system.user.application.port.in.query.SystemUserQueryUseCase;
 import com.like.system.user.application.port.in.save.SystemUserSaveDTO;

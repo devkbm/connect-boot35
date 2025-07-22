@@ -22,9 +22,13 @@ public class WorkCalendarEventQueryService implements WorkCalendarEventQueryUseC
 
 	@Override
 	public List<WorkCalendarEventQueryResultDTO> getScheduleList(WorkCalendarEventQueryDTO searchCondition) {
+		/*
 		return this.dbPort.getScheduleList(searchCondition)
 						  .stream()
 						  .map(e -> WorkCalendarEventQueryResultDTO.toDTO(e))
 						  .toList();
+		*/
+		
+		return this.dbPort.getScheduleList2(searchCondition);
 	}	
 }
