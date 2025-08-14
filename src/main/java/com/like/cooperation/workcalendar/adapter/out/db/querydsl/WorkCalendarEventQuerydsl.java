@@ -36,7 +36,7 @@ public class WorkCalendarEventQuerydsl {
 		return queryFactory
 				.select(Projections.fields(
 						WorkCalendarEventQueryResultDTO.class, 
-						qWorkCalendarEvent.id,
+						qWorkCalendarEvent.id.stringValue().as("id"),
 						qWorkCalendarEvent.title.as("text"),
 						qWorkCalendar.color,
 						qWorkCalendarEvent.start,
